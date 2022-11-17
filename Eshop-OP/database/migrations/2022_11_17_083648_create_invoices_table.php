@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('Status');// ghi chú thêm
             $table->timestamps();
             $table->softDeletes();// xoa mem
-
             // liên kêt
             //$table->foreign('AccountID')->references('id')->on('Accounts');
         });
