@@ -6,7 +6,7 @@
 <meta http-equiv="cache-control" content="max-age=604800" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>Website title - bootstrap html template</title>
+<title>OP-Eshop</title>
 
 <link href="user/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
@@ -29,11 +29,8 @@
 
 </head>
 <body>
-
-@include('user.partials.header')
-
-@include('user.parials.subscirce')
-
-@include('user.partials.footer')
-</body>
+    @include('partials.header')
+    @yield('content')
+    @include('partials.footer')
+    </body>
 </html>
