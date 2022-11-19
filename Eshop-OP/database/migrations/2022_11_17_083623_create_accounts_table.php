@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->bigIncrements('id');//khoa chinh tang tu dong
+            $table->increments('id');//khoa chinh tang tu dong
             $table->string('Username')->unique();
             $table->string('Password');
             $table->string('Email');

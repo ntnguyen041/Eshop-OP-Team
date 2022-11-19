@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categorys', function (Blueprint $table) {
-            $table->bigIncrements('id');//khoa chinh tang tu dong
+            $table->increments('id');//khoa chinh tang tu dong
             $table->string('Name')->uniqid();//khong duc chung lap
             $table->string('description')->nullable();//duoc de chong
             $table->timestamps();

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('carts', function (Blueprint $table) {
-            $table->bigIncrements('id');//khoa chinh tang tu dong
+            $table->increments('id');//khoa chinh tang tu dong
             $table->integer('AccountId');//khong duc chung lap
             $table->integer('ProductID');
             $table->integer('Quantity');

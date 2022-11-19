@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('Name')->uniqid();
             $table->string('Description')->uniqid();
-            $table->float('Price')->default(0);
+            $table->integer('Price')->default(0);
             $table->integer('Stock')->default(0);
             $table->integer('BrandID')->unsigned()->index();
             $table->integer('CategoryID')->unsigned()->index();
