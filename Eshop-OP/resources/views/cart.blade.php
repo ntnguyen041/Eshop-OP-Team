@@ -130,11 +130,38 @@
 				<div class="form-group">
 					<label>Have coupon?</label>
 					<div class="input-group">
-						<input type="text" class="form-control" name="" placeholder="Coupon code">
+						{{-- //AccountID 
+						//IsuedData
+						//Status --}}
+						<input type="text" class="form-control" name="Code" placeholder="Coupon code">
+						 
+						
+					</div>
+					<div class="input-group">
+						{{-- //AccountID 
+						//IsuedData
+						//Status --}}
+						 
+						<input type="text" class="form-control" name="ShoppingAddress" placeholder="ShoppingAddress">
+						 
+						
+						
+					</div>
+					<div class="input-group">
+						{{-- //AccountID 
+						//IsuedData
+						//Status --}}
+						 
+						<input type="text" class="form-control" name="" placeholder="ShoppingPhone">
+						
+						
+					</div>
+					
 						<span class="input-group-append"> 
 							<button class="btn btn-primary">Apply</button>
 						</span>
-					</div>
+				
+					
 				</div>
 			</form>
 			</div> <!-- card-body.// -->
@@ -143,15 +170,7 @@
 			<div class="card-body">
 					<dl class="dlist-align">
 					  <dt>Total price:</dt>
-					  <dd class="text-right">USD 568</dd>
-					</dl>
-					<dl class="dlist-align">
-					  <dt>Discount:</dt>
-					  <dd class="text-right">USD 658</dd>
-					</dl>
-					<dl class="dlist-align">
-					  <dt>Total:</dt>
-					  <dd class="text-right  h5"><strong>$1,650</strong></dd>
+					  <dd name="Total" class="text-right">USD 568</dd>
 					</dl>
 					<hr>
 					<p class="text-center mb-3">

@@ -81,7 +81,7 @@
           <a class="nav-link" href="/category">category</a>
         </li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">About</a>
+			<a class="nav-link" href="/content">Content</a>
 		  </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Services</a>
