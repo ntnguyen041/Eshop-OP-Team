@@ -1,12 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Support\Facades\DB;
 
-use App\Models\Products;
+use App\Models\Invoices;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class InvoicesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,9 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $fullrodutct=DB::table('Products')->get();
-        return $fullrodutct;
+        //
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,10 +41,10 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Products  $products
+     * @param  \App\Models\Invoices  $invoices
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show(Invoices $invoices)
     {
         //
     }
@@ -54,10 +52,10 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Products  $products
+     * @param  \App\Models\Invoices  $invoices
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit(Invoices $invoices)
     {
         //
     }
@@ -66,10 +64,10 @@ class ProductsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Products  $products
+     * @param  \App\Models\Invoices  $invoices
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $request, Invoices $invoices)
     {
         //
     }
@@ -77,10 +75,10 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Products  $products
+     * @param  \App\Models\Invoices  $invoices
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy(Invoices $invoices)
     {
         //
     }
