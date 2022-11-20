@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\CategorysController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\AccountsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +21,21 @@ use App\Http\Controllers\ProductsController;
 Route::get('/', function () {
     return view('home');
 });
+
 Route::get('/shop', function () {
     return view('shop');
 });
 Route::get('/ajax-shop',[ProductsController::class,'index'])->name('ajax-shop');
+Route::get('/ajax-category',[CategorysController::class,'index'])->name('ajax-category');
+Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
+
+Route::get('/d',[AccountsController::class,'index'])->name('d');
+
+
+
+
+
+
 Route::get('/login', function () {
     return view('login');
 });
