@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::get('/', function () {
 Route::get('/shop', function () {
     return view('shop');
 });
+Route::get('/ajax-shop',[ProductsController::class,'index'])->name('ajax-shop');
 Route::get('/login', function () {
     return view('login');
 });
@@ -33,5 +35,8 @@ Route::get('/register', function () {
 });
 Route::get('/productdetail', function () {
     return view('productdetail');
+});
+Route::get('/content', function () {
+    return view('content');
 });
 
