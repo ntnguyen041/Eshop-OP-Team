@@ -12,6 +12,7 @@
 
 <!-- jQuery -->
 <script src="user/assets/js/jquery-2.0.0.min.js" type="text/javascript"></script>
+<script src="user/assets/js/jquery-sessition.js" type="text/javascript"></script>
 
 <!-- Bootstrap4 files-->
 <script src="user/assets/js/bootstrap.bundle.min.js" type="text/javascript"></script>
@@ -26,7 +27,7 @@
 
 <!-- custom javascript -->
 <script src="user/assets/js/script.js" type="text/javascript"></script>
-
+{{-- login --}}
 </head>
 <body>
     @include('partials.header')

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-use App\Models\Accounts;
+use App\Models\Carts;
 use Illuminate\Http\Request;
 
-class AccountsController extends Controller
+class CartsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,28 +14,9 @@ class AccountsController extends Controller
      */
     public function index()
     {
-        $user=$_GET['user'];
-        $pass=$_GET['pass'];
-        $accounts = DB::table('accounts')->where('username', $user)->where('password',$pass)->get();
-        if(!empty($accounts)){
-            return $accounts;//response()->json($accounts, 200);
-        }
-        return -1;
+        $Cart=DB::table('Carts')->get();
+        return $Cart;
     }
-    public function detail()
-    {
-        $user=1;
-        $account = DB::table('accounts')->where('id', $user)->get();
-        return $account;//response()->json($accounts, 200);
-       
-    }
-    // public function detail()
-    // {
-    //     $user=1;
-    //     $account = DB::table('accounts')->where('id', $user)->get();
-    //     return $account;//response()->json($accounts, 200);
-       
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -61,22 +42,21 @@ class AccountsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Accounts  $accounts
+     * @param  \App\Models\Carts  $carts
      * @return \Illuminate\Http\Response
      */
-    public function show(Accounts $accounts)
+    public function show(Carts $carts)
     {
         //
     }
-   
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Accounts  $accounts
+     * @param  \App\Models\Carts  $carts
      * @return \Illuminate\Http\Response
      */
-    public function edit(Accounts $accounts)
+    public function edit(Carts $carts)
     {
         //
     }
@@ -85,10 +65,10 @@ class AccountsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Accounts  $accounts
+     * @param  \App\Models\Carts  $carts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accounts $accounts)
+    public function update(Request $request, Carts $carts)
     {
         //
     }
@@ -96,10 +76,10 @@ class AccountsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Accounts  $accounts
+     * @param  \App\Models\Carts  $carts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Accounts $accounts)
+    public function destroy(Carts $carts)
     {
         //
     }
