@@ -16,18 +16,12 @@
 
 	<article class="filter-group">
 		<h6 class="title">
-			<a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">	 Product type </a>
+			<a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">Category</a>
 		</h6>
 		<div class="filter-content collapse show" id="collapse_1" style="">
 			<div class="inner">
-				<ul class="list-menu">
+				<ul class="list-menu" id="Categorylist">
 					<li><a href="#">Shorts  </a></li>
-					<li><a href="#">Trousers </a></li>
-					<li><a href="#">Sweaters  </a></li>
-					<li><a href="#">Clothes  </a></li>
-					<li><a href="#">Home items </a></li>
-					<li><a href="#">Jackats</a></li>
-					<li><a href="#">Somethings </a></li>
 				</ul>
 			</div> <!-- inner.// -->
 		</div>
@@ -37,32 +31,7 @@
 			<a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Brands </a>
 		</h6>
 		<div class="filter-content collapse show" id="collapse_2">
-			<div class="inner">
-				<label class="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" class="custom-control-input">
-				  <div class="custom-control-label">Adidas  
-				  	<b class="badge badge-pill badge-light float-right">120</b>  </div>
-				</label>
-				<label class="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" class="custom-control-input">
-				  <div class="custom-control-label">Nike 
-				  	<b class="badge badge-pill badge-light float-right">15</b>  </div>
-				</label>
-				<label class="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" class="custom-control-input">
-				  <div class="custom-control-label">The Noth Face 
-				  	<b class="badge badge-pill badge-light float-right">35</b> </div>
-				</label>
-				<label class="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" class="custom-control-input">
-				  <div class="custom-control-label">The cat 
-				  	<b class="badge badge-pill badge-light float-right">89</b> </div>
-				</label>
-				<label class="custom-control custom-checkbox">
-				  <input type="checkbox" class="custom-control-input">
-				  <div class="custom-control-label">Honda 
-				  	<b class="badge badge-pill badge-light float-right">30</b>  </div>
-				</label>
+			<div class="inner" id="getbrand"> 
 			</div> <!-- inner.// -->
 		</div>
 	</article> <!-- filter-group .// -->
@@ -114,7 +83,7 @@
 
 
 <article class="card card-product-list" id="getproduct">
-	<div class="row no-gutters">
+	{{-- <div class="row no-gutters">
 		<aside class="col-md-3">
 			<a href="#" class="img-wrap">
 				<span class="badge badge-danger"> NEW </span>
@@ -174,7 +143,7 @@
 
 			</div> <!-- info-aside.// -->
 		</aside> <!-- col.// -->
-	</div> <!-- row.// -->
+	</div> <!-- row.// --> --}}
 </article> <!-- card-product .// -->
 
 

@@ -18,7 +18,7 @@
 <link href="user/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
 
 <!-- Font awesome 5 -->
-<link href="user/assets/fonts/fontawesome/user/assets/css/all.min.css" type="text/css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" type="text/css" rel="stylesheet">
 
 <!-- custom style -->
 <link href="user/assets/css/ui.css" rel="stylesheet" type="text/css"/>
