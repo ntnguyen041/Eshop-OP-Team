@@ -9,17 +9,9 @@
 
 <div class="row">
 	<aside class="col-lg col-md-3 flex-lg-grow-0">
-		<h5>Brand</h5>
+		<h5>Category</h5>
 		<nav class="nav-home-aside">
-			<ul class="menu-category">
-				<li><a href="#">Fashion and clothes</a></li>
-				<li><a href="#">Automobile and motors</a></li>
-				<li><a href="#">Gardening and agriculture</a></li>
-				<li><a href="#">Electronics and tech</a></li>
-				<li><a href="#">Packaginf and printing</a></li>
-				<li><a href="#">Home and kitchen</a></li>
-				<li><a href="#">Digital goods</a></li>
-				 
+			<ul class="menu-category" id="Categorylist">
 			</ul>
 		</nav>
 	</aside> <!-- col.// -->
@@ -57,31 +49,9 @@
 	<div class="col-md d-none d-lg-block flex-grow-1">
 		<aside class="special-home-right">
 			<h6 class="bg-blue text-center text-white mb-0 p-2">Popular category</h6>
-			
-			<div class="card-banner border-bottom">
-			  <div class="py-3" style="width:80%">
-			    <h6 class="card-title">Men clothing</h6>
-			    <a href="#" class="btn btn-secondary btn-sm"> Source now </a>
-			  </div> 
-			  <img src="user/assets/images/items/1.jpg" height="80" class="img-bg">
-			</div>
-
-			<div class="card-banner border-bottom">
-			  <div class="py-3" style="width:80%">
-			    <h6 class="card-title">Winter clothing </h6>
-			    <a href="#" class="btn btn-secondary btn-sm"> Source now </a>
-			  </div> 
-			  <img src="user/assets/images/items/2.jpg" height="80" class="img-bg">
-			</div>
-
-			<div class="card-banner border-bottom">
-			  <div class="py-3" style="width:80%">
-			    <h6 class="card-title">Home inventory</h6>
-			    <a href="#" class="btn btn-secondary btn-sm"> Source now </a>
-			  </div> 
-			  <img src="user/assets/images/items/6.jpg" height="80" class="img-bg">
-			</div>
-
+      <section   id="loadroducthome2">
+        
+      </section>
 		</aside>
 	</div> <!-- col.// -->
 </div> <!-- row.// -->
@@ -107,96 +77,19 @@
        <div> <span class="num">02</span> <small>Sec</small></div>
      </div>
    </div> <!-- col.// -->
-   <div class="row no-gutters items-wrap">
-    <div class="col-md col-6">
-     <figure class="card-product-grid card-sm">
-      <a href="#" class="img-wrap"> 
-       <img src="user/assets/images/items/3.jpg"> 
-      </a>
-      <div class="text-wrap p-3">
-       	<a href="#" class="title">Summer clothes</a>
-       	<span class="badge badge-danger"> -20% </span>
-      </div>
-   </figure>
- </div> <!-- col.// -->
- <div class="col-md col-6">
-   <figure class="card-product-grid card-sm">
-    <a href="#" class="img-wrap"> 
-     <img src="user/assets/images/items/4.jpg"> 
-   </a>
-   <div class="text-wrap p-3">
-     <a href="#" class="title">Some category</a>
-     <span class="badge badge-danger"> -5% </span>
-   </div>
- </figure>
-</div> <!-- col.// -->
-<div class="col-md col-6">
- <figure class="card-product-grid card-sm">
-  <a href="#" class="img-wrap"> 
-   <img src="user/assets/images/items/5.jpg"> 
- </a>
- <div class="text-wrap p-3">
-   <a href="#" class="title">Another category</a>
-   <span class="badge badge-danger"> -20% </span>
- </div>
-</figure>
-</div> <!-- col.// -->
-<div class="col-md col-6">
- <figure class="card-product-grid card-sm">
-  <a href="#" class="img-wrap"> 
-   <img src="user/assets/images/items/6.jpg"> 
- </a>
- <div class="text-wrap p-3">
-   <a href="#" class="title">Home apparel</a>
-   <span class="badge badge-danger"> -15% </span>
- </div>
-</figure>
-</div> <!-- col.// -->
-<div class="col-md col-6">
- <figure class="card-product-grid card-sm">
-  <a href="#" class="img-wrap"> 
-   <img src="user/assets/images/items/7.jpg"> 
- </a>
- <div class="text-wrap p-3">
-   <a href="#" class="title text-truncate">Smart watches</a>
-   <span class="badge badge-danger"> -10% </span>
- </div>
-</figure>
-</div> <!-- col.// -->
+   <div class="row no-gutters items-wrap" id="getproducthome">
+      <!-- col.// -->
 </div>
 </div>
 
 </section>
-<!-- =============== SECTION DEAL // END =============== -->
-
-<!-- =============== SECTION 1 =============== -->
- 
-
-
-<!-- =============== SECTION REQUEST =============== -->
-
- 
-
-<!-- =============== SECTION REQUEST .//END =============== -->
-
-
-<!-- =============== SECTION ITEMS =============== -->
- 
-<!-- =============== SECTION ITEMS .//END =============== -->
-
-
-<!-- =============== SECTION SERVICES =============== -->
- 
-<!-- =============== SECTION SERVICES .//END =============== -->
-
-<!-- =============== SECTION REGION =============== -->
- 
-<!-- =============== SECTION REGION .//END =============== -->
-
 <article class="my-4">
 	<img src="user/assets/images/banners/ad-sm.png" class="w-100">
 </article>
 </div>  
+<script src="user/assets/js/home/index.js"></script>
+<script src="user/assets/js/Product/index.js"></script>
+
 <!-- container end.// -->
 @endsection
 

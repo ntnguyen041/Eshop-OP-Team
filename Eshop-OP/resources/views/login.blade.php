@@ -15,7 +15,7 @@
 			 <input id="Username" name="" class="form-control" placeholder="Username" type="text">
           </div> <!-- form-group// -->
           <div class="form-group">
-			<input name="" class="form-control" placeholder="Password" type="password">
+			<input id="Password" name="" class="form-control" placeholder="Password" type="password">
           </div> <!-- form-group// -->
           
           <div class="form-group">
