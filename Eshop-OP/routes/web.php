@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategorysController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\CartsController;
 
 
 /*
@@ -20,16 +21,30 @@ use App\Http\Controllers\AccountsController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/shop', function () {
     return view('shop');
 });
+
+
 Route::get('/ajax-shop',[ProductsController::class,'index'])->name('ajax-shop');
+
+
+
 Route::get('/ajax-category',[CategorysController::class,'index'])->name('ajax-category');
 Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
+//account
+Route::get('/accout',[AccountsController::class,'index'])->name('accout');
+// thong tin account
+//Route::post('/user', [AccountsController::class, 'detail'])->name('user');
+Route::get('/user', [AccountsController::class, 'detail'])->name('user');
 
-Route::get('/d',[AccountsController::class,'index'])->name('d');
+
+
+Route::get('/carts',[CartsController::class,'index'])->name('carts');
+
+
 
 
 
