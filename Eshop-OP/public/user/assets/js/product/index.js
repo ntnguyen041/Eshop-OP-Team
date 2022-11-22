@@ -26,6 +26,7 @@ function loadproduct(data,min,max){
                                 '<i class="fa fa-star"></i> '+
                             '</li>'+
                             '<li>'+
+                            'ádasdasdasdasd'+
                                 '<i class="fa fa-star"></i> <i class="fa fa-star"></i> '+
                                 '<i class="fa fa-star"></i> <i class="fa fa-star"></i> '+
                                 '<i class="fa fa-star"></i> '+
@@ -48,7 +49,7 @@ function loadproduct(data,min,max){
             '<aside class="col-sm-3">'+
                 '<div class="info-aside">'+
                     '<div class="price-wrap">'+
-                        '<span class="h5 price">$'+$(this)[0].Price+'</span> '+
+                        '<span class="h5 price">'+$(this)[0].Price+'VND</span> '+
                         '<small class="text-muted">/per item</small>'+
                     '</div> <!-- price-wrap.// -->'+
                     '<small class="text-warning">Paid shipping</small>'+
@@ -104,7 +105,7 @@ function loadproduct(data,min,max){
             '<aside class="col-sm-3">'+
                 '<div class="info-aside">'+
                     '<div class="price-wrap">'+
-                        '<span class="h5 price">$'+$(this)[item].Price+'</span> '+
+                        '<span class="h5 price">'+$(this)[item].Price+'VND</span> '+
                         '<small class="text-muted">/per item</small>'+
                     '</div> <!-- price-wrap.// -->'+
                     '<small class="text-warning">Paid shipping</small>'+
