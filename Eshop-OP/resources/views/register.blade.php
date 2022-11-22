@@ -9,32 +9,18 @@
 	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
       <article class="card-body">
 		<header class="mb-4"><h4 class="card-title">Sign up</h4></header>
-		<form>
-				<div class="form-row">
-					<div class="col form-group">
-						<label>First name</label>
-					  	<input type="text" class="form-control" placeholder="">
-					</div> <!-- form-group end.// -->
-					<div class="col form-group">
-						<label>Last name</label>
-					  	<input type="text" class="form-control" placeholder="">
-					</div> <!-- form-group end.// -->
-				</div> <!-- form-row end.// -->
+		<form onsubmit="return false">
 				<div class="form-group">
-					<label>Email</label>
-					<input type="email" class="form-control" placeholder="">
+					<label>Username</label>
+					<input type="name" class="form-control" placeholder="tên đăng nhập">
 					<small class="form-text text-muted">We'll never share your email with anyone else.</small>
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
-					<label class="custom-control custom-radio custom-control-inline">
-					  <input class="custom-control-input" checked="" type="radio" name="gender" value="option1">
-					  <span class="custom-control-label"> Male </span>
-					</label>
-					<label class="custom-control custom-radio custom-control-inline">
-					  <input class="custom-control-input" type="radio" name="gender" value="option2">
-					  <span class="custom-control-label"> Female </span>
-					</label>
+					<label>Password</label>
+					<input type="password" class="form-control" placeholder="mật khẩu">
+					<small class="form-text text-muted">We'll never share your email with anyone else.</small>
 				</div> <!-- form-group end.// -->
+				  <!-- form-group end.// -->
 				<div class="form-row">
 					<div class="form-group col-md-6">
 					  <label>City</label>
@@ -64,10 +50,7 @@
 				</div>
 			    <div class="form-group">
 			        <button type="submit" class="btn btn-primary btn-block"> Register  </button>
-			    </div> <!-- form-group// -->      
-			    <div class="form-group"> 
-		            <label class="custom-control custom-checkbox"> <input type="checkbox" class="custom-control-input" checked=""> <div class="custom-control-label"> I am agree with <a href="#">terms and contitions</a>  </div> </label>
-		        </div> <!-- form-group end.// -->           
+			    </div> <!-- form-group// -->          
 			</form>
 		</article><!-- card-body.// -->
     </div> <!-- card .// -->
@@ -77,14 +60,6 @@
 
 
 </section>
-<!-- ========================= SECTION CONTENT END// ========================= -->
-
-
-
-<!-- ========================= FOOTER ========================= -->
  
-<!-- ========================= FOOTER END // ========================= -->
-
-
 </body>
 @endsection
