@@ -1,9 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <body>
-
-
- 
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
 <div class="container">
@@ -96,13 +93,7 @@
     <li class="page-item"><a class="page-link" href="#">Next</a></li>
   </ul>
 </nav>
-
-
- 
-
-
 	</main> <!-- col.// -->
-
 </div>
 
 </div> <!-- container .//  -->

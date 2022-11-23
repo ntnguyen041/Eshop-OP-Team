@@ -26,7 +26,6 @@ function loadproduct(data,min,max){
                                 '<i class="fa fa-star"></i> '+
                             '</li>'+
                             '<li>'+
-                            'ádasdasdasdasd'+
                                 '<i class="fa fa-star"></i> <i class="fa fa-star"></i> '+
                                 '<i class="fa fa-star"></i> <i class="fa fa-star"></i> '+
                                 '<i class="fa fa-star"></i> '+

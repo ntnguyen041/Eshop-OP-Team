@@ -16,6 +16,8 @@ $(document).ready(function(){
         '<a class="dropdown-item" id="deltai" href="">Thông tin</a>'
         )
     }
+
+
     $("#logout").click(function(){
         $.session.remove('id');
         $.session.remove('IsAdmin');
@@ -26,6 +28,7 @@ $(document).ready(function(){
         '<a class="dropdown-item" href="/register">Đăng Ký</a>')
         }
     })
+    
     $("#deltai").click(function(){
         
     })

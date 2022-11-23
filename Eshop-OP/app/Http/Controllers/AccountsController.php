@@ -16,11 +16,13 @@ class AccountsController extends Controller
     {
         $user=$_GET['user'];
         $pass=$_GET['pass'];
+        
         $accounts = DB::table('accounts')->where('username', $user)->where('password',$pass)->get();
         if(!empty($accounts)){
             return $accounts;//response()->json($accounts, 200);
         }
-        return -1;
+        else
+            return -1;
     }
     public function detail()
     {
