@@ -38,18 +38,17 @@ Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands')
 Route::get('/accout',[AccountsController::class,'index'])->name('accout');
 // thong tin account
 //Route::post('/user', [AccountsController::class, 'detail'])->name('user');
-Route::get('/user', [AccountsController::class, 'detail'])->name('user');
+
 
 
 
 Route::get('/carts',[CartsController::class,'index'])->name('carts');
-
-
-
-
-
-
-
+Route::get('/TaiKhoan',function(){
+    return view('userdetail');
+});
+Route::get('/register',function(){
+    return view('register');
+});
 
 Route::get('/login', function () {
     return view('login');

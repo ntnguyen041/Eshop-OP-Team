@@ -11,7 +11,7 @@
 <link href="user/assets/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
 <!-- jQuery -->
-<script src="user/assets/js/jquery-2.0.0.min.js" type="text/javascript"></script>
+<script src="user/assets/js/jquery-2.0.0.min.js"  type="text/javascript"></script>
 <script src="user/assets/js/jquery-sessition.js" type="text/javascript"></script>
 
 <!-- Bootstrap4 files-->
@@ -20,7 +20,7 @@
 
 <!-- Font awesome 5 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" type="text/css" rel="stylesheet">
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- custom style -->
 <link href="user/assets/css/ui.css" rel="stylesheet" type="text/css"/>
 <link href="user/assets/css/responsive.css" rel="stylesheet" type="text/css" />

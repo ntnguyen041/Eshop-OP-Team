@@ -23,3 +23,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/user', [AccountsController::class, 'detail'])->name('user');
+Route::post('/createAccount', [AccountsController::class, 'createAccount'])->name('createAccount');
+

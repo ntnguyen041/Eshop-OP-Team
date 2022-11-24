@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="container">
+  {{-- <a id="nguyen">click me</a> --}}
 <!-- ========================= SECTION MAIN  ========================= -->
 <section class="section-main padding-y">
 <main class="card">
