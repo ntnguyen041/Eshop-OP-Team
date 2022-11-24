@@ -26,11 +26,29 @@ class AccountsController extends Controller
     }
     public function detail()
     {
-        $user=1;
+        $user=$_GET['id'];
         $account = DB::table('accounts')->where('id', $user)->get();
         return $account;//response()->json($accounts, 200);
        
     }
+
+    public function createAccount(){
+        $fullname =$_POST['fullname'];
+        $user =$_POST['user'];
+        $pass =$_POST['pass'];
+        $accountErr=DB::table('accounts')->where('username',$user)->get();
+        if($accountErr->count()){
+            return -1;
+        }
+        else{
+            DB::table('accounts')->insertGetId(['username' => $user, 'Password' => $pass,'FullName'=>$fullname,'IsAdmin'=>0,'Status'=>1]);
+            return 1;
+        }
+       
+        
+    }
+
+
     // public function detail()
     // {
     //     $user=1;
@@ -90,10 +108,10 @@ class AccountsController extends Controller
      * @param  \App\Models\Accounts  $accounts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accounts $accounts)
-    {
-        //
-    }
+    // public function update(Request $request, Accounts $accounts)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.

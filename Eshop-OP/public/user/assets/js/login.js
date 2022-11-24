@@ -17,6 +17,8 @@ $("#login").click(function(){
                     user:user,
                     pass:pass,
                 },
+
+
                 success:function(data){
                     // kiem tra admin tao secction admin
                     //console.log(data[0].IsAdmin);

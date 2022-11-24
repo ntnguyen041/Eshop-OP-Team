@@ -110,7 +110,7 @@
  
 <!-- ========================= FOOTER END // ========================= -->
 
-<a id="nguyen">click me</a>
+
 <script src="user/assets/js/product/index.js"></script>
 </body>
 @endsection

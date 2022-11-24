@@ -152,7 +152,7 @@ $(document).ready(function(){
     $.ajax({
         type:'GET',
         url:"/ajax-shop",
-        data:{},
+     
         success:function(data){
             $("#getproduct").html(loadproduct(data,-1,-1));
 

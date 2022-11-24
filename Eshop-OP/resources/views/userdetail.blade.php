@@ -8,38 +8,36 @@
 <!-- ============================ COMPONENT REGISTER   ================================= -->
 	<div class="card mx-auto" style="max-width:520px; margin-top:40px;">
       <article class="card-body">
-		<header class="mb-4"><h4 class="card-title">Sign up</h4></header>
+		<header class="mb-4"><h4 class="card-title">Account <span id="user"></span></h4></header>
 		<form >
 			<div class="form-group">
 				<label>Fullname</label>
-				<input id="fullname" type="name" class="form-control" placeholder="" value="nguyen">
+				<input id="fullname" type="name" class="form-control" placeholder="">
 			</div>
 				<div class="form-group">
-					<label>Username</label>
-					<input id="user" type="name" class="form-control" placeholder="" value="">
+					<label>Email</label>
+					<input id="email" type="email" class="form-control" placeholder="" >
+				</div>
+				<div class="form-group">
+					<label>Phone</label>
+					<input id="phone" type="number" class="form-control" placeholder="" >
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
-					<label>Password</label>
-					<input id="Pass" type="password" class="form-control" placeholder="" value="1234567">
-				</div> <!-- form-group end.// -->
-				<div class="form-group">
-					<label>Repeat password</label>
-					<input id="Repeatpass" type="password" class="form-control" placeholder="" value="1234567">
-				</div> <!-- form-group end.// -->
+					<label>Address</label>
+					<input id="address" type="text" class="form-control" placeholder="">
+				</div>  
 			    <div class="form-group">
 					<span id="errcreate"></span>
-			        <a id="Register" type="submit" class="btn btn-primary btn-block"> Register  </a>
+			        <a id="update" type="submit" class="btn btn-primary btn-block"> Update  </a>
 			    </div> <!-- form-group// -->          
 			</form>
 		</article><!-- card-body.// -->
     </div> <!-- card .// -->
-    <p class="text-center mt-4">Have an account? <a href="/login">Log In</a></p>
     <br><br>
 <!-- ============================ COMPONENT REGISTER  END.// ================================= -->
-
-
 </section>
  
 </body>
-<script src="user/assets/js/register/index.js"></script>
+<script src="user/assets/js/userDT/index.js"></script>
+</script>
 @endsection
