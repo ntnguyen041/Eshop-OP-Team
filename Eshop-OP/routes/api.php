@@ -28,6 +28,7 @@ Route::controller(AccountsController::class)->group(function () {
     Route::get('/accout', 'index');
     Route::get('/user', 'detail');
     Route::post('/createAccount', 'createAccount');
+    Route::post('/userupdate', 'update');
 });
 
 Route::controller(ProductsController:: class)->group(function(){

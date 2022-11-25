@@ -125,7 +125,7 @@ function loadproduct(data,min,max){
 function loadCategory(data){
     let html="";
     $.each(data,function(){
-        html+='<li><a href="#">'+$(this)[0].Name+'</a></li>'
+        html+='<li><a href="'+$(this)[0].id+'">'+$(this)[0].Name+'</a></li>'
     })
     return html;
 }

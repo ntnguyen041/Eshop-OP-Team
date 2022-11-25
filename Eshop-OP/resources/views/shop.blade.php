@@ -18,7 +18,7 @@
 		<div class="filter-content collapse show" id="collapse_1" style="">
 			<div class="inner">
 				<ul class="list-menu" id="Categorylist">
-					<li><a href="#">Shorts  </a></li>
+					
 				</ul>
 			</div> <!-- inner.// -->
 		</div>

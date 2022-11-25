@@ -19,6 +19,7 @@
 
 <!-- Font awesome 5 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" type="text/css" rel="stylesheet">
+{{-- <script scr="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js" type="text/javascript" rel="stylesheet"></script> --}}
 <script src="{{asset('//cdn.jsdelivr.net/npm/sweetalert2@11')}}"></script>
 <!-- custom style -->
 <link href="{{asset('user/assets/css/ui.css')}}" rel="stylesheet" type="text/css"/>
