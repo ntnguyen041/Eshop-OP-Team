@@ -12,7 +12,7 @@ $("#login").click(function(){
     else{
         $.ajax({
             type:'GET',
-                url:"./accout",
+                url:"api/accout",
                 data:{
                     user:user,
                     pass:pass,

@@ -17,19 +17,19 @@ $(document).ready(function(){
         )
     }
     $("#logout").click(function(){
-       
         $.session.remove('id');
         $.session.remove('IsAdmin');
         $.session.remove('name');
-        console.log(params)
-        // if(window.location.href!='/'){
-        //     window.location.href()
-        // }
+       
+      
         if($.session.get('id')==null){
             $("#nameUser").html("My profile")
             $('#showmenulog').html('<a class="dropdown-item" href="/login">Đăng nhập</a>'+
-        '<a class="dropdown-item" href="/register">Đăng Ký</a>')
-        }
+        '<a class="dropdown-item" href="/register">Đăng Ký</a>'
+        )
+        window.location.href = "/";
+    }
+       
     })
 })
  
