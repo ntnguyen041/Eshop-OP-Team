@@ -85,11 +85,11 @@
 
 </section>
 <article class="my-4">
-	<img src="user/assets/images/banners/ad-sm.png" class="w-100">
+	<img src="{{asset('user/assets/images/banners/ad-sm.png')}}" class="w-100">
 </article>
 </div>  
-<script src="user/assets/js/home/index.js"></script>
-<script src="user/assets/js/Product/index.js"></script>
+<script src="{{asset('user/assets/js/home/index.js')}}"></script>
+<script src="{{asset('user/assets/js/Product/index.js')}}"></script>
 
 <!-- container end.// -->
 @endsection

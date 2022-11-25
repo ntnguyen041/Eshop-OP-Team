@@ -35,7 +35,7 @@ function loadroducthome2(data){
 $(document).ready(function(){
     $.ajax({
         type:'GET',
-        url:"/ajax-shop",
+        url:"api/ajax-shop",
         data:{},
         success:function(data){
             $("#getproducthome").html(loadroducthome(data));

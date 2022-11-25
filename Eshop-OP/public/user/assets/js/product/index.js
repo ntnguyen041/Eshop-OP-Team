@@ -17,7 +17,7 @@ function loadproduct(data,min,max){
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
                ' <div class="info-main">'+
-                    '<a href="#" class="h5 title">'+$(this)[0].Name+'</a>'+
+                    '<a href="/product/id?'+$(this)[0].id+'" class="h5 title">'+$(this)[0].Name+'</a>'+
                     '<div class="rating-wrap mb-2">'+
                         '<ul class="rating-stars">'+
                             '<li style="width:100%" class="stars-active"> '+
@@ -73,7 +73,7 @@ function loadproduct(data,min,max){
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
                ' <div class="info-main">'+
-                    '<a href="#" class="h5 title">'+$(this)[item].Name+'</a>'+
+                    '<a  href="product/id?'+$(this)[0].id+'" class="h5 title">'+$(this)[item].Name+'</a>'+
                     '<div class="rating-wrap mb-2">'+
                         '<ul class="rating-stars">'+
                             '<li style="width:100%" class="stars-active"> '+
@@ -143,7 +143,7 @@ function loadbrand(data){
 $(document).ready(function(){
    $.ajax({
     type:'GET',
-        url:"/ajax-brands",
+        url:"api/ajax-brands",
         data:{},
         success:function(data){
             $("#getbrand").html(loadbrand(data));
@@ -151,7 +151,7 @@ $(document).ready(function(){
    });
     $.ajax({
         type:'GET',
-        url:"/ajax-shop",
+        url:"api/ajax-shop",
      
         success:function(data){
             $("#getproduct").html(loadproduct(data,-1,-1));
@@ -160,7 +160,7 @@ $(document).ready(function(){
     })
     $.ajax({
         type:'GET',
-        url:"/ajax-category",
+        url:"api/ajax-category",
         data:{},
         success:function(data){
             $("#Categorylist").html(loadCategory(data));

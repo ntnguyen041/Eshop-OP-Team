@@ -18,6 +18,16 @@ class ProductsController extends Controller
         $fullrodutct=DB::table('Products')->get();
         return $fullrodutct;
     }
+    public function itemProduct(){
+        $id=$_GET['id'];
+        $fullrodutct=DB::table('Products')->where('id',$id)->get();
+        if($fullrodutct->count()==false){
+            return -1;
+        }
+        return $fullrodutct;
+        
+        
+    }
     
     /**
      * Show the form for creating a new resource.

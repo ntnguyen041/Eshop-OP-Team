@@ -40,6 +40,6 @@
  
 
 </body>
-<script src="user/assets/js/login.js"></script>
+<script src="{{asset('user/assets/js/login.js')}}"></script>
 </html>
 @endsection

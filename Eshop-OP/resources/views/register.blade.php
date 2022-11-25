@@ -41,5 +41,5 @@
 </section>
  
 </body>
-<script src="user/assets/js/register/index.js"></script>
+<script src="{{asset('user/assets/js/register/index.js')}}"></script>
 @endsection

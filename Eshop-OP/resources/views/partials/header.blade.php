@@ -4,7 +4,7 @@
 		<div class="row align-items-center">
 			<div class="col-xl-2 col-lg-3 col-md-12">
 				<a href="/" class="brand-wrap">
-					<img class="logo" src="user/assets/images/logo.png">
+					<img class="logo" src="{{asset('user/assets/images/logo.png')}}">
 				</a> <!-- brand-wrap.// -->
 			</div>
 			<div class="col-xl-6 col-lg-5 col-md-6">
@@ -98,5 +98,5 @@
   </div> <!-- container .// -->
 </nav>
 </header> <!-- section-header.// -->
-<script src="user/assets/js/header/log.js"></script>
+<script src="{{asset('user/assets/js/header/log.js')}}"></script>
  

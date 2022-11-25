@@ -111,6 +111,6 @@
 <!-- ========================= FOOTER END // ========================= -->
 
 
-<script src="user/assets/js/product/index.js"></script>
+<script src="{{asset('user/assets/js/product/index.js')}}"></script>
 </body>
 @endsection
