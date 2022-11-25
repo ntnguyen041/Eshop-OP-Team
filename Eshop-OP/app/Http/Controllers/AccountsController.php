@@ -31,6 +31,20 @@ class AccountsController extends Controller
         return $account;//response()->json($accounts, 200);
        
     }
+    public function update()
+    {
+        $id=$_POST['id'];
+        $fullname=$_POST['fullname'];
+        $email=$_POST['email'];
+        $phone=$_POST['phone'];
+  
+        $address=$_POST['address'];
+
+         $up=DB::table('accounts')
+                     ->where('id', $id)
+                    ->update(['Email'=> $email,'FullName' => $fullname,'Address'=>$address,'Phone'=>$phone]);
+        return $up;//response()->json($accounts, 200);
+    }
 
     public function createAccount(){
         $fullname =$_POST['fullname'];

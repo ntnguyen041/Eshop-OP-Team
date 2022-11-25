@@ -10,7 +10,7 @@
 		<form onsubmit="return false">
 			<div class="form-group" submi>
 				<label>Fullname</label>
-				<input id="fullname" type="name" class="form-control" required>
+				<input id="fullname" type="name" class="form-control" required >
 			</div>
 				<div class="form-group">
 					<label>Email</label>
@@ -18,7 +18,7 @@
 				</div>
 				<div class="form-group">
 					<label>Phone</label>
-					<input id="phone" type="number" class="form-control" required >
+					<input id="phone" type="text" class="form-control" required >
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
 					<label>Address</label>
