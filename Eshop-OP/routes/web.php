@@ -28,28 +28,30 @@ Route::get('/shop', function () {
 });
 
 
-Route::get('/ajax-shop',[ProductsController::class,'index'])->name('ajax-shop');
 
 
 
-Route::get('/ajax-category',[CategorysController::class,'index'])->name('ajax-category');
-Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
+Route::controller(ProductsController:: class)->group(function(){
+     
+});
+
+
 //account
-Route::get('/accout',[AccountsController::class,'index'])->name('accout');
+
 // thong tin account
 //Route::post('/user', [AccountsController::class, 'detail'])->name('user');
-Route::get('/user', [AccountsController::class, 'detail'])->name('user');
 
 
+Route::get('/TaiKhoan',function(){
+    return view('userdetail');
+});
+Route::get('/product/{id}',function(){
+    return view('productdetail');
+});
 
-Route::get('/carts',[CartsController::class,'index'])->name('carts');
-
-
-
-
-
-
-
+Route::get('/register',function(){
+    return view('register');
+});
 
 Route::get('/login', function () {
     return view('login');
@@ -63,9 +65,7 @@ Route::get('/category', function () {
 Route::get('/register', function () {
     return view('register');
 });
-Route::get('/productdetail', function () {
-    return view('productdetail');
-});
+ 
 Route::get('/content', function () {
     return view('content');
 });

@@ -7,30 +7,38 @@ $("#login").click(function(){
     let user =$("#Username").val();//lay 
     let pass=$("#Password").val();
     if(user==""&& pass==""){
-        alert("vui long nhap");
+      $("#err").html("vui lòng nhập");
     }
     else{
         $.ajax({
             type:'GET',
-                url:"./accout",
+                url:"api/accout",
                 data:{
                     user:user,
                     pass:pass,
                 },
+
+
                 success:function(data){
                     // kiem tra admin tao secction admin
                     //console.log(data[0].IsAdmin);
-                    if(data[0].IsAdmin==1){
-                        $.session.set('id', data[0].id);
-                        $.session.set('IsAdmin', data[0].IsAdmin);
-                        $.session.set('name', data[0].Username);
+                    if(data==0){
+                       $("#err").html("Mật khẩu và tài khoản không đúng");
                     }
-                    if(data[0].IsAdmin==0){
-                        $.session.set('id', data[0].id);
-                        $.session.set('IsAdmin', "0");
-                        $.session.set('name', data[0].Username);
+                    else{
+                        if(data[0].IsAdmin==1){
+                            $.session.set('id', data[0].id);
+                            $.session.set('IsAdmin', data[0].IsAdmin);
+                            $.session.set('name', data[0].Username);
+                            window.location.href = "/";
+                        }
+                        if(data[0].IsAdmin==0){
+                            $.session.set('id', data[0].id);
+                            $.session.set('IsAdmin', "0");
+                            $.session.set('name', data[0].Username);
+                            window.location.href = "/";
+                        }
                     }
-                    window.location.href = "/";
                 }
            });
    }

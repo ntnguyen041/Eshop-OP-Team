@@ -16,19 +16,53 @@ class AccountsController extends Controller
     {
         $user=$_GET['user'];
         $pass=$_GET['pass'];
+        
         $accounts = DB::table('accounts')->where('username', $user)->where('password',$pass)->get();
         if(!empty($accounts)){
             return $accounts;//response()->json($accounts, 200);
         }
-        return -1;
+        else
+            return -1;
     }
     public function detail()
     {
-        $user=1;
+        $user=$_GET['id'];
         $account = DB::table('accounts')->where('id', $user)->get();
         return $account;//response()->json($accounts, 200);
        
     }
+    public function update()
+    {
+        $id=$_POST['id'];
+        $fullname=$_POST['fullname'];
+        $email=$_POST['email'];
+        $phone=$_POST['phone'];
+  
+        $address=$_POST['address'];
+
+         $up=DB::table('accounts')
+                     ->where('id', $id)
+                    ->update(['Email'=> $email,'FullName' => $fullname,'Address'=>$address,'Phone'=>$phone]);
+        return $up;//response()->json($accounts, 200);
+    }
+
+    public function createAccount(){
+        $fullname =$_POST['fullname'];
+        $user =$_POST['user'];
+        $pass =$_POST['pass'];
+        $accountErr=DB::table('accounts')->where('username',$user)->get();
+        if($accountErr->count()){
+            return -1;
+        }
+        else{
+            DB::table('accounts')->insertGetId(['username' => $user, 'Password' => $pass,'FullName'=>$fullname,'IsAdmin'=>0,'Status'=>1]);
+            return 1;
+        }
+       
+        
+    }
+
+
     // public function detail()
     // {
     //     $user=1;
@@ -88,10 +122,10 @@ class AccountsController extends Controller
      * @param  \App\Models\Accounts  $accounts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Accounts $accounts)
-    {
-        //
-    }
+    // public function update(Request $request, Accounts $accounts)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.

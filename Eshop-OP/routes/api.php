@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+ 
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategorysController;
 use App\Http\Controllers\BrandController;
@@ -22,4 +23,24 @@ use App\Http\Controllers\CartsController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/user', [AccountsController::class, 'detail'])->name('user');
+
+Route::controller(AccountsController::class)->group(function () {
+    Route::get('/accout', 'index');
+    Route::get('/user', 'detail');
+    Route::post('/createAccount', 'createAccount');
+    Route::post('/userupdate', 'update');
+});
+
+Route::controller(ProductsController:: class)->group(function(){
+    Route::get('productitem','itemProduct');
+    Route::get('/ajax-shop','index');
+});
+
+
+
+Route::get('/ajax-category',[CategorysController::class,'index'])->name('ajax-category');
+Route::get('/carts',[CartsController::class,'index'])->name('carts');
+
+Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
+
+

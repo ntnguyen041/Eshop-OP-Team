@@ -33,13 +33,16 @@ function loadroducthome2(data){
     return html;
 }
 $(document).ready(function(){
-     $.ajax({
-         type:'GET',
-         url:"/ajax-shop",
-         data:{},
-         success:function(data){
-             $("#getproducthome").html(loadroducthome(data));
-             $("#loadroducthome2").html(loadroducthome2(data));
-         }
-     })
+    $.ajax({
+        type:'GET',
+        url:"api/ajax-shop",
+        data:{},
+        success:function(data){
+            $("#getproducthome").html(loadroducthome(data));
+            $("#loadroducthome2").html(loadroducthome2(data));
+        }
+    })
+ })
+ $("#nguyen").click(function(){
+    
  })

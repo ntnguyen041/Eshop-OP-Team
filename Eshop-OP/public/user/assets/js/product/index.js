@@ -17,7 +17,7 @@ function loadproduct(data,min,max){
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
                ' <div class="info-main">'+
-                    '<a href="#" class="h5 title">'+$(this)[0].Name+'</a>'+
+                    '<a href="/product/id?'+$(this)[0].id+'" class="h5 title">'+$(this)[0].Name+'</a>'+
                     '<div class="rating-wrap mb-2">'+
                         '<ul class="rating-stars">'+
                             '<li style="width:100%" class="stars-active"> '+
@@ -48,7 +48,7 @@ function loadproduct(data,min,max){
             '<aside class="col-sm-3">'+
                 '<div class="info-aside">'+
                     '<div class="price-wrap">'+
-                        '<span class="h5 price">$'+$(this)[0].Price+'</span> '+
+                        '<span class="h5 price">'+$(this)[0].Price+'VND</span> '+
                         '<small class="text-muted">/per item</small>'+
                     '</div> <!-- price-wrap.// -->'+
                     '<small class="text-warning">Paid shipping</small>'+
@@ -73,7 +73,7 @@ function loadproduct(data,min,max){
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
                ' <div class="info-main">'+
-                    '<a href="#" class="h5 title">'+$(this)[item].Name+'</a>'+
+                    '<a  href="product/id?'+$(this)[0].id+'" class="h5 title">'+$(this)[item].Name+'</a>'+
                     '<div class="rating-wrap mb-2">'+
                         '<ul class="rating-stars">'+
                             '<li style="width:100%" class="stars-active"> '+
@@ -104,7 +104,7 @@ function loadproduct(data,min,max){
             '<aside class="col-sm-3">'+
                 '<div class="info-aside">'+
                     '<div class="price-wrap">'+
-                        '<span class="h5 price">$'+$(this)[item].Price+'</span> '+
+                        '<span class="h5 price">'+$(this)[item].Price+'VND</span> '+
                         '<small class="text-muted">/per item</small>'+
                     '</div> <!-- price-wrap.// -->'+
                     '<small class="text-warning">Paid shipping</small>'+
@@ -125,7 +125,7 @@ function loadproduct(data,min,max){
 function loadCategory(data){
     let html="";
     $.each(data,function(){
-        html+='<li><a href="#">'+$(this)[0].Name+'</a></li>'
+        html+='<li><a href="'+$(this)[0].id+'">'+$(this)[0].Name+'</a></li>'
     })
     return html;
 }
@@ -143,7 +143,7 @@ function loadbrand(data){
 $(document).ready(function(){
    $.ajax({
     type:'GET',
-        url:"/ajax-brands",
+        url:"api/ajax-brands",
         data:{},
         success:function(data){
             $("#getbrand").html(loadbrand(data));
@@ -151,8 +151,8 @@ $(document).ready(function(){
    });
     $.ajax({
         type:'GET',
-        url:"/ajax-shop",
-        data:{},
+        url:"api/ajax-shop",
+     
         success:function(data){
             $("#getproduct").html(loadproduct(data,-1,-1));
 
@@ -160,7 +160,7 @@ $(document).ready(function(){
     })
     $.ajax({
         type:'GET',
-        url:"/ajax-category",
+        url:"api/ajax-category",
         data:{},
         success:function(data){
             $("#Categorylist").html(loadCategory(data));

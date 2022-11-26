@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('ShoppingAddress');
             $table->string('ShoppingPhone');
             $table->integer('Total');
-            $table->string('Status');// ghi chú thêm
+            $table->integer('Status');// ghi chú thêm
             $table->timestamps();
             $table->softDeletes();// xoa mem
             // liên kêt
