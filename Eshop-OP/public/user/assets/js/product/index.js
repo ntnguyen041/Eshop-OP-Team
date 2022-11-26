@@ -54,8 +54,8 @@ function loadproduct(data,min,max){
                     '<small class="text-warning">Paid shipping</small>'+
                     
                     '<p class="text-muted mt-3">Grand textile Co</p>'+
-                    '<p class="mt-3">'+
-                        '<a href="#" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>'+
+                    '<p  class="mt-3">'+
+                    '<button onclick="addcart('+$(this)[0].id+')" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i> Add to cart</button>'+
                     '</p>'+
                 '</div> <!-- info-aside.// -->'+
             '</aside> <!-- col.// -->'+
@@ -73,7 +73,7 @@ function loadproduct(data,min,max){
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
                ' <div class="info-main">'+
-                    '<a  href="product/id?'+$(this)[0].id+'" class="h5 title">'+$(this)[item].Name+'</a>'+
+                    '<a  href="product/id?'+$(this)[item].id+'" class="h5 title">'+$(this)[item].Name+'</a>'+
                     '<div class="rating-wrap mb-2">'+
                         '<ul class="rating-stars">'+
                             '<li style="width:100%" class="stars-active"> '+
@@ -111,7 +111,7 @@ function loadproduct(data,min,max){
                     
                     '<p class="text-muted mt-3">Grand textile Co</p>'+
                     '<p class="mt-3">'+
-                        '<a href="#" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>'+
+                        '<button onclick="addcart('+$(this)[item].id+')" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i> Add to cart</button>'+
                     '</p>'+
                 '</div> <!-- info-aside.// -->'+
             '</aside> <!-- col.// -->'+
@@ -140,18 +140,25 @@ function loadbrand(data){
     })
     return html;
 }
+$("#searchbutton").click(function(){
+    var currentLocation = window.location;
+    if(currentLocation.href!="http://127.0.0.1:8000/shop"){
+        currentLocation.href="/shop";
+         $.session.set('searchString',$("#searchSting").val());
+    }else{
+        $.session.set('searchString',$("#searchSting").val());
+    }
+}) 
 $(document).ready(function(){
-    let strings =$.session.get('searchString');
-    console.log(strings)
-    $("#searchbutton").click(function(){
-        var currentLocation = window.location;
-        if(currentLocation.href!="http://127.0.0.1:8000/shop"){
-            currentLocation.href="/shop";
-            $.session.set('searchString',$("#searhSting").val());
-        }
-    })
+    let stringchuyentrang=$.session.get('searchString');
+    let stringstrenshop=$("#searchSting").val();
+    let biensearch="";
     
-   
+    
+        console.log(biensearch);
+        console.log(stringchuyentrang);
+        console.log(stringstrenshop);
+    
     $.ajax({
     type:'GET',
         url:"api/ajax-brands",
@@ -177,6 +184,12 @@ $(document).ready(function(){
             $("#Categorylist").html(loadCategory(data));
         }
     })
-    $
+     
 })
- 
+function addcart(id){
+    let idproduct=id;
+    let userid= $.session.get('id');
+
+    console.log(idproduct,userid);
+ }
+
