@@ -125,7 +125,7 @@ function loadproduct(data,min,max){
 function loadCategory(data){
     let html="";
     $.each(data,function(){
-        html+='<li><a href="'+$(this)[0].id+'">'+$(this)[0].Name+'</a></li>'
+        html+='<li><button value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
     })
     return html;
 }
@@ -141,7 +141,18 @@ function loadbrand(data){
     return html;
 }
 $(document).ready(function(){
-   $.ajax({
+    let strings =$.session.get('searchString');
+    console.log(strings)
+    $("#searchbutton").click(function(){
+        var currentLocation = window.location;
+        if(currentLocation.href!="http://127.0.0.1:8000/shop"){
+            currentLocation.href="/shop";
+            $.session.set('searchString',$("#searhSting").val());
+        }
+    })
+    
+   
+    $.ajax({
     type:'GET',
         url:"api/ajax-brands",
         data:{},
@@ -166,5 +177,6 @@ $(document).ready(function(){
             $("#Categorylist").html(loadCategory(data));
         }
     })
+    $
 })
  

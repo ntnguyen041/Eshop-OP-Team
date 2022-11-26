@@ -8,11 +8,11 @@
 				</a> <!-- brand-wrap.// -->
 			</div>
 			<div class="col-xl-6 col-lg-5 col-md-6">
-				<form action="#" class="search-header">
+				<form class="search-header" onsubmit="return false">
 					<div class="input-group w-100">
-					    <input type="text" class="form-control" placeholder="Search">
+					    <input type="text" id="searhSting" class="form-control" name="name" placeholder="Search">
 					    <div class="input-group-append">
-					      <button class="btn btn-primary" type="submit">
+					      <button id="searchbutton"class="btn btn-primary" type="submit">
 					        <i class="fa fa-search"></i> Search
 					      </button>
 					    </div>
@@ -99,4 +99,6 @@
 </nav>
 </header> <!-- section-header.// -->
 <script src="{{asset('user/assets/js/header/log.js')}}"></script>
+<script src="{{asset('user/assets/js/product/index.js')}}"></script>
+
  
