@@ -8,16 +8,7 @@
 				</a> <!-- brand-wrap.// -->
 			</div>
 			<div class="col-xl-6 col-lg-5 col-md-6">
-				<form class="search-header" onsubmit="return false">
-					<div class="input-group w-100">
-					    <input type="text" id="searchSting" class="form-control" name="name" placeholder="Search">
-					    <div class="input-group-append">
-					      <button id="searchbutton"class="btn btn-primary" type="submit">
-					        <i class="fa fa-search"></i> Search
-					      </button>
-					    </div>
-				    </div>
-				</form> <!-- search-wrap .end// -->
+				 <!-- search-wrap .end// -->
 			</div> <!-- col.// -->
 			<div class="col-xl-4 col-lg-4 col-md-6">
 				<div class="widgets-wrap float-md-right">
@@ -99,6 +90,5 @@
 </nav>
 </header> <!-- section-header.// -->
 <script src="{{asset('user/assets/js/header/log.js')}}"></script>
-{{-- <script src="{{asset('user/assets/js/product/index.js')}}"></script> --}}
 
  

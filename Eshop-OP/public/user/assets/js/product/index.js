@@ -1,13 +1,7 @@
-function loadproduct(data,min,max){
+    function loadproduct(data,min,max){
     let html="";
     if(min==-1,max==-1){
         $.each(data,function(){
-            // if($(this)[0].Stock>0){
-            //   /// con hang  
-            // }
-            // else{
-            //     //het hang
-            // }
             html += '<div class="row no-gutters">'+
             '<aside class="col-md-3">'+
                 '<a href="#" class="img-wrap">'+
@@ -17,7 +11,7 @@ function loadproduct(data,min,max){
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
                ' <div class="info-main">'+
-                    '<a href="/product/id?'+$(this)[0].id+'" class="h5 title">'+$(this)[0].Name+'</a>'+
+                    '<a href="/product/id?'+$(this)[0].id+'" class="h5 title">'+$(this)[0].NNa+'</a>'+
                     '<div class="rating-wrap mb-2">'+
                         '<ul class="rating-stars">'+
                             '<li style="width:100%" class="stars-active"> '+
@@ -68,12 +62,12 @@ function loadproduct(data,min,max){
             '<aside class="col-md-3">'+
                 '<a href="#" class="img-wrap">'+
                     '<span class="badge badge-danger"> NEW </span>'+
-                    '<img src="user/assets/images/imageProduct/'+$(this)[item].Image+'">'+
+                    '<img src="user/assets/images/imageProduct/'+data[item].Image+'">'+
                 '</a>'+
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
                ' <div class="info-main">'+
-                    '<a  href="product/id?'+$(this)[item].id+'" class="h5 title">'+$(this)[item].Name+'</a>'+
+                    '<a  href="product/id?'+data[item].id+'" class="h5 title">'+data[item].NNa+'</a>'+
                     '<div class="rating-wrap mb-2">'+
                         '<ul class="rating-stars">'+
                             '<li style="width:100%" class="stars-active"> '+
@@ -97,21 +91,21 @@ function loadproduct(data,min,max){
                         '<span class="tag"> Russia </span>'+
                     '</p>'+
     
-                    '<p>'+$(this)[item].Description+'</p>'+
+                    '<p>'+data[item].Description+'</p>'+
     
                 '</div> <!-- info-main.// -->'+
-            '</div> <!-- col.// -->'+
+            '</div> <!-- col.// -->'+   
             '<aside class="col-sm-3">'+
                 '<div class="info-aside">'+
                     '<div class="price-wrap">'+
-                        '<span class="h5 price">'+$(this)[item].Price+'VND</span> '+
+                        '<span class="h5 price">'+data[item].Price+'VND</span> '+
                         '<small class="text-muted">/per item</small>'+
                     '</div> <!-- price-wrap.// -->'+
                     '<small class="text-warning">Paid shipping</small>'+
                     
                     '<p class="text-muted mt-3">Grand textile Co</p>'+
                     '<p class="mt-3">'+
-                        '<button onclick="addcart('+$(this)[item].id+')" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i> Add to cart</button>'+
+                        '<button onclick="addcart('+data[item].id+')" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i> Add to cart</button>'+
                     '</p>'+
                 '</div> <!-- info-aside.// -->'+
             '</aside> <!-- col.// -->'+
@@ -125,7 +119,7 @@ function loadproduct(data,min,max){
 function loadCategory(data){
     let html="";
     $.each(data,function(){
-        html+='<li><button value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
+        html+='<li><button onclick="searchcategory('+$(this)[0].id+')" value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
     })
     return html;
 }
@@ -140,24 +134,47 @@ function loadbrand(data){
     })
     return html;
 }
+// $("#searchbutton").mousedown(function(){
+//     let searchString= $.session.set('searchString',$("#searchSting").val());
+//     var currentLocation = window.location;
+  
+//         if(currentLocation.href!="http://127.0.0.1:8000/shop"){
+       
+//         currentLocation.href="/shop";
+//     }; 
+// }) 
+    let i=1;
+   let min=1;
+   let max=min;
+
+function clickload(){
+    
+}
+
 $("#searchbutton").click(function(){
-    var currentLocation = window.location;
-    if(currentLocation.href!="http://127.0.0.1:8000/shop"){
-        currentLocation.href="/shop";
-         $.session.set('searchString',$("#searchSting").val());
-    }else{
-        $.session.set('searchString',$("#searchSting").val());
+    var format = /^[^a-zA-Z0-9]+$/;
+    let search = $("#searchSting").val();
+    if(!search.match(format)){
+        $.ajax({
+            type:'GET',
+            url:"api/ajax-shopsearch",
+            data:{stringsrearch:$("#searchSting").val()},
+            success:function(data){
+                if(data!=0){
+                    $("#countitem").html(data.length)
+                    $("#getproduct").html(loadproduct(data,0,data.length));
+                }
+                else{
+                    alert('chúng tôi không thể tìm sản phẩm này')
+                }
+            }
+        })
+    }
+    else{
+        alert('chúng tôi không thể tìm sản phẩm này')
     }
 }) 
 $(document).ready(function(){
-    let stringchuyentrang=$.session.get('searchString');
-    let stringstrenshop=$("#searchSting").val();
-    let biensearch="";
-    
-    
-        console.log(biensearch);
-        console.log(stringchuyentrang);
-        console.log(stringstrenshop);
     
     $.ajax({
     type:'GET',
@@ -167,15 +184,41 @@ $(document).ready(function(){
             $("#getbrand").html(loadbrand(data));
         }
    });
+   let i=1;
+   let min=1;
+   let max=min;
+
     $.ajax({
         type:'GET',
         url:"api/ajax-shop",
-     
         success:function(data){
-            $("#getproduct").html(loadproduct(data,-1,-1));
-
+            let items=$("#countitem").html(data.length)
+            $("#getproduct").html(loadproduct(data,0,5));
+            $("#nextproduct").click(function(){
+                if(max+5<data.length){
+                    min=i*1*5;
+                    max=min+5;
+                    i=i+1;
+                }else if(max+5>data.length){
+                   max=max-(max-items);
+                }
+                $("#getproduct").html(loadproduct(data,min,max));
+            })
+            $("#backproduct").click(function(){
+                if(i-1>=0){
+                    min=i*1*5;
+                    max=min+5;
+                    i=i-1;
+                    $("#getproduct").html(loadproduct(data,min,max));
+                }
+                else{
+                   
+                    $("#getproduct").html(loadproduct(data,0,5));
+                }
+            })
         }
     })
+
     $.ajax({
         type:'GET',
         url:"api/ajax-category",
@@ -186,10 +229,27 @@ $(document).ready(function(){
     })
      
 })
+function searchcategory(e){
+    let categoryId=e;
+    $.ajax({
+        url:'api/ajax-shopsearch',
+        type:'GET',
+        data:{
+            categoryId:categoryId,
+            stringsrearch:"",
+        },
+        success:function(data){
+            console.log(data)
+            $("#getproduct").html(loadproduct(data,0,data.length));
+        }
+    })
+}
 function addcart(id){
     let idproduct=id;
     let userid= $.session.get('id');
 
     console.log(idproduct,userid);
  }
+ 
+
 

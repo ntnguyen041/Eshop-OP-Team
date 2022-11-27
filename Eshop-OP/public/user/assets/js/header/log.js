@@ -20,8 +20,6 @@ $(document).ready(function(){
         $.session.remove('id');
         $.session.remove('IsAdmin');
         $.session.remove('name');
-       
-      
         if($.session.get('id')==null){
             $("#nameUser").html("My profile")
             $('#showmenulog').html('<a class="dropdown-item" href="/login">Đăng nhập</a>'+
