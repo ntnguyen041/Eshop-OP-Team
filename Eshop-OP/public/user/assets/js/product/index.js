@@ -119,7 +119,7 @@
 function loadCategory(data){
     let html="";
     $.each(data,function(){
-        html+='<li><button value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
+        html+='<li><button onclick="searchcategory('+$(this)[0].id+')" value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
     })
     return html;
 }
@@ -229,6 +229,21 @@ $(document).ready(function(){
     })
      
 })
+function searchcategory(e){
+    let categoryId=e;
+    $.ajax({
+        url:'api/ajax-shopsearch',
+        type:'GET',
+        data:{
+            categoryId:categoryId,
+            stringsrearch:"",
+        },
+        success:function(data){
+            console.log(data)
+            $("#getproduct").html(loadproduct(data,0,data.length));
+        }
+    })
+}
 function addcart(id){
     let idproduct=id;
     let userid= $.session.get('id');

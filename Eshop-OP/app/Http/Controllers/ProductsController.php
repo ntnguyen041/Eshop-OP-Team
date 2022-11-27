@@ -52,25 +52,38 @@ class ProductsController extends Controller
         //     $str = preg_replace("/( )/", '-', $str);
         //     return strtolower($str);
         // }
+        $categoryId=$_GET['categoryId'];
         $search=$_GET['stringsrearch'];
-        if($search==null){
+        if($categoryId==null){
+            if($search==null){
+                $fullrodutct=DB::table('Products as P')
+                ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
+                ->join('Categorys as C','P.CategoryID','=','C.id')
+                ->join('Brands as B','P.BrandID','=','B.id')->get();
+                return $fullrodutct;
+            }
+             //$search="Điện";
             $fullrodutct=DB::table('Products as P')
             ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
             ->join('Categorys as C','P.CategoryID','=','C.id')
-            ->join('Brands as B','P.BrandID','=','B.id')->get();
+            ->join('Brands as B','P.BrandID','=','B.id')
+            ->where('P.Name','LIKE','%'.$search.'%')
+            ->orWhere('C.Name','LIKE','%'.$search.'%')
+            ->orWhere('B.Name','LIKE','%'.$search.'%')
+            ->get();
+            return $fullrodutct;
+       
+        }
+        else{
+            $fullrodutct=DB::table('Products as P')
+            ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
+            ->join('Categorys as C','P.CategoryID','=','C.id')
+            ->join('Brands as B','P.BrandID','=','B.id')
+            ->where('C.id',$categoryId)
+            ->get();
             return $fullrodutct;
         }
-         //$search="Điện";
-        $fullrodutct=DB::table('Products as P')
-        ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
-        ->join('Categorys as C','P.CategoryID','=','C.id')
-        ->join('Brands as B','P.BrandID','=','B.id')
-        ->where('P.Name','LIKE','%'.$search.'%')
-        ->orWhere('C.Name','LIKE','%'.$search.'%')
-        ->orWhere('B.Name','LIKE','%'.$search.'%')
-        ->get();
-        return $fullrodutct;
-    }
+        }
     
     /**
      * Show the form for creating a new resource.
