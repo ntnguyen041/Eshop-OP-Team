@@ -38,7 +38,10 @@
 		</h6>
 		<div class="filter-content collapse show" id="collapse_3">
 			<div class="inner">
-				<input type="range" class="custom-range" min="0" max="100" name="">
+				<form class="multi-range-field my-5 pb-5">
+					<input id="multi3" class="multi-range" type="range" />
+				  </form>
+				<input type="range" class="form-range" id="customRange1">
 				<div class="form-row">
 				<div class="form-group col-md-6">
 				  <label>Min</label>

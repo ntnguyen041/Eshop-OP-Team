@@ -99,6 +99,6 @@
 </nav>
 </header> <!-- section-header.// -->
 <script src="{{asset('user/assets/js/header/log.js')}}"></script>
-{{-- <script src="{{asset('user/assets/js/product/index.js')}}"></script> --}}
+<script src="{{asset('user/assets/js/product/index.js')}}"></script>
 
  
