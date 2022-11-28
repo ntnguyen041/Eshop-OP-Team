@@ -15,7 +15,7 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indexuser()
     {
         $fullrodutct=DB::table('Products')
         ->select('id','name as NNa','Description','Price','Stock','BrandID','CategoryID','Image')

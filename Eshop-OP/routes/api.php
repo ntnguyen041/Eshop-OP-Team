@@ -33,7 +33,7 @@ Route::controller(AccountsController::class)->group(function () {
 
 Route::controller(ProductsController:: class)->group(function(){
     Route::get('productitem','itemProduct');
-    Route::get('/ajax-shop','index');
+    Route::get('/ajax-shop','indexuser');
     Route::get('/ajax-shopsearch','search');
 });
 
