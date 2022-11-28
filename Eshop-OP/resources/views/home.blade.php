@@ -19,7 +19,6 @@
 				<li><a href="#">Packaginf and printing</a></li>
 				<li><a href="#">Home and kitchen</a></li>
 				<li><a href="#">Digital goods</a></li>
-				 
 			</ul>
 		</nav>
 	</aside> <!-- col.// -->
