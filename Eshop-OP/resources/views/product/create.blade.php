@@ -50,9 +50,9 @@
                         <select class="form-control m-bot15" name="category_id">
 
                             @if ($categorys->count())
-                                @foreach($categorys as $category)
-                                    <option value="{{ $category->id }}" > {{ $category->Name }}</option>
-                                @endforeach
+                            @foreach($categorys as $category)
+                            <option value="{{ $category->id }}"> {{ $category->Name }}</option>
+                            @endforeach
                             @endif
 
                         </select>
@@ -66,9 +66,9 @@
                         <select class="form-control m-bot15" name="brand_id">
 
                             @if ($brands->count())
-                                @foreach($brands as $brand)
-                                    <option value="{{ $brand->id }}"> {{ $brand->Name }}</option>
-                                @endforeach
+                            @foreach($brands as $brand)
+                            <option value="{{ $brand->id }}"> {{ $brand->Name }}</option>
+                            @endforeach
                             @endif
 
                         </select>

@@ -78,6 +78,7 @@ Route::prefix('/category')->group(function (){
     Route::patch('/{id}', [CategorysController::class, 'update'])->name('category.update');
     Route::delete('/{id}', [CategorysController::class, 'destroy'])->name('category.destroy');
 });
+
 Route::prefix('/brand')->group(function (){
     Route::get('/create', [BrandsController::class, 'create'])->name('brand.create');
     Route::get('/', [BrandsController::class, 'index'])->name('brand.index');

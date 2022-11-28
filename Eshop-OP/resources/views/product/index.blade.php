@@ -6,7 +6,7 @@
             <div
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h6 class="dark:text-white">Product Type</h6>
+                    <h6 class="dark:text-white">Product</h6>
                     <a href="{{route('product.create')}}"
                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -14,14 +14,14 @@
                         </button> </a>
                 </div>
                 @if(session()->has('message'))
-                    <div class="p-6 ">
-                        <div class="text-red-500">
-                            Warning
-                        </div>
-                        <div class="text-red-500">
-                            {{session()->get('message')}}
-                        </div>
+                <div class="p-6 ">
+                    <div class="text-red-500">
+                        Warning
                     </div>
+                    <div class="text-red-500">
+                        {{session()->get('message')}}
+                    </div>
+                </div>
                 @endif
                 <div class="flex-auto px-0 pt-0 pb-2">
                     <div class="p-0 overflow-x-auto ps">
@@ -57,49 +57,50 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                @foreach ($products as $product)
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2 py-1">
-                                                <div class="flex flex-col justify-center">
-                                                    <h6  class="mb-0 text-sm leading-normal dark:text-white">{{$product->Name}}</h6>
-                                                </div>
+                                    @foreach ($products as $product)
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <div class="flex px-2 py-1">
+                                            <div class="flex flex-col justify-center">
+                                                <h6 class="mb-0 text-sm leading-normal dark:text-white">
+                                                    {{$product->Name}}</h6>
                                             </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                           <p
-                                                style="white-space: normal;"
-                                                class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80 ">
-                                                {{$product->Description}}</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            <p
-                                                class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
-                                                {{$product->Price}}</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            <p
-                                                class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
-                                                {{$product->Stock}}</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            <p
-                                                class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
-                                                 {{ $product->brand?->Name}}</p>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            <p
-                                                class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
-                                                 {{ $product->category?->Name}} </p>
-                                        </td>
-                                        <td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                            <img src="images/product/{{$product->Image}}" style="height:100px; width:100px" >
-                                        </td>
+                                        </div>
+                                    </td>
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <p style="white-space: normal;"
+                                            class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80 ">
+                                            {{$product->Description}}</p>
+                                    </td>
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <p
+                                            class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
+                                            {{$product->Price}}</p>
+                                    </td>
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <p
+                                            class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
+                                            {{$product->Stock}}</p>
+                                    </td>
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <p
+                                            class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
+                                            {{ $product->brand?->Name}}</p>
+                                    </td>
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <p
+                                            class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
+                                            {{ $product->category?->Name}} </p>
+                                    </td>
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <img src="images/product/{{$product->Image}}" style="height:100px; width:100px">
+                                    </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <a href="{{route('product.edit', $product->id)}}"
@@ -107,18 +108,20 @@
                                             <button
                                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">
                                                 Edit
-                                            </button> 
+                                            </button>
                                         </a>
                                         <form action="{{route('product.destroy', $product->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
+                                            <button
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                                                type="submit">
                                                 Delete
-                                            </button> 
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
-                                @endforeach 
+                                @endforeach
                             </tbody>
                         </table>
                         <div class="ps__rail-x" style="left: 0px; bottom: 0px;">

@@ -12,7 +12,8 @@
             <img src="./assets/img/logo-ct.png"
                 class="hidden h-full max-w-full transition-all duration-200 dark:inline ease-nav-brand max-h-8"
                 alt="main_logo" />
-            <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand text-neutral-700">Argon Dashboard 2</span>
+            <span class="ml-1 font-semibold transition-all duration-200 ease-nav-brand text-neutral-700">Argon Dashboard
+                2</span>
         </a>
     </div>
 
@@ -21,14 +22,15 @@
 
     <div class="items-center block w-auto max-h-screen overflow-auto h-sidenav grow basis-full">
         <ul class="flex flex-col pl-0 mb-0">
-            <li class="mt-0.5 w-full">
+            <!-- <li class="mt-0.5 w-full">
                 <a class="py-2.7 bg-blue-500/13 dark:text-white dark:opacity-80 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap rounded-lg px-4 font-semibold text-slate-700 transition-colors"
                     href="./pages/dashboard.html">
                     <div
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                         <i class="relative top-0 text-sm leading-normal text-blue-500 ni ni-tv-2"></i>
                     </div>
-                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease text-neutral-700">Dashboard</span>
+                    <span
+                        class="ml-1 duration-300 opacity-100 pointer-events-none ease text-neutral-700">Dashboard</span>
                 </a>
             </li>
 
@@ -61,7 +63,8 @@
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                         <i class="relative top-0 text-sm leading-normal text-cyan-500 ni ni-app"></i>
                     </div>
-                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease text-neutral-700">Virtual Reality</span>
+                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease text-neutral-700">Virtual
+                        Reality</span>
                 </a>
             </li>
 
@@ -74,9 +77,9 @@
                     </div>
                     <span class="ml-1 duration-300 opacity-100 pointer-events-none ease text-neutral-700">RTL</span>
                 </a>
-            </li>
+            </li> -->
 
-            
+
             <li class="mt-0.5 w-full">
                 <a class=" dark:text-white dark:opacity-80 py-2.7 text-sm ease-nav-brand my-0 mx-2 flex items-center whitespace-nowrap px-4 transition-colors"
                     href="{{route('product.index')}}">
@@ -94,7 +97,8 @@
                         class="mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-center stroke-0 text-center xl:p-2.5">
                         <i class="relative top-0 text-sm leading-normal text-red-600 ni ni-world-2"></i>
                     </div>
-                    <span class="ml-1 duration-300 opacity-100 pointer-events-none ease text-neutral-700">Category</span>
+                    <span
+                        class="ml-1 duration-300 opacity-100 pointer-events-none ease text-neutral-700">Category</span>
                 </a>
             </li>
             <li class="mt-0.5 w-full">
@@ -108,7 +112,8 @@
                 </a>
             </li>
             <li class="w-full mt-4">
-                <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase  opacity-60 text-neutral-700">Account pages
+                <h6 class="pl-6 ml-2 text-xs font-bold leading-tight uppercase  opacity-60 text-neutral-700">Account
+                    pages
                 </h6>
             </li>
 
@@ -159,7 +164,9 @@
             <div class="flex-auto w-full p-4 pt-0 text-center">
                 <div class="transition-all duration-200 ease-nav-brand">
                     <h6 class="mb-0 dark:text-white text-slate-700">Need help?</h6>
-                    <p class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-60 text-neutral-700">Please check our
+                    <p
+                        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-60 text-neutral-700">
+                        Please check our
                         docs</p>
                 </div>
             </div>
