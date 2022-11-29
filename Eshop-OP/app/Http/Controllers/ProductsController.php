@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use App\Models\Brands;
-
 use App\Models\Products;
 use App\Models\Categorys;
+
+
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -15,12 +16,19 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexuser()
-    {
+    public function indexuser(){
         $fullrodutct=DB::table('Products')
-        ->select('id','name as NNa','Description','Price','Stock','BrandID','CategoryID','Image')
+        ->select('id','name as NNa','Description','Price','Stock','Brand_id','Category_id','Image')
         ->get();
         return $fullrodutct;
+    }
+    public function index()
+    {
+
+        $products = Products::orderBy('id', 'DESC')->get();
+        
+        return View('admin.index', compact('products'));
+
     }
     public function itemProduct(){
         $id=$_GET['id'];
@@ -58,15 +66,15 @@ class ProductsController extends Controller
             if($search==null){
                 $fullrodutct=DB::table('Products as P')
                 ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
-                ->join('Categorys as C','P.CategoryID','=','C.id')
-                ->join('Brands as B','P.BrandID','=','B.id')->get();
+                ->join('Categorys as C','P.Category_id','=','C.id')
+                ->join('Brands as B','P.Brand_id','=','B.id')->get();
                 return $fullrodutct;
             }
              //$search="Điện";
             $fullrodutct=DB::table('Products as P')
             ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
-            ->join('Categorys as C','P.CategoryID','=','C.id')
-            ->join('Brands as B','P.BrandID','=','B.id')
+            ->join('Categorys as C','P.Category_id','=','C.id')
+            ->join('Brands as B','P.Brand_id','=','B.id')
             ->where('P.Name','LIKE','%'.$search.'%')
             ->orWhere('C.Name','LIKE','%'.$search.'%')
             ->orWhere('B.Name','LIKE','%'.$search.'%')
@@ -77,8 +85,8 @@ class ProductsController extends Controller
         else{
             $fullrodutct=DB::table('Products as P')
             ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
-            ->join('Categorys as C','P.CategoryID','=','C.id')
-            ->join('Brands as B','P.BrandID','=','B.id')
+            ->join('Categorys as C','P.Category_id','=','C.id')
+            ->join('Brands as B','P.Brand_id','=','B.id')
             ->where('C.id',$categoryId)
             ->get();
             return $fullrodutct;
@@ -93,6 +101,10 @@ class ProductsController extends Controller
     public function create()
     {
         //
+        $categorys = Categorys::all();
+        $brands = Brands::all();
+
+        return view('admin.create', compact('categorys', 'brands'));
     }
 
     /**
@@ -101,9 +113,49 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
         //
+        $validateData = $req->validate([
+            'Name' => 'required',
+            'Description' => 'required',
+            'Price' => 'required',
+            'Stock' => 'required',
+            // 'Brand_id' => 'required',
+            // 'Category_id' => 'required',
+            'Image' => 'required|mimes:jpg,jpeg,png',
+        ],
+        [
+            'Name.required' => 'Please Input Product Name',
+            'Description.required' => 'Please Input Product Description',
+            'Price.required' => 'Please Input Product Price',
+            'Stock.required' => 'Please Input Product Stock',
+            // 'Brand_id.required' => 'Please Input Product BrandID',
+            // 'Category_id.required' => 'Please Input Product CategoryID',
+            'Image.required' => 'Product Longer then 4 Characters',
+        ]);
+
+        $product_image = $req->file('Image');
+        $name_gen = hexdec(uniqid());
+        $img_ext = strtolower($product_image->getClientOriginalExtension());
+        $img_name = $name_gen.'.'.$img_ext;
+        $up_location = 'images/product/';
+        $last_img = $img_name;
+        $product_image->move($up_location,$img_name);
+
+
+        $data = new Products; 
+        $data->Name = $req->Name; 
+        $data->Description = $req->Description; 
+        $data->Price = $req->Price; 
+        $data->Stock = $req->Stock; 
+        $data->Brand_id = $req->brand_id; 
+        $data->Category_id = $req->category_id; 
+        $data->Image = $last_img; 
+        $data->Status = true; 
+        $data->save(); 
+        $products =  Products::orderBy('id', 'DESC')->get();
+        return view('admin.index', compact('products')); 
     }
 
     /**
@@ -123,9 +175,14 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit($id)
     {
         //
+        $categorys = Categorys::all();
+        $brands = Brands::all();
+        // $selectCategory = Categorys::first()->category_id;
+        
+        return view('admin.edit', ['product' => Products::where('id', $id)->first()], compact('categorys', 'brands'));
     }
 
     /**
@@ -135,9 +192,47 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $req, $id)
     {
         //
+        $validateData = $req->validate([
+            'Name' => 'required',
+            'Description' => 'required',
+            'Price' => 'required',
+            'Stock' => 'required',
+            // 'Brand_id' => 'required',
+            // 'Category_id' => 'required',
+            'Image' => 'required|mimes:jpg,jpeg,png',
+        ],
+        [
+            'Name.required' => 'Please Input Product Name',
+            'Description.required' => 'Please Input Product Description',
+            'Price.required' => 'Please Input Product Price',
+            'Stock.required' => 'Please Input Product Stock',
+            // 'Brand_id.required' => 'Please Input Product BrandID',
+            // 'Category_id.required' => 'Please Input Product CategoryID',
+            'Image.required' => 'Product Longer then 4 Characters',
+        ]);
+        
+        $product_image = $req->file('Image');
+        $name_gen = hexdec(uniqid());
+        $img_ext = strtolower($product_image->getClientOriginalExtension());
+        $img_name = $name_gen.'.'.$img_ext;
+        $up_location = 'images/product/';
+        $last_img = $img_name;
+        $product_image->move($up_location,$img_name);
+
+        Products::where('id',$id)->update([
+            'Name' => $req->Name,
+            'Description' => $req->Description,
+            'Price' => $req->Price,
+            'Stock' => $req->Stock,
+            'Brand_id' => $req->brand_id,
+            'Category_id' => $req->category_id,
+            'Image' => $last_img,
+            'Status' => true,
+        ]);
+        return redirect(route('admin.index'));
     }
 
     /**
@@ -146,8 +241,10 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy($id)
     {
         //
+        Products::destroy($id);
+        return redirect(route('admin.index'))->with('message','Product has been deleted.');
     }
 }
