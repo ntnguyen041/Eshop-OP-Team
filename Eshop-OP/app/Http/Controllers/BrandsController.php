@@ -1,29 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
-use App\Models\Categorys;
-use Illuminate\Support\Facades\DB;
+use App\Models\Brands;
 
-
-class CategorysController extends Controller
+class BrandsController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function indexuser(){
-        $Categorys=DB::table('categorys')->get();
-        return $Categorys;
-    }
-
     public function index()
     {
-
-        $categorys = Categorys::orderBy('id', 'DESC')->get();
-        return View('category.index', compact('categorys'));
+        //
+        $brands = Brands::orderBy('id', 'DESC')->get();
+        return View('brand.index', compact('brands'));
     }
 
     /**
@@ -34,7 +27,7 @@ class CategorysController extends Controller
     public function create()
     {
         //
-        return view('category.create');
+        return view('brand.create');
     }
 
     /**
@@ -43,7 +36,6 @@ class CategorysController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(Request $req)
     {
         //
@@ -52,52 +44,50 @@ class CategorysController extends Controller
             'Description' => 'required',
         ],
         [
-            'Name.required' => 'Please Input Category Name',
-            'Description.required' => 'Please Input Category Description',
+            'Name.required' => 'Please Input Brand Name',
+            'Description.required' => 'Please Input Brand Description',
         ]);
-        $data = new Categorys; 
+        $data = new Brands; 
         $data->Name = $req->Name; 
-        $data->description = $req->Description; 
+        $data->Description = $req->Description; 
         $data->save(); 
-        $categorys = Categorys::orderBy('id','DESC')->get();
-        return view('category.index', compact('categorys')); 
+        $brands = Brands::orderBy('id','DESC')->get();
+        return view('brand.index', compact('brands')); 
     }
-
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Categorys  $categorys
+     * @param  \App\Models\Brands $brans
      * @return \Illuminate\Http\Response
      */
-
-    public function show(Categorys $categorys)
+    public function show($id)
     {
         //
     }
 
-   /**
-     * Display the specified resource.
+    /**
+     * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Categorys  $categorys
+     * @param  \App\Models\Brands $brans
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
-        return view('category.edit', ['category' => Categorys::where('id', $id)->first()]);
+        return view('brand.edit', ['brand' => Brands::where('id', $id)->first()]);
     }
-    
+
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Categorys  $categorys
+     * @param  \App\Models\Brands $brans
      * @return \Illuminate\Http\Response
      */
- 
     public function update(Request $req, $id)
     {
+        //
         $validateData = $req->validate([
             'Name' => 'required',
             'Description' => 'required',
@@ -106,24 +96,23 @@ class CategorysController extends Controller
             'Name.required' => 'Please Input Product Name',
             'Description.required' => 'Please Input Product Description',
         ]);
-        Categorys::where('id',$id)->update([
+        Brands::where('id',$id)->update([
             'Name' => $req->Name,
-            'description' => $req->Description,
+            'Description' => $req->Description,
         ]);
-        return redirect(route('category.index'));
+        return redirect(route('brand.index'));
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Categorys  $categorys
+     * @param  \App\Models\Brands $brans
      * @return \Illuminate\Http\Response
      */
-
     public function destroy($id)
     {
         //
-        Categorys::destroy($id);
-        return redirect(route('category.index'))->with('message','Category has been deleted.');
+        Brands::destroy($id);
+        return redirect(route('brand.index'))->with('message','Brand has been deleted.');
     }
-    
 }
