@@ -7,7 +7,7 @@
             '<aside class="col-md-3">'+
                 '<a href="#" class="img-wrap">'+
                     '<span class="badge badge-danger"> NEW </span>'+
-                    '<img src="images/product/'+$(this)[0].Image+'">'+
+                    '<img src="images/product/'+data[0].Image+'">'+
                 '</a>'+
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
@@ -59,11 +59,12 @@
     }
     else{
         for (let item = min; item < max; item++) {
+            console.log(data.Image)
             html += '<div class="row no-gutters">'+
             '<aside class="col-md-3">'+
                 '<a href="#" class="img-wrap">'+
                     '<span class="badge badge-danger"> NEW </span>'+
-                    '<img src="images/product/'+$(this)[0].Image+'">'+
+                    '<img src="images/product/'+data[item].Image+'">'+
                 '</a>'+
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
@@ -160,7 +161,7 @@ $("#searchbutton").click(function(){
             type:'GET',
             url:"api/ajax-shopsearch",
             data:{
-                categoryId:categoryId,
+                categoryId:"",
                 stringsrearch:$("#searchSting").val(),
                 
         },
@@ -197,7 +198,8 @@ $(document).ready(function(){
         url:"api/ajax-shop",
         success:function(data){
             let items=$("#countitem").html(data.length)
-            console.log(data.Image)
+
+            console.log(data[0].Image)
             $("#getproduct").html(loadproduct(data,0,5));
             $("#nextproduct").click(function(){
                 if(max+5<data.length){
