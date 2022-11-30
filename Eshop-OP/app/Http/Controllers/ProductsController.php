@@ -29,6 +29,7 @@ class ProductsController extends Controller
         
         return View('admin.index', compact('products'));
 
+
     }
     public function itemProduct(){
         $id=$_GET['id'];
@@ -104,6 +105,7 @@ class ProductsController extends Controller
         $categorys = Categorys::all();
         $brands = Brands::all();
 
+
         return view('admin.create', compact('categorys', 'brands'));
     }
 
@@ -139,7 +141,7 @@ class ProductsController extends Controller
         $name_gen = hexdec(uniqid());
         $img_ext = strtolower($product_image->getClientOriginalExtension());
         $img_name = $name_gen.'.'.$img_ext;
-        $up_location = 'images/product/';
+        $up_location = 'user/assets/images/imageProduct/';
         $last_img = $img_name;
         $product_image->move($up_location,$img_name);
 
@@ -182,7 +184,9 @@ class ProductsController extends Controller
         $brands = Brands::all();
         // $selectCategory = Categorys::first()->category_id;
         
+
         return view('admin.edit', ['product' => Products::where('id', $id)->first()], compact('categorys', 'brands'));
+
     }
 
     /**
@@ -218,7 +222,7 @@ class ProductsController extends Controller
         $name_gen = hexdec(uniqid());
         $img_ext = strtolower($product_image->getClientOriginalExtension());
         $img_name = $name_gen.'.'.$img_ext;
-        $up_location = 'images/product/';
+        $up_location = 'user/assets/images/imageProduct/';
         $last_img = $img_name;
         $product_image->move($up_location,$img_name);
 

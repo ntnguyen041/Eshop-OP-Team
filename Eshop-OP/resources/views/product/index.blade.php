@@ -7,7 +7,7 @@
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <h6 class="dark:text-white">Product</h6>
-                    <a href="{{route('admin.create')}}"
+                    <a href="{{route('product.create')}}"
                         class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
                         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                             Create
@@ -99,18 +99,18 @@
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                        <img src="user/assets/images/imageProduct/{{$product->Image}}" style="height:100px; width:100px">
+                                        <img src="images/product/{{$product->Image}}" style="height:100px; width:100px">
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                        <a href="{{route('admin.edit', $product->id)}}"
+                                        <a href="{{route('product.edit', $product->id)}}"
                                             class="font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
                                             <button
                                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">
                                                 Edit
                                             </button>
                                         </a>
-                                        <form action="{{route('admin.destroy', $product->id)}}" method="POST">
+                                        <form action="{{route('product.destroy', $product->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button

@@ -26,8 +26,13 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
             // lien ket ban khoa ngoai
+<<<<<<< HEAD
+            $table->foreign('Brand_id')->references('id')->on('brands');
+            $table->foreign('Category_id')->references('id')->on('categorys');
+=======
             $table->foreign('Brand_id')->references('id')->on('Brands');
             $table->foreign('Category_id')->references('id')->on('Categorys');
+>>>>>>> origin/main
 
         });
     }
