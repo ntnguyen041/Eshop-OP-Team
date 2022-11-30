@@ -1,12 +1,13 @@
-    function loadproduct(data,min,max){
+ function loadproduct(data,min,max){
     let html="";
     if(min==-1,max==-1){
         $.each(data,function(){
+           
             html += '<div class="row no-gutters">'+
             '<aside class="col-md-3">'+
                 '<a href="#" class="img-wrap">'+
                     '<span class="badge badge-danger"> NEW </span>'+
-                    '<img src="user/assets/images/imageProduct/'+$(this)[0].Image+'">'+
+                    '<img src="images/product/'+$(this)[0].Image+'">'+
                 '</a>'+
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
@@ -62,7 +63,7 @@
             '<aside class="col-md-3">'+
                 '<a href="#" class="img-wrap">'+
                     '<span class="badge badge-danger"> NEW </span>'+
-                    '<img src="user/assets/images/imageProduct/'+data[item].Image+'">'+
+                    '<img src="images/product/'+$(this)[0].Image+'">'+
                 '</a>'+
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
@@ -158,7 +159,11 @@ $("#searchbutton").click(function(){
         $.ajax({
             type:'GET',
             url:"api/ajax-shopsearch",
-            data:{stringsrearch:$("#searchSting").val()},
+            data:{
+                categoryId:categoryId,
+                stringsrearch:$("#searchSting").val(),
+                
+        },
             success:function(data){
                 if(data!=0){
                     $("#countitem").html(data.length)
@@ -187,12 +192,12 @@ $(document).ready(function(){
    let i=1;
    let min=1;
    let max=min;
-
     $.ajax({
         type:'GET',
         url:"api/ajax-shop",
         success:function(data){
             let items=$("#countitem").html(data.length)
+            console.log(data.Image)
             $("#getproduct").html(loadproduct(data,0,5));
             $("#nextproduct").click(function(){
                 if(max+5<data.length){
