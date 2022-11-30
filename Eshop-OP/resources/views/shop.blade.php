@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
-<body>
-
-
  
+<!------ Include the above in your HEAD tag ---------->
+ 
+<body>
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
 <div class="container">
@@ -16,18 +16,12 @@
 
 	<article class="filter-group">
 		<h6 class="title">
-			<a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">	 Product type </a>
+			<a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">Category</a>
 		</h6>
 		<div class="filter-content collapse show" id="collapse_1" style="">
 			<div class="inner">
-				<ul class="list-menu">
-					<li><a href="#">Shorts  </a></li>
-					<li><a href="#">Trousers </a></li>
-					<li><a href="#">Sweaters  </a></li>
-					<li><a href="#">Clothes  </a></li>
-					<li><a href="#">Home items </a></li>
-					<li><a href="#">Jackats</a></li>
-					<li><a href="#">Somethings </a></li>
+				<ul class="list-menu" id="Categorylist">
+					
 				</ul>
 			</div> <!-- inner.// -->
 		</div>
@@ -37,56 +31,12 @@
 			<a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2"> Brands </a>
 		</h6>
 		<div class="filter-content collapse show" id="collapse_2">
-			<div class="inner">
-				<label class="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" class="custom-control-input">
-				  <div class="custom-control-label">Adidas  
-				  	<b class="badge badge-pill badge-light float-right">120</b>  </div>
-				</label>
-				<label class="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" class="custom-control-input">
-				  <div class="custom-control-label">Nike 
-				  	<b class="badge badge-pill badge-light float-right">15</b>  </div>
-				</label>
-				<label class="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" class="custom-control-input">
-				  <div class="custom-control-label">The Noth Face 
-				  	<b class="badge badge-pill badge-light float-right">35</b> </div>
-				</label>
-				<label class="custom-control custom-checkbox">
-				  <input type="checkbox" checked="" class="custom-control-input">
-				  <div class="custom-control-label">The cat 
-				  	<b class="badge badge-pill badge-light float-right">89</b> </div>
-				</label>
-				<label class="custom-control custom-checkbox">
-				  <input type="checkbox" class="custom-control-input">
-				  <div class="custom-control-label">Honda 
-				  	<b class="badge badge-pill badge-light float-right">30</b>  </div>
-				</label>
+			<div class="inner" id="getbrand"> 
 			</div> <!-- inner.// -->
 		</div>
-	</article> <!-- filter-group .// -->
-	<article class="filter-group">
-		<h6 class="title">
-			<a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Price range </a>
-		</h6>
-		<div class="filter-content collapse show" id="collapse_3">
-			<div class="inner">
-				<input type="range" class="custom-range" min="0" max="100" name="">
-				<div class="form-row">
-				<div class="form-group col-md-6">
-				  <label>Min</label>
-				  <input class="form-control" placeholder="$0" type="number">
-				</div>
-				<div class="form-group text-right col-md-6">
-				  <label>Max</label>
-				  <input class="form-control" placeholder="$1,0000" type="number">
-				</div>
-				</div> <!-- form-row.// -->
-				<button class="btn btn-block btn-primary">Apply</button>
-			</div> <!-- inner.// -->
-		</div>
-	</article> <!-- filter-group .// -->
+	</article>
+	 <!-- filter-group .// -->
+	 <!-- filter-group .// -->
 	  <!-- filter-group .// -->
  
 
@@ -96,106 +46,29 @@
 
 <header class="mb-3">
 		<div class="form-inline">
-			<strong class="mr-md-auto">32 Items found </strong>
-			<select class="mr-2 form-control">
-				<option>Latest items</option>
-				<option>Trending</option>
-				<option>Most Popular</option>
-				<option>Cheapest</option>
-			</select>
-			<div class="btn-group">
-				<a href="page-listing-grid.html" class="btn btn-light" data-toggle="tooltip" title="List view"> 
-					<i class="fa fa-bars"></i></a>
-				<a href="page-listing-large.html" class="btn btn-light active" data-toggle="tooltip" title="Grid view"> 
-					<i class="fa fa-th"></i></a>
-			</div>
+			<strong class="mr-md-auto" >Sản phẩm được tim thấy<span id="countitem">0</span></strong>
+			<form class="search-header" onsubmit="return false">
+				<div class="input-group w-100">
+					<input type="text" id="searchSting" class="form-control" name="name" placeholder="Search">
+					<div class="input-group-append">
+					  <button id="searchbutton"class="btn btn-primary" type="submit">
+						<i class="fa fa-search"></i> Search
+					  </button>
+					</div>
+				</div>
+			</form>
 		</div>
 </header><!-- sect-heading -->
 
 
-<article class="card card-product-list" id="getproduct">
-	<div class="row no-gutters">
-		<aside class="col-md-3">
-			<a href="#" class="img-wrap">
-				<span class="badge badge-danger"> NEW </span>
-				<img src="images/items/1.jpg">
-			</a>
-		</aside> <!-- col.// -->
-		<div class="col-md-6">
-			<div class="info-main">
-				<a href="#" class="h5 title"> Hot sale unisex New Design Shirt</a>
-				<div class="rating-wrap mb-2">
-					<ul class="rating-stars">
-						<li style="width:100%" class="stars-active"> 
-							<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-							<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-							<i class="fa fa-star"></i> 
-						</li>
-						<li>
-							<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-							<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-							<i class="fa fa-star"></i> 
-						</li>
-					</ul>
-					<div class="label-rating">9/10</div>
-				</div> <!-- rating-wrap.// -->
-			
-				<p class="mb-3">
-					<span class="tag"> <i class="fa fa-check"></i> Verified</span> 
-					<span class="tag"> 5 Years </span> 
-					<span class="tag"> 80 reviews </span>
-					<span class="tag"> Russia </span>
-				</p>
-
-				<p> Take it as demo specs, ipsum dolor sit amet, consectetuer adipiscing elit, Lorem ipsum dolor sit amet, consectetuer adipiscing elit, Ut wisi enim ad minim  sint occaecat cupidatat non
-				proident, sunt in culpa qui laborum.... </p>
-
-			</div> <!-- info-main.// -->
-		</div> <!-- col.// -->
-		<aside class="col-sm-3">
-			<div class="info-aside">
-				<div class="price-wrap">
-					<span class="h5 price">$25.00-$40.00</span> 
-					<small class="text-muted">/per item</small>
-				</div> <!-- price-wrap.// -->
-				<small class="text-warning">Paid shipping</small>
-				
-				<p class="text-muted mt-3">Grand textile Co</p>
-				<p class="mt-3">
-					<a href="#" class="btn btn-outline-primary"> <i class="fa fa-envelope"></i> Contact supplier </a>
-					<a href="#" class="btn btn-light"><i class="fa fa-heart"></i> Save </a>
-				</p>
-
-				<label class="custom-control mt-3 custom-checkbox">
-					  <input type="checkbox" class="custom-control-input">
-				  	  <div class="custom-control-label">Add to compare
-				  </div>
-				</label>
-
-			</div> <!-- info-aside.// -->
-		</aside> <!-- col.// -->
-	</div> <!-- row.// -->
-</article> <!-- card-product .// -->
+<article class="card card-product-list" id="getproduct"></article> <!-- card-product .// -->
 
 
 <nav class="mb-4" aria-label="Page navigation sample">
-  <ul class="pagination">
-    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
+	<button id="backproduct"class="btn btn-primary" type="button"> Back</button>
+	<button id="nextproduct"class="btn btn-primary" type="button"> Next</button>
 </nav>
-
-
- 
-
-
 	</main> <!-- col.// -->
-
 </div>
 
 </div> <!-- container .//  -->
@@ -213,6 +86,7 @@
 <!-- ========================= FOOTER END // ========================= -->
 
 
-<script src="user/assets/js/product/index.js"></script>
+<script src="{{asset('user/assets/js/product/index.js')}}"></script>
+ 
 </body>
 @endsection

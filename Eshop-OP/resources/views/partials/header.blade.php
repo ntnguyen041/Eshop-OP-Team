@@ -3,58 +3,42 @@
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-xl-2 col-lg-3 col-md-12">
-				<a href="http://bootstrap-ecommerce.com" class="brand-wrap">
-					<img class="logo" src="user/assets/images/logo.png">
+				<a href="/" class="brand-wrap">
+					<img class="logo" src="{{asset('user/assets/images/logo.png')}}">
 				</a> <!-- brand-wrap.// -->
 			</div>
 			<div class="col-xl-6 col-lg-5 col-md-6">
-				<form action="#" class="search-header">
-					<div class="input-group w-100">
-					    <input type="text" class="form-control" placeholder="Search">
-					    <div class="input-group-append">
-					      <button class="btn btn-primary" type="submit">
-					        <i class="fa fa-search"></i> Search
-					      </button>
-					    </div>
-				    </div>
-				</form> <!-- search-wrap .end// -->
+				 <!-- search-wrap .end// -->
 			</div> <!-- col.// -->
 			<div class="col-xl-4 col-lg-4 col-md-6">
 				<div class="widgets-wrap float-md-right">
-					<div class="widget-header mr-3">
-						<a href="login" class="widget-view">
-							<div class="icon-area">
-								<i class="fa fa-user"></i>
-								<span class="notify">3</span>
-							</div>
-							<small class="text"> My profile </small>
-						</a>
-					</div>
-					<div class="widget-header mr-3">
-						<a href="#" class="widget-view">
-							<div class="icon-area">
-								<i class="fa fa-comment-dots"></i>
-								<span class="notify">1</span>
-							</div>
-							<small class="text"> Message </small>
-						</a>
-					</div>
 					<div class="widget-header mr-3">
 						<a href="#" class="widget-view">
 							<div class="icon-area">
 								<i class="fa fa-store"></i>
 							</div>
-							<small class="text"> Orders </small>
+							<a class="text">Orders</a>
 						</a>
 					</div>
 					<div class="widget-header">
 						<a href="/cart" class="widget-view">
 							<div class="icon-area">
 								<i class="fa fa-shopping-cart"></i>
+								<span class="notify" id="cart">0</span>
 							</div>
-							<small class="text"> Cart </small>
+							<a class="text">Cart</a>
 						</a>
 					</div>
+					<div class="widget-header mr-3">
+						<a  class="widget-view">
+							<div class="icon-area">
+								<i class="fa fa-user"></i>
+							</div>
+							<a class="nav-link dropdown-toggle" id="nameUser" data-toggle="dropdown">My profile</a>
+							
+                            <div class="dropdown-menu dropdown-menu-right" id="showmenulog"></div>
+                        </a>
+				</div>
 				</div> <!-- widgets-wrap.// -->
 			</div> <!-- col.// -->
 		</div> <!-- row.// -->
@@ -105,3 +89,6 @@
   </div> <!-- container .// -->
 </nav>
 </header> <!-- section-header.// -->
+<script src="{{asset('user/assets/js/header/log.js')}}"></script>
+
+ 

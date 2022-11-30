@@ -2,9 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CategorysController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\BrandsController;
+use App\Http\Controllers\AccountsController;
+use App\Http\Controllers\AccountController;
+use App\Http\Controllers\CartsController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,26 +24,52 @@ use App\Http\Controllers\BrandsController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
+
 Route::get('/shop', function () {
     return view('shop');
 });
-// Route::get('/ajax-shop',[ProductsController::class,'index'])->name('ajax-shop');
-// Route::get('/login', function () {
-//     return view('login');
-// });
+
+Route::controller(ProductsController:: class)->group(function(){
+     
+});
+
+
+//account
+
+// thong tin account
+//Route::post('/user', [AccountsController::class, 'detail'])->name('user');
+
+
+Route::get('/TaiKhoan',function(){
+    return view('userdetail');
+});
+Route::get('/product/{id}',function(){
+    return view('productdetail');
+});
+
+Route::get('/register',function(){
+    return view('register');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
 Route::get('/cart', function () {
     return view('cart');
 });
 Route::get('/category', function () {
     return view('category');
 });
+
 // Route::get('/register', function () {
 //     return view('register');
 // });
 Route::get('/productdetail', function () {
     return view('productdetail');
 });
+
 Route::get('/content', function () {
     return view('content');
 });

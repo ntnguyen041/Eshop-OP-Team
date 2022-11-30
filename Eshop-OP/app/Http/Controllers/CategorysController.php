@@ -1,20 +1,27 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\Categorys;
+use Illuminate\Support\Facades\DB;
+
 
 class CategorysController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function indexuser(){
+        $Categorys=DB::table('categorys')->get();
+        return $Categorys;
+    }
+
     public function index()
     {
-       
+
         $categorys = Categorys::orderBy('id', 'DESC')->get();
         return View('category.index', compact('categorys'));
     }
@@ -36,6 +43,7 @@ class CategorysController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $req)
     {
         //
@@ -53,8 +61,8 @@ class CategorysController extends Controller
         $data->save(); 
         $categorys = Categorys::orderBy('id','DESC')->get();
         return view('category.index', compact('categorys')); 
-
     }
+
 
     /**
      * Display the specified resource.
@@ -62,13 +70,14 @@ class CategorysController extends Controller
      * @param  \App\Models\Categorys  $categorys
      * @return \Illuminate\Http\Response
      */
+
     public function show(Categorys $categorys)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
+   /**
+     * Display the specified resource.
      *
      * @param  \App\Models\Categorys  $categorys
      * @return \Illuminate\Http\Response
@@ -78,7 +87,7 @@ class CategorysController extends Controller
         //
         return view('category.edit', ['category' => Categorys::where('id', $id)->first()]);
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -86,6 +95,7 @@ class CategorysController extends Controller
      * @param  \App\Models\Categorys  $categorys
      * @return \Illuminate\Http\Response
      */
+ 
     public function update(Request $req, $id)
     {
         $validateData = $req->validate([
@@ -102,13 +112,13 @@ class CategorysController extends Controller
         ]);
         return redirect(route('category.index'));
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Categorys  $categorys
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
         //
