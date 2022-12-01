@@ -22,20 +22,21 @@ $("#login").click(function(){
                 success:function(data){
                     // kiem tra admin tao secction admin
                     //console.log(data[0].IsAdmin);
+                    console.log(data)
                     if(data==0){
                        $("#err").html("Mật khẩu và tài khoản không đúng");
                     }
                     else{
-                        if(data[0].IsAdmin==1){
-                            $.session.set('id', data[0].id);
-                            $.session.set('IsAdmin', data[0].IsAdmin);
-                            $.session.set('name', data[0].Username);
+                        if(data.IsAdmin==1){
+                            $.session.set('id', data.id);
+                            $.session.set('IsAdmin', data.IsAdmin);
+                            $.session.set('name', data.Username);
                             window.location.href = "/";
                         }
-                        if(data[0].IsAdmin==0){
-                            $.session.set('id', data[0].id);
+                        if(data.IsAdmin==0){
+                            $.session.set('id', data.id);
                             $.session.set('IsAdmin', "0");
-                            $.session.set('name', data[0].Username);
+                            $.session.set('name', data.Username);
                             window.location.href = "/";
                         }
                     }

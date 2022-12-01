@@ -10,15 +10,21 @@
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{{-- <script src="{{asset('user/assets/js/jquery-2.0.0.min.js')}}"  type="text/javascript"></script> --}}
+
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Nucleo Icons -->
-    <link href="/user/assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="/user/assets/css/nucleo-svg.css" rel="stylesheet" />
+    <link href="{{asset('/user/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
+     
+   
+    <link href="{{asset('/user/assets/css/nucleo-svg.css')}}" rel="stylesheet" />
     <!-- Popper -->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <!-- Main Styling -->
-    <link href="/user/assets/css/argon-dashboard-tailwind.css" rel="stylesheet" />
-    <link href="/user/assets/css/argon-dashboard-tailwind.min.css" rel="stylesheet" />
+    <link href="{{asset('/user/assets/css/argon-dashboard-tailwind.css')}}" rel="stylesheet" />
+    <link href="{{asset('/user/assets/css/argon-dashboard-tailwind.min.css')}}" rel="stylesheet" />
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   </head>
 
@@ -44,17 +50,18 @@
   <!-- plugin for scrollbar  -->
   <!-- <script src="./assets/js/plugins/perfect-scrollbar.min.js" async></script> -->
   <!-- main script file  -->
-  <script src="./assets/js/argon-dashboard-tailwind.js?v=1.0.1" async></script>
-  <script src="/user/assets/js/dashboard/argon-dashboard-tailwind.js" async></script>
-  <script src="/user/assets/js/dashboard/argon-dashboard-tailwind.min.js" async></script>
-  <script src="/user/assets/js/dashboard/carousel.js" async></script>
-  <script src="/user/assets/js/dashboard/charts.js" async></script>
-  <script src="/user/assets/js/dashboard/dropdown.js" async></script>
-  <script src="/user/assets/js/dashboard/fixed-plugin" async></script>
-  <script src="/user/assets/js/dashboard/nav-pills.js" async></script>
-  <script src="/user/assets/js/dashboard/navbar-collapse.js" async></script>
-  <script src="/user/assets/js/dashboard/navbar-sticky.js" async></script>
-  <script src="/user/assets/js/dashboard/perfect-scrollbar.js" async></script>
-  <script src="/user/assets/js/dashboard/sidenav-burger.js" async></script>
-  <script src="/user/assets/js/dashboard/tooltips.js" async></script>
+  
+  <script src="{{asset('./assets/js/argon-dashboard-tailwind.js?v=1.0.1')}}" async></script>
+  <script src="{{asset('/user/assets/js/dashboard/argon-dashboard-tailwind.js')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/argon-dashboard-tailwind.min.js')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/carousel.js')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/charts.js')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/dropdown.js')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/fixed-plugin')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/nav-pills.js')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/navbar-collapse.js')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/navbar-sticky.js')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/perfect-scrollbar.js')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/sidenav-burger.js')}} async></script>
+  <script src="{{asset('/user/assets/js/dashboard/tooltips.js')}} async></script>
 </html>
