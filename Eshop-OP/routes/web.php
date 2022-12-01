@@ -134,7 +134,10 @@ Route::prefix('/admin/brand')->group(function (){
 });
 
 Route::prefix('/admin/order')->group(function (){
-route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index');
-route::get('/pending-approval', [InvoicesController::class, 'orderPendingApproval'])->name('admin.order.orderPendingApproval');
-route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('admin.order.orderApproval');
+    route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index');
+    route::get('/pending-approval', [InvoicesController::class, 'orderPendingApproval'])->name('admin.order.orderPendingApproval');
+    route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('admin.order.orderApproval');
+    Route::get('/pending-approval-detail/{id}', [InvoicesController::class, 'orderPendingApprovalDetail'])->name('admin.order.orderPendingApprovalDetail');
+    Route::patch('/{id}', [InvoicesController::class, 'update'])->name('admin.order.update');
+
 });

@@ -99,7 +99,7 @@
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
-                                        <img src="/user/assets/images/imageProduct/{{$product->Image}}" style="height:100px; width:100px">
+                                        <img src="/images/product/{{$product->Image}}" style="height:100px; width:100px">
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">

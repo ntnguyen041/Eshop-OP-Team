@@ -140,7 +140,7 @@ class ProductsController extends Controller
         $name_gen = hexdec(uniqid());
         $img_ext = strtolower($product_image->getClientOriginalExtension());
         $img_name = $name_gen.'.'.$img_ext;
-        $up_location = 'user/assets/images/imageProduct/';
+        $up_location = 'images/product/';
         $last_img = $img_name;
         $product_image->move($up_location,$img_name);
 
@@ -183,10 +183,11 @@ class ProductsController extends Controller
         $brands = Brands::all();
         // $selectCategory = Categorys::first()->category_id;
         
-
+        
         return view('admin.product.edit', ['product' => Products::where('id', $id)->first()], compact('categorys', 'brands'));
 
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -221,7 +222,7 @@ class ProductsController extends Controller
         $name_gen = hexdec(uniqid());
         $img_ext = strtolower($product_image->getClientOriginalExtension());
         $img_name = $name_gen.'.'.$img_ext;
-        $up_location = 'user/assets/images/imageProduct/';
+        $up_location = 'images/product/';
         $last_img = $img_name;
         $product_image->move($up_location,$img_name);
 
