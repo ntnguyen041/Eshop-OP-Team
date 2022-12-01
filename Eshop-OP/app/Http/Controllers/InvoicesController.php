@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InvoiceDetails;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Invoices;
 use Illuminate\Http\Request;
 
@@ -93,4 +96,12 @@ class InvoicesController extends Controller
     {
         //
     }
+    public function history()
+    {
+        $account = $_GET['id'];
+         $oder = DB::table('invoices')->where('Account_id',$account)->get();
+        return $oder;
+    }
+   
+    
 }
