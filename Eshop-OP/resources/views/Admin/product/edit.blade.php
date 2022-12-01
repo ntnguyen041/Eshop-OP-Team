@@ -5,7 +5,7 @@
         <div class="flex-none w-full max-w-full px-3">
             <div
                 class="px-8 relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
-                <form action="{{route('product.update', $product->id)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.product.update', $product->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
                     <div class="mb-6">

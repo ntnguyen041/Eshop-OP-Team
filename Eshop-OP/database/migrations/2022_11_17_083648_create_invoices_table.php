@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');//khoa chinh tang tu dong
             $table->string('Code');
-            $table->integer('AccountID');
+            $table->integer('Account_id')->unsigned()->index();
             $table->date('IsuedData');
             $table->string('ShoppingAddress');
             $table->string('ShoppingPhone');
@@ -25,7 +25,8 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();// xoa mem
             // liên kêt
-            //$table->foreign('AccountID')->references('id')->on('Accounts');
+            $table->foreign('Account_id')->references('id')->on('Accounts');
+
         });
     }
 
