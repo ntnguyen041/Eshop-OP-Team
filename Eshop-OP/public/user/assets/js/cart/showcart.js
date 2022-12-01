@@ -118,10 +118,19 @@ function removecart(ProductID){
         url:'api/removecart',
         data:{
             id:userid,
-            pdid:ProductID
+            idproduct:ProductID
         },
         success:function(data){
-            window.location.reload();
+            if(data==1){
+                window.location.reload();
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Xóa không thành công!!',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
         },
         error:function(){
             Swal.fire({

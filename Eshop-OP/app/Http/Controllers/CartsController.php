@@ -38,15 +38,17 @@ class CartsController extends Controller
         ->where('AccountId', $id)->get();  
 
         if($up->count()==true){
+            $Stock=DB::table('products')->where('id',$ProductID)->value('Stock');
         $quantity=DB::table('carts')
         ->where('ProductID', $ProductID)
         ->where('AccountId', $id)->value('Quantity'); 
-        
-        $temp=$quantity+1;
+        if($quantity>=$Stock){
+            return -1;
+        }
         
         DB::table('carts')
         ->where('ProductID', $ProductID)
-        ->where('AccountId', $id)->update(['Quantity'=> $temp]); 
+        ->where('AccountId', $id)->update(['Quantity'=> $quantity+1]); 
         }else{
             DB::table('carts')->insertGetId(['AccountId'=>$id,'ProductID'=>$ProductID,'Quantity'=>1]);
         }
@@ -55,6 +57,23 @@ class CartsController extends Controller
         return -1;
     }
 
+    public function remove(){
+        $ProductID=$_GET['idproduct'];
+        $id=$_GET['id'];
+
+        $up=DB::table('carts')
+        ->where('ProductID', $ProductID)
+        ->where('AccountId', $id)->get();  
+        if($up->count()==true){
+            DB::table('carts')
+        ->where('ProductID', $ProductID)
+        ->where('AccountId', $id)->delete(); 
+        
+        return 1;
+        }else{
+        return -1;
+        }
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -95,9 +114,29 @@ class CartsController extends Controller
      * @param  \App\Models\Carts  $carts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Carts $carts)
+    public function update()
     {
-        //
+        $ProductID=$_GET['ProductID'];
+        $id=$_GET['Id'];
+        $quantity=$_GET['Quantity'];
+
+        $up=DB::table('carts')
+        ->where('ProductID', $ProductID)
+        ->where('AccountId', $id)->get();  
+        if($up->count()==true){
+            $product=DB::table('products')->where('id',$ProductID)->value('Stock');
+            if($quantity<0&&$quantity>$product){
+                return -1;
+            }
+
+            DB::table('carts')
+            ->where('ProductID', $ProductID)
+            ->where('AccountId', $id)->update(['Quantity'=>$quantity]); 
+        
+            return 1;
+        }else{
+            return -1;
+        }
     }
 
     /**
