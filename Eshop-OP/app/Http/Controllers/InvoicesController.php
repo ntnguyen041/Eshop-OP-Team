@@ -6,7 +6,6 @@ use App\Models\InvoiceDetails;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Invoices;
-use App\Models\InvoiceDetails;
 use Illuminate\Http\Request;
 
 class InvoicesController extends Controller
@@ -35,6 +34,31 @@ class InvoicesController extends Controller
         $invoiceDetails = InvoiceDetails::all()->where('Invoice_id', '=', $id);
         return view('admin.order.orderdetail', ['invoice' => Invoices::where('id', $id)->first()], compact('invoiceDetails'));
     }
+    public function invoiceDetail($id){
+        $invoiceDetails = InvoiceDetails::all()->where('Invoice_id', '=', $id);
+        return view('admin.order.InvoiceDetail', ['invoice' => Invoices::where('id', $id)->first()], compact('invoiceDetails'));
+    }
+    public function updateDelivery($id){
+        Invoices::where('id',$id)->update([
+            
+            'Status' => 3,
+        ]);
+        $invoices = Invoices::where('Status', '=', 2,)->orderBy('id', 'DESC')->get();
+        return view('admin.order.approvel', compact('invoices'));
+    }
+    public function orderDelivery(){
+        $invoices = Invoices::where('Status', '=', 3,)->orderBy('id', 'DESC')->get();
+        return view('admin.order.orderdelivery', compact('invoices'));
+    }
+
+    public function updateSuccesfulDelivery($id){
+        Invoices::where('id',$id)->update([
+            'Status' => 1,
+        ]);
+        $invoices = Invoices::where('Status', '=', 3,)->orderBy('id', 'DESC')->get();
+        return view('admin.order.orderdelivery', compact('invoices'));
+    }
+    
    
     /**
      * Show the form for creating a new resource.
