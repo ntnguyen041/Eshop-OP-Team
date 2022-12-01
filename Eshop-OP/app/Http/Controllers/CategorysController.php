@@ -23,7 +23,7 @@ class CategorysController extends Controller
     {
 
         $categorys = Categorys::orderBy('id', 'DESC')->get();
-        return View('category.index', compact('categorys'));
+        return View('admin.category.index', compact('categorys'));
     }
 
     /**
@@ -34,7 +34,7 @@ class CategorysController extends Controller
     public function create()
     {
         //
-        return view('category.create');
+        return view('admin.category.create');
     }
 
     /**
@@ -60,7 +60,7 @@ class CategorysController extends Controller
         $data->description = $req->Description; 
         $data->save(); 
         $categorys = Categorys::orderBy('id','DESC')->get();
-        return view('category.index', compact('categorys')); 
+        return view('admin.category.index', compact('categorys')); 
     }
 
 
@@ -85,7 +85,7 @@ class CategorysController extends Controller
     public function edit($id)
     {
         //
-        return view('category.edit', ['category' => Categorys::where('id', $id)->first()]);
+        return view('admin.category.edit', ['category' => Categorys::where('id', $id)->first()]);
     }
     
     /**
@@ -110,7 +110,7 @@ class CategorysController extends Controller
             'Name' => $req->Name,
             'description' => $req->Description,
         ]);
-        return redirect(route('category.index'));
+        return redirect(route('admin.category.index'));
     }
     /**
      * Remove the specified resource from storage.
@@ -123,7 +123,7 @@ class CategorysController extends Controller
     {
         //
         Categorys::destroy($id);
-        return redirect(route('category.index'))->with('message','Category has been deleted.');
+        return redirect(route('admin.category.index'))->with('message','Category has been deleted.');
     }
     
 }
