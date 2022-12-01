@@ -22,11 +22,7 @@ return new class extends Migration
             $table->timestamps();
 
             // kết bản
-<<<<<<< HEAD
             $table->foreign('Invoice_id')->references('id')->on('Invoices');
-=======
-           $table->foreign('Invoice_id')->references('id')->on('Invoices');
->>>>>>> origin/main
             $table->foreign('Product_id')->references('id')->on('Products');
 
         });

@@ -87,7 +87,7 @@ Route::get('/content', function () {
 Route::get('/product/create', function () {
     return view('product/create');
 });
- 
+
 
 
 Route::get('/login', [AccountController::class, 'index'])->name('index');
@@ -139,8 +139,8 @@ Route::prefix('/admin/brand')->group(function (){
 });
 
 Route::get('/orderuser',[InvoicesController::class,'history'])->name('order.history');
-Route::get('orderuser/details/{id}',[InvoiceDetailsController::class,'details'])->name('order.details');
-
+Route::get('/orderuser/details/{id}',[InvoicesController::class,'orderDetail'])->name('order.details');
+          
 
 Route::prefix('/admin/order')->group(function (){
     route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index');

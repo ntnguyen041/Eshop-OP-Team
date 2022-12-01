@@ -136,6 +136,11 @@ class InvoicesController extends Controller
          $oder = DB::table('invoices')->where('Account_id',$account)->get();
         return $oder;
     }
-   
+    
+    public function orderDetail($id){
+        $Details = InvoiceDetails::all()->where('Invoice_id', '=', $id);
+        
+        return view('/orderuser/details', ['invoice' => Invoices::where('id', $id)->first()], compact('Details'));
+    }
     
 }
