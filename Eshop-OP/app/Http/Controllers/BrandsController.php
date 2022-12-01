@@ -16,7 +16,7 @@ class BrandsController extends Controller
     {
         //
         $brands = Brands::orderBy('id', 'DESC')->get();
-        return View('brand.index', compact('brands'));
+        return View('admin.brand.index', compact('brands'));
     }
 
     /**
@@ -27,7 +27,7 @@ class BrandsController extends Controller
     public function create()
     {
         //
-        return view('brand.create');
+        return view('admin.brand.create');
     }
 
     /**
@@ -52,7 +52,7 @@ class BrandsController extends Controller
         $data->Description = $req->Description; 
         $data->save(); 
         $brands = Brands::orderBy('id','DESC')->get();
-        return view('brand.index', compact('brands')); 
+        return view('admin.brand.index', compact('brands')); 
     }
 
     /**
@@ -75,7 +75,7 @@ class BrandsController extends Controller
     public function edit($id)
     {
         //
-        return view('brand.edit', ['brand' => Brands::where('id', $id)->first()]);
+        return view('admin.brand.edit', ['brand' => Brands::where('id', $id)->first()]);
     }
 
     /**
@@ -100,7 +100,7 @@ class BrandsController extends Controller
             'Name' => $req->Name,
             'Description' => $req->Description,
         ]);
-        return redirect(route('brand.index'));
+        return redirect(route('admin.brand.index'));
     }
 
     /**
@@ -113,6 +113,6 @@ class BrandsController extends Controller
     {
         //
         Brands::destroy($id);
-        return redirect(route('brand.index'))->with('message','Brand has been deleted.');
+        return redirect(route('admin.brand.index'))->with('message','Brand has been deleted.');
     }
 }

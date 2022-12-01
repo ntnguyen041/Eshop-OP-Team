@@ -27,7 +27,7 @@ class ProductsController extends Controller
 
         $products = Products::orderBy('id', 'DESC')->get();
         
-        return View('admin.index', compact('products'));
+        return View('admin.product.index', compact('products'));
 
 
     }
@@ -106,7 +106,7 @@ class ProductsController extends Controller
         $brands = Brands::all();
 
 
-        return view('admin.create', compact('categorys', 'brands'));
+        return view('admin.product.create', compact('categorys', 'brands'));
     }
 
     /**
@@ -157,7 +157,7 @@ class ProductsController extends Controller
         $data->Status = true; 
         $data->save(); 
         $products =  Products::orderBy('id', 'DESC')->get();
-        return view('admin.index', compact('products')); 
+        return view('admin.product.index', compact('products')); 
     }
 
     /**
@@ -185,7 +185,7 @@ class ProductsController extends Controller
         // $selectCategory = Categorys::first()->category_id;
         
 
-        return view('admin.edit', ['product' => Products::where('id', $id)->first()], compact('categorys', 'brands'));
+        return view('admin.product.edit', ['product' => Products::where('id', $id)->first()], compact('categorys', 'brands'));
 
     }
 
@@ -236,7 +236,7 @@ class ProductsController extends Controller
             'Image' => $last_img,
             'Status' => true,
         ]);
-        return redirect(route('admin.index'));
+        return redirect(route('admin.product.index'));
     }
 
     /**
@@ -249,6 +249,6 @@ class ProductsController extends Controller
     {
         //
         Products::destroy($id);
-        return redirect(route('admin.index'))->with('message','Product has been deleted.');
+        return redirect(route('admin.product.index'))->with('message','Product has been deleted.');
     }
 }
