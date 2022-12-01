@@ -139,7 +139,7 @@ Route::prefix('/admin/brand')->group(function (){
 });
 
 Route::get('/orderuser',[InvoicesController::class,'history'])->name('order.history');
-Route::get('orderuser/details/{id}',[InvoiceDetailsController::class,'details'])->name('order.details');
+Route::get('orderuser/details',[InvoiceDetailsController::class,'details'])->name('order.details');
 
 
 Route::prefix('/admin/order')->group(function (){
