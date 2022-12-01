@@ -26,7 +26,6 @@ class ProductsController extends Controller
     {
 
         $products = Products::orderBy('id', 'DESC')->get();
-        
         return View('admin.product.index', compact('products'));
 
 
