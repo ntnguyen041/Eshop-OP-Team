@@ -6,14 +6,17 @@ function loadinvoice(data){
         {
             trangthai = 'Chưa xác nhận';
         }
-        if($(this)[0].Status == 1)
+        else if($(this)[0].Status == 3)
         {
             trangthai = 'Đang giao';
         }
-        else{
+        else if($(this)[0].Status == 2)
+        {
             trangthai = 'Đã xác nhận';
         }
-        
+        else{
+            trangthai = 'Giao thành công';
+        }
         html+='<hr>'+
         '<div class="row">'+
         '<div class="col-md">'+$(this)[0].Code+'</div>'+
@@ -23,8 +26,9 @@ function loadinvoice(data){
         '<div class="col-md">'+$(this)[0].Total+'</div>'+
         '<div class="col-md">'+trangthai+'</div>'+
         '<div class="col-md"> '+
-            '<a href="/orderuser/details" class="btn btn-primary">Detail</a></div>'+
+            '<a href="/orderuser/details/'+$(this)[0].id+'"  class="btn btn-primary">Detail</a></div>'+
         '</div>'
+        
     })
     return html;
 }

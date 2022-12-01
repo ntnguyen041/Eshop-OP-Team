@@ -85,7 +85,5 @@ class InvoiceDetailsController extends Controller
     {
         //
     }
-    public function details(){
-        return view("/orderuser/details");
-    }
+   
 }

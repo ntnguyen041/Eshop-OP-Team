@@ -8,11 +8,8 @@ use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CartsController;
-<<<<<<< HEAD
-=======
-use App\Http\Controllers\InvoiceDetailsController;
->>>>>>> origin/main
 use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\InvoiceDetailsController;
 
 
 
@@ -90,7 +87,7 @@ Route::get('/content', function () {
 Route::get('/product/create', function () {
     return view('product/create');
 });
- 
+
 
 
 Route::get('/login', [AccountController::class, 'index'])->name('index');
@@ -142,21 +139,12 @@ Route::prefix('/admin/brand')->group(function (){
 });
 
 Route::get('/orderuser',[InvoicesController::class,'history'])->name('order.history');
-Route::get('orderuser/details',[InvoiceDetailsController::class,'details'])->name('order.details');
-
+Route::get('/orderuser/details/{id}',[InvoicesController::class,'orderDetail'])->name('order.details');
+          
 
 Route::prefix('/admin/order')->group(function (){
-<<<<<<< HEAD
-    route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index');
-    route::get('/pending-approval', [InvoicesController::class, 'orderPendingApproval'])->name('admin.order.orderPendingApproval');
-    route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('admin.order.orderApproval');
-    Route::get('/pending-approval-detail/{id}', [InvoicesController::class, 'orderPendingApprovalDetail'])->name('admin.order.orderPendingApprovalDetail');
-    Route::patch('/{id}', [InvoicesController::class, 'update'])->name('admin.order.update');
-
-});
-=======
 route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index');
 route::get('/pending-approval', [InvoicesController::class, 'orderPendingApproval'])->name('admin.order.orderPendingApproval');
 route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('admin.order.orderApproval');
 });
->>>>>>> origin/main
+
