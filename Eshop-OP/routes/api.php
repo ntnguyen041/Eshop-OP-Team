@@ -37,11 +37,14 @@ Route::controller(ProductsController:: class)->group(function(){
     Route::get('/ajax-shopsearch','search');
 });
 
+Route::controller(CartsController:: class)->group(function(){
+Route::get('/carts','index');
+Route::get('/ajax-addToCart','addTocart');
+});
 
 
 Route::get('/ajax-category',[CategorysController::class,'indexuser'])->name('ajax-category');
 
-Route::get('/carts',[CartsController::class,'index'])->name('carts');
 
 Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
 

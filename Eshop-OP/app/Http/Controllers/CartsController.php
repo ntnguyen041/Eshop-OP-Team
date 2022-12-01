@@ -14,7 +14,10 @@ class CartsController extends Controller
      */
     public function index()
     {
-        $Cart=DB::table('Carts')->get();
+        $id=$_GET['id'];
+        $Cart=DB::table('Carts as C')
+        ->join('Products as P','C.ProductID','=','P.id')
+        ->where('AccountId',$id)->get();
         return $Cart;
     }
 
@@ -23,9 +26,32 @@ class CartsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function addTocart()
     {
-        //
+        $ProductID=$_GET['idproduct'];
+        $id=$_GET['id'];
+
+        $product=DB::table('products')->where('id',$ProductID)->get();
+        if($product->count()==true){
+        $up=DB::table('carts')
+        ->where('ProductID', $ProductID)
+        ->where('AccountId', $id)->get();  
+
+        if($up->count()==true){
+        $quantity=DB::table('carts')
+        ->where('ProductID', $ProductID)
+        ->where('AccountId', $id)->value('Quantity'); 
+        $temp=$quantity+1;
+        
+        DB::table('carts')
+        ->where('ProductID', $ProductID)
+        ->where('AccountId', $id)->update(['Quantity'=> $temp]); 
+        }else{
+            DB::table('carts')->insertGetId(['AccountId'=>$id,'ProductID'=>$ProductID,'Quantity'=>1]);
+        }
+        return 1;
+    }
+        return -1;
     }
 
     /**
