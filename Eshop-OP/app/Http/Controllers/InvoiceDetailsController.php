@@ -82,4 +82,5 @@ class InvoiceDetailsController extends Controller
     {
         //
     }
+    
 }
