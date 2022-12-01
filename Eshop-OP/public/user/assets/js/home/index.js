@@ -43,6 +43,4 @@ $(document).ready(function(){
         }
     })
  })
- $("#nguyen").click(function(){
-    
- })
+ 
