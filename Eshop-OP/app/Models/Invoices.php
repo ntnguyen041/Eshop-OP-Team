@@ -13,4 +13,8 @@ class Invoices extends Model
         return $this->hasOne(Accounts::class,'id','Account_id');
     }
 
+    public function invoiceDetail(){
+        return $this->hasOne(InvoiceDetails::class, 'Invoice_id', 'id');
+    }
+
 }

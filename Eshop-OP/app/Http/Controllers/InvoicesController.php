@@ -6,6 +6,7 @@ use App\Models\InvoiceDetails;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Invoices;
+use App\Models\InvoiceDetails;
 use Illuminate\Http\Request;
 
 class InvoicesController extends Controller
@@ -30,7 +31,11 @@ class InvoicesController extends Controller
         $invoices = Invoices::where('Status', '=', 2,)->orderBy('id', 'DESC')->get();
         return view('admin.order.approvel', compact('invoices'));
     }
-
+    public function orderPendingApprovalDetail($id){
+        $invoiceDetails = InvoiceDetails::all()->where('Invoice_id', '=', $id);
+        return view('admin.order.orderdetail', ['invoice' => Invoices::where('id', $id)->first()], compact('invoiceDetails'));
+    }
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -81,9 +86,14 @@ class InvoicesController extends Controller
      * @param  \App\Models\Invoices  $invoices
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Invoices $invoices)
+    public function update(Request $request, $id)
     {
         //
+        Invoices::where('id',$id)->update([
+            
+            'Status' => 2,
+        ]);
+        return redirect(route('admin.order.orderPendingApproval'));
     }
 
     /**
