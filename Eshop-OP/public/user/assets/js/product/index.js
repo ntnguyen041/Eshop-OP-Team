@@ -1,5 +1,8 @@
  function loadproduct(data,min,max){
     let html="";
+    if(max>data.length){
+        max=data.length;
+    }
     if(min==-1,max==-1){
         $.each(data,function(){
            
@@ -59,7 +62,7 @@
     }
     else{
         for (let item = min; item < max; item++) {
-            console.log(data.Image)
+            
             html += '<div class="row no-gutters">'+
             '<aside class="col-md-3">'+
                 '<a href="#" class="img-wrap">'+
@@ -219,7 +222,6 @@ $(document).ready(function(){
                     $("#getproduct").html(loadproduct(data,min,max));
                 }
                 else{
-                   
                     $("#getproduct").html(loadproduct(data,0,5));
                 }
             })
@@ -246,8 +248,30 @@ function searchcategory(e){
             stringsrearch:"",
         },
         success:function(data){
-            console.log(data)
-            $("#getproduct").html(loadproduct(data,0,data.length));
+            $("#countitem").html(data.length)
+            $("#getproduct").html(loadproduct(data,0,5));
+            $("#nextproduct").click(function(){
+                if(max+5<data.length){
+                    min=i*1*5;
+                    max=min+5;
+                    i=i+1;
+                }else if(max+5>data.length){
+                   max=max-(max-items);
+                }
+                $("#getproduct").html(loadproduct(data,min,max));
+            })
+            $("#backproduct").click(function(){
+                if(i-1>=0){
+                    min=i*1*5;
+                    max=min+5;
+                    i=i-1;
+                    $("#getproduct").html(loadproduct(data,min,max));
+                }
+                else{
+                    $("#getproduct").html(loadproduct(data,0,5));
+                }
+            })
+
         }
     })
 }

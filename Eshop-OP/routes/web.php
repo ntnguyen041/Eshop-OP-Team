@@ -22,18 +22,21 @@ use App\Http\Controllers\CartsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/shop', function () {
+    //session()->flush();
+    return session()->get('admin');
+})->name('shop');
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/shop', function () {
-    return view('shop');
-});
+// Route::get('/shop', function () {
+//     return view('shop');
+// });
 
-Route::controller(ProductsController:: class)->group(function(){
+// Route::controller(ProductsController:: class)->group(function(){
      
-});
+// });
 
 
 //account
@@ -77,8 +80,21 @@ Route::get('/content', function () {
 Route::get('/product/create', function () {
     return view('product/create');
 });
+
+/// View group
+// Route::middleware(['first', 'second'])->group(function () {
+//     Route::get('/', function () {
+//         // Uses first & second middleware...
+//     });
+ 
+//     Route::get('/user/profile', function () {
+//         // Uses first & second middleware...
+//     });
+// });
+Route::get('/admin/acounts', function () {
+    return view('/Admin/account/index');
+});
 Route::prefix('/admin')->group(function (){
-    
     Route::get('/create', [ProductsController::class, 'create'])->name('admin.create');
     Route::get('/', [ProductsController::class, 'index'])->name('admin.index');
     Route::get('/{id}', [ProductsController::class, 'show'])->name('admin.show');
@@ -86,6 +102,8 @@ Route::prefix('/admin')->group(function (){
     Route::get('/edit/{id}', [ProductsController::class, 'edit'])->name('admin.edit');
     Route::patch('/{id}', [ProductsController::class, 'update'])->name('admin.update');
     Route::delete('/{id}', [ProductsController::class, 'destroy'])->name('admin.destroy');
+
+   
 });
 
 Route::prefix('/category')->group(function (){
