@@ -8,6 +8,8 @@ use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CartsController;
+use App\Http\Controllers\InvoiceDetailsController;
+use App\Http\Controllers\InvoicesController;
 
 
 
@@ -137,7 +139,7 @@ Route::prefix('/admin/brand')->group(function (){
 });
 
 Route::get('/orderuser',[InvoicesController::class,'history'])->name('order.history');
-Route::get('orderuser/details/{details_id}',[InvoicesController::class,'details'])->name('order.details');
+Route::get('orderuser/details/{id}',[InvoiceDetailsController::class,'details'])->name('order.details');
 
 
 Route::prefix('/admin/order')->group(function (){

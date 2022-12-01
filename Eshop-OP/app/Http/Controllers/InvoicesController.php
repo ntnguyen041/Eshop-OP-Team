@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\InvoiceDetails;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\Invoices;
@@ -97,13 +99,9 @@ class InvoicesController extends Controller
     public function history()
     {
         $account = $_GET['id'];
-         $oder = DB::table('invoices')->where('AccountId',$account)->get();
+         $oder = DB::table('invoices')->where('Account_id',$account)->get();
         return $oder;
     }
-    public function details($id)
-    { 
-        
-        return view("/orderuser/detials");
-    }
+   
     
 }

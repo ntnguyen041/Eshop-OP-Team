@@ -12,6 +12,7 @@
           <div class="col-md">Địa chỉ</div>
           <div class="col-md">Số điện thoại</div>
           <div class="col-md">Tiền</div>
+          <div class="col-md">Trạng thái</div>
           <div class="col-md">Action</div>
       </div> 
 

@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('invoice_details', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('InvoiceID');
-            $table->integer('ProductID');
+            $table->integer('Invoice_id')->unsigned()->index();
+            $table->integer('Product_id')->unsigned()->index();
             $table->integer('Quantity');
             $table->integer('UnitPice');
             $table->timestamps();
 
             // kết bản
-           // $table->foreign('InvoiceID')->references('id')->on('Invoices');
-            //$table->foreign('ProductID')->references('id')->on('Products');
+           $table->foreign('Invoice_id')->references('id')->on('Invoices');
+            $table->foreign('Product_id')->references('id')->on('Products');
 
         });
     }
