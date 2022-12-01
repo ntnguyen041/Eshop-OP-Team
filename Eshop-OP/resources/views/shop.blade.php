@@ -18,7 +18,7 @@
 		<h6 class="title">
 			<a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_1">Category</a>
 		</h6>
-		<div class="filter-content collapse show" id="collapse_1" style="">
+		<div class="filter-content collapse show" id="collapse_1" >
 			<div class="inner">
 				<ul class="list-menu" id="Categorylist">
 					
@@ -87,6 +87,7 @@
 
 
 <script src="{{asset('user/assets/js/product/index.js')}}"></script>
+<script src="{{asset('user/assets/js/cart/showcart.js')}}"></script>
  
 </body>
 @endsection

@@ -82,4 +82,9 @@ class InvoiceDetailsController extends Controller
     {
         //
     }
+    public function details($id)
+    { 
+    
+        return view("/orderuser/details", ['detail' => InvoiceDetails::where('Invoice_id', $id)->first()]);
+    }
 }
