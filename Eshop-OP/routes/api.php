@@ -37,6 +37,14 @@ Route::controller(ProductsController:: class)->group(function(){
     Route::get('/ajax-shop','indexuser');
     Route::get('/ajax-shopsearch','search');
 });
+
+Route::controller(CartsController:: class)->group(function(){
+Route::get('/carts','index');
+Route::get('/ajax-addToCart','addTocart');
+Route::get('/removecart','remove');
+Route::get('/update_carts','update');
+});
+
 Route::prefix('/admin')->group(function (){
     Route::get('/accounts', [ProductsController::class, 'accounts']);
     
@@ -44,7 +52,6 @@ Route::prefix('/admin')->group(function (){
 
 Route::get('/ajax-category',[CategorysController::class,'indexuser'])->name('ajax-category');
 
-Route::get('/carts',[CartsController::class,'index'])->name('carts');
 
 Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
 
