@@ -8,7 +8,7 @@ use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CartsController;
-use App\Http\Controllers\InvoicesController;
+
 
 
 
@@ -23,7 +23,10 @@ use App\Http\Controllers\InvoicesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// Route::get('/shop', function () {
+//     //session()->flush();
+//     return session()->get('admin');
+// })->name('shop');
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -32,9 +35,9 @@ Route::get('/shop', function () {
     return view('shop');
 });
 
-Route::controller(ProductsController:: class)->group(function(){
+// Route::controller(ProductsController:: class)->group(function(){
      
-});
+// });
 
 
 //account
@@ -78,7 +81,36 @@ Route::get('/content', function () {
 Route::get('/product/create', function () {
     return view('product/create');
 });
+Route::prefix('/admin')->group(function (){
+    
+    Route::get('/create', [ProductsController::class, 'create'])->name('admin.create');
+    Route::get('/', [ProductsController::class, 'index'])->name('admin.index');
+    Route::get('/{id}', [ProductsController::class, 'show'])->name('admin.show');
+    Route::post('/', [ProductsController::class, 'store'])->name('admin.store');
+    Route::get('/edit/{id}', [ProductsController::class, 'edit'])->name('admin.edit');
+    Route::patch('/{id}', [ProductsController::class, 'update'])->name('admin.update');
+    Route::delete('/{id}', [ProductsController::class, 'destroy'])->name('admin.destroy');
+});
 
+Route::prefix('/category')->group(function (){
+    Route::get('/create', [CategorysController::class, 'create'])->name('category.create');
+    Route::get('/', [CategorysController::class, 'index'])->name('category.index');
+    Route::get('/{id}', [CategorysController::class, 'show'])->name('category.show');
+    Route::post('/', [CategorysController::class, 'store'])->name('category.store');
+    Route::get('/edit/{id}', [CategorysController::class, 'edit'])->name('category.edit');
+    Route::patch('/{id}', [CategorysController::class, 'update'])->name('category.update');
+    Route::delete('/{id}', [CategorysController::class, 'destroy'])->name('category.destroy');
+});
+
+Route::prefix('/brand')->group(function (){
+    Route::get('/create', [BrandsController::class, 'create'])->name('brand.create');
+    Route::get('/', [BrandsController::class, 'index'])->name('brand.index');
+    Route::get('/{id}', [BrandsController::class, 'show'])->name('brand.show');
+    Route::post('/', [BrandsController::class, 'store'])->name('brand.store');
+    Route::get('/edit/{id}', [BrandsController::class, 'edit'])->name('brand.edit');
+    Route::patch('/{id}', [BrandsController::class, 'update'])->name('brand.update');
+    Route::delete('/{id}', [BrandsController::class, 'destroy'])->name('brand.destroy');
+});
 
 
 Route::get('/login', [AccountController::class, 'index'])->name('index');

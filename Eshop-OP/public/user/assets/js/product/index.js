@@ -1,5 +1,8 @@
  function loadproduct(data,min,max){
     let html="";
+    if(max>data.length){
+        max=data.length;
+    }
     if(min==-1,max==-1){
         $.each(data,function(){
            
@@ -7,7 +10,7 @@
             '<aside class="col-md-3">'+
                 '<a href="#" class="img-wrap">'+
                     '<span class="badge badge-danger"> NEW </span>'+
-                    '<img src="images/product/'+$(this)[0].Image+'">'+
+                    '<img src="images/product/'+data[0].Image+'">'+
                 '</a>'+
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
@@ -59,11 +62,12 @@
     }
     else{
         for (let item = min; item < max; item++) {
+            
             html += '<div class="row no-gutters">'+
             '<aside class="col-md-3">'+
                 '<a href="#" class="img-wrap">'+
                     '<span class="badge badge-danger"> NEW </span>'+
-                    '<img src="images/product/'+$(this)[0].Image+'">'+
+                    '<img src="images/product/'+data[item].Image+'">'+
                 '</a>'+
             '</aside> <!-- col.// -->'+
             '<div class="col-md-6">'+
@@ -160,7 +164,7 @@ $("#searchbutton").click(function(){
             type:'GET',
             url:"api/ajax-shopsearch",
             data:{
-                categoryId:categoryId,
+                categoryId:"",
                 stringsrearch:$("#searchSting").val(),
                 
         },
@@ -197,7 +201,8 @@ $(document).ready(function(){
         url:"api/ajax-shop",
         success:function(data){
             let items=$("#countitem").html(data.length)
-            console.log(data.Image)
+
+            console.log(data[0].Image)
             $("#getproduct").html(loadproduct(data,0,5));
             $("#nextproduct").click(function(){
                 if(max+5<data.length){
@@ -217,7 +222,6 @@ $(document).ready(function(){
                     $("#getproduct").html(loadproduct(data,min,max));
                 }
                 else{
-                   
                     $("#getproduct").html(loadproduct(data,0,5));
                 }
             })
@@ -244,8 +248,30 @@ function searchcategory(e){
             stringsrearch:"",
         },
         success:function(data){
-            console.log(data)
-            $("#getproduct").html(loadproduct(data,0,data.length));
+            $("#countitem").html(data.length)
+            $("#getproduct").html(loadproduct(data,0,5));
+            $("#nextproduct").click(function(){
+                if(max+5<data.length){
+                    min=i*1*5;
+                    max=min+5;
+                    i=i+1;
+                }else if(max+5>data.length){
+                   max=max-(max-items);
+                }
+                $("#getproduct").html(loadproduct(data,min,max));
+            })
+            $("#backproduct").click(function(){
+                if(i-1>=0){
+                    min=i*1*5;
+                    max=min+5;
+                    i=i-1;
+                    $("#getproduct").html(loadproduct(data,min,max));
+                }
+                else{
+                    $("#getproduct").html(loadproduct(data,0,5));
+                }
+            })
+
         }
     })
 }

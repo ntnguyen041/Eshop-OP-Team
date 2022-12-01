@@ -41,6 +41,7 @@ class CartsController extends Controller
         $quantity=DB::table('carts')
         ->where('ProductID', $ProductID)
         ->where('AccountId', $id)->value('Quantity'); 
+        
         $temp=$quantity+1;
         
         DB::table('carts')

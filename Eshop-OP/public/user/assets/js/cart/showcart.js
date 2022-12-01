@@ -81,18 +81,22 @@ function addcart(id){
             idproduct:idproduct
         },
         success:function(data){
-            // $.each(data, function () {
-                
-            //     ++notify;
-            // });
-            // $("#notify").html(''+notify+'');
+           if(data==1){
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
                 title: 'Đã thêm vào giỏi hàng!',
                 showConfirmButton: false,
                 timer: 1500
-            })
+            })}else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Chưa thêm vào giỏi hàng!',
+                    text: 'Quá tải sản phẩm',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
         },
         error:function(){
             Swal.fire({
