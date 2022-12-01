@@ -16,6 +16,17 @@ class InvoicesController extends Controller
     public function index()
     {
         //
+        $invoices = Invoices::orderBy('id', 'DESC')->get();
+
+        return view('admin.order.index', compact('invoices'));
+    }
+    public function orderPendingApproval(){
+        $invoices = Invoices::where('Status', '=', 0,)->orderBy('id', 'DESC')->get();
+        return view('admin.order.pendingapprovel', compact('invoices'));
+    }
+    public function orderApproval(){
+        $invoices = Invoices::where('Status', '=', 2,)->orderBy('id', 'DESC')->get();
+        return view('admin.order.approvel', compact('invoices'));
     }
 
     /**
