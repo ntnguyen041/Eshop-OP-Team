@@ -122,11 +122,11 @@
     return html;
 }
 function loadCategory(data){
-    let html="";
+    let asdasd="";
     $.each(data,function(){
-        html+='<li><button onclick="searchcategory('+$(this)[0].id+')" value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
+        asdasd+='<li><button onclick="searchcategory('+$(this)[0].id+')" value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
     })
-    return html;
+    return asdasd;
 }
 function loadbrand(data){
     let html="";
@@ -193,6 +193,14 @@ $(document).ready(function(){
             $("#getbrand").html(loadbrand(data));
         }
    });
+   $.ajax({
+    type:'GET',
+    url:"api/ajax-category",
+    data:{},
+    success:function(data){
+        $("#Categorylist").html(loadCategory(data));
+        }
+    })
    let i=1;
    let min=1;
    let max=min;
@@ -227,16 +235,6 @@ $(document).ready(function(){
             })
         }
     })
-
-    $.ajax({
-        type:'GET',
-        url:"api/ajax-category",
-        data:{},
-        success:function(data){
-            $("#Categorylist").html(loadCategory(data));
-        }
-    })
-     
 })
 function searchcategory(e){
     let categoryId=e;

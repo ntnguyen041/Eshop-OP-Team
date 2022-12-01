@@ -137,3 +137,9 @@ route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index')
 route::get('/pending-approval', [InvoicesController::class, 'orderPendingApproval'])->name('admin.order.orderPendingApproval');
 route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('admin.order.orderApproval');
 });
+
+// nguyen account
+Route::prefix('/admin/account')->group(function (){
+    Route::get('/', function () {return view('/admin/account/index');});
+    Route::get('/create', function () {return view('/admin/account/create');});
+});

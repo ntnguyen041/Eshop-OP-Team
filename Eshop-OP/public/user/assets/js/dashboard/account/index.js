@@ -10,6 +10,9 @@ $(document).ready(function(){
    
    
 })
+ function deleteUser(e){
+    console.log(e);
+ }
 function checkadmin(e){
     console.log(e);
 }
@@ -65,9 +68,9 @@ function loadaccount(data){
             '<img src="user/assets/images/imageProduct/'+$(this)[0].Avatar+' " style="height:100px; width:100px"></td>'+
         '<td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
             '<a class="font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">'+
-                '<button value="1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Edit</button>'+
+                '<button value="'+$(this)[0].id+'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Edit</button>'+
             '</a>'+
-            '<div><button value="1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Delete</button></div>'+
+            '<div><button onclick="deleteUser('+$(this)[0].id+')"id="deleteUser" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Delete</button></div>'+
         '</td>'+
     '</tr>'
 
