@@ -5,10 +5,10 @@ function loadroducthome(data){
         html+='<div class="col-md col-6">'+
         '<figure class="card-product-grid card-sm">'+
          '<a href="#" class="img-wrap"> '+
-          '<img src="user/assets/images/imageProduct/'+element.Image+'">'+
+          '<img src="images/product/'+element.Image+'">'+
          '</a>'+
          '<div class="text-wrap p-3">'+
-              '<a href="#" class="title">'+element.Name+'</a>'+
+              '<a href="#" class="title">'+element.NNa+'</a>'+
               '<span class="badge badge-danger"> '+element.Price+' </span>'+
          '</div>'+
       '</figure>'+
@@ -24,7 +24,7 @@ function loadroducthome2(data){
         const element = data[item];
         html+=' <div class="card-banner border-bottom">'+
         '<div class="py-3" style="width:80%">'+
-          '<h6 class="card-title">'+element.Name+'</h6>'+
+          '<h6 class="card-title">'+element.NNa+'</h6>'+
           '<a href="#" class="btn btn-secondary btn-sm"> Source now </a>'+
         '</div>'+
         '<img src="images/product/'+element.Image+'" height="80" class="img-bg">'+

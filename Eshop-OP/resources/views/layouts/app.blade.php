@@ -10,8 +10,8 @@
 <link href="{{asset('user/assets/images/favicon.ico')}}" rel="shortcut icon" type="image/x-icon">
 
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{{-- <script src="{{asset('user/assets/js/jquery-2.0.0.min.js')}}"  type="text/javascript"></script> --}}
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+<script src="{{asset('user/assets/js/jquery-2.0.0.min.js')}}"  type="text/javascript"></script>
 <script src="{{asset('user/assets/js/jquery-sessition.js')}}" type="text/javascript"></script>
 
 <!-- Bootstrap4 files-->

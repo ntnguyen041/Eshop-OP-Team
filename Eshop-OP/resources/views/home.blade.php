@@ -45,7 +45,7 @@
   </a>
 </div> 
 <!-- ==================  COMPONENT SLIDER BOOTSTRAP end.// ==================  .// -->	
-
+ 
 	</div> <!-- col.// -->
 	<div class="col-md d-none d-lg-block flex-grow-1">
 		<aside class="special-home-right">

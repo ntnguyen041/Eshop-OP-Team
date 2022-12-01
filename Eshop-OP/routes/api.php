@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(AccountsController::class)->group(function () {
     Route::get('/accout', 'index');
     Route::get('/user', 'detail');
+    Route::get('/loadaccount', 'loadaccount');
     Route::post('/createAccount', 'createAccount');
     Route::post('/userupdate', 'update');
 });
@@ -36,8 +37,10 @@ Route::controller(ProductsController:: class)->group(function(){
     Route::get('/ajax-shop','indexuser');
     Route::get('/ajax-shopsearch','search');
 });
-
-
+Route::prefix('/admin')->group(function (){
+    Route::get('/accounts', [ProductsController::class, 'accounts']);
+    
+});
 
 Route::get('/ajax-category',[CategorysController::class,'indexuser'])->name('ajax-category');
 

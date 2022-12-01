@@ -17,7 +17,7 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function indexuser(){
-        $fullrodutct=DB::table('Products')
+        $fullrodutct=DB::table('products')
         ->select('id','name as NNa','Description','Price','Stock','Brand_id','Category_id','Image')
         ->get();
         return $fullrodutct;
