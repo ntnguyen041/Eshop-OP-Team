@@ -31,13 +31,12 @@ $("#login").click(function(){
                             $.session.set('id', data.id);
                             $.session.set('IsAdmin', data.IsAdmin);
                             $.session.set('name', data.Username);
-                            
-                            // window.location.href = "/";
+                            window.location.href = "/";
                         }
                         if(data.IsAdmin==0){
-                            $.session.set('id', data[0].id);
+                            $.session.set('id', data.id);
                             $.session.set('IsAdmin', "0");
-                            $.session.set('name', data[0].Username);
+                            $.session.set('name', data.Username);
                             window.location.href = "/";
                         }
                     }

@@ -5,7 +5,7 @@ function loadroducthome(data){
         html+='<div class="col-md col-6">'+
         '<figure class="card-product-grid card-sm">'+
          '<a href="#" class="img-wrap"> '+
-          '<img src="user/assets/images/imageProduct/'+element.Image+'">'+
+          '<img src="images/product/'+element.Image+'">'+
          '</a>'+
          '<div class="text-wrap p-3">'+
               '<a href="#" class="title">'+element.NNa+'</a>'+

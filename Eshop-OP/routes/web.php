@@ -8,6 +8,7 @@ use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CartsController;
+ 
 
 
 
@@ -93,6 +94,9 @@ Route::get('/product/create', function () {
 // });
 Route::get('/admin/acounts', function () {
     return view('/Admin/account/index');
+});
+Route::get('/admin/acounts/create', function () {
+    return view('/Admin/account/create');
 });
 Route::prefix('/admin')->group(function (){
     Route::get('/create', [ProductsController::class, 'create'])->name('admin.create');

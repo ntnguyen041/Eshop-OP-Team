@@ -23,7 +23,6 @@ class AccountsController extends Controller
         if(!empty($accounts)){
             if($accounts->IsAdmin){
                 session(['admin'=> $accounts->IsAdmin]);
-                return session()->get('admin');
             }
             return $accounts;//response()->json($accounts, 200);
         }
