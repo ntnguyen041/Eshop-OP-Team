@@ -16,7 +16,6 @@ class InvoicesController extends Controller
     {
         //
         $invoices = Invoices::orderBy('id', 'DESC')->get();
-
         return view('admin.order.index', compact('invoices'));
     }
     public function orderPendingApproval(){
@@ -42,7 +41,7 @@ class InvoicesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response0
      */
     public function store(Request $request)
     {

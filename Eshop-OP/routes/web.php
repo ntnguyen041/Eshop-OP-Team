@@ -8,6 +8,7 @@ use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CartsController;
+use App\Http\Controllers\InvoicesController;
 
 
 
