@@ -19,15 +19,20 @@ return new class extends Migration
             $table->string('Description')->uniqid();
             $table->integer('Price')->default(0);
             $table->integer('Stock')->default(0);
-            $table->integer('BrandID')->unsigned()->index();
-            $table->integer('CategoryID')->unsigned()->index();
+            $table->integer('Brand_id')->unsigned()->index();
+            $table->integer('Category_id')->unsigned()->index();
             $table->string('Image');
             $table->integer('Status');// sản phẩm cong mở bán hay không
             $table->timestamps();
             $table->softDeletes();
             // lien ket ban khoa ngoai
-            //$table->foreign('BrandID')->references('id')->on('Brands');
-            //$table->foreign('CategoryID')->references('id')->on('Categorys');
+<<<<<<< HEAD
+            $table->foreign('Brand_id')->references('id')->on('brands');
+            $table->foreign('Category_id')->references('id')->on('categorys');
+=======
+            $table->foreign('Brand_id')->references('id')->on('Brands');
+            $table->foreign('Category_id')->references('id')->on('Categorys');
+>>>>>>> origin/main
 
         });
     }

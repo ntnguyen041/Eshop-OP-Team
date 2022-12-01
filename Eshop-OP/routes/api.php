@@ -33,12 +33,14 @@ Route::controller(AccountsController::class)->group(function () {
 
 Route::controller(ProductsController:: class)->group(function(){
     Route::get('productitem','itemProduct');
-    Route::get('/ajax-shop','index');
+    Route::get('/ajax-shop','indexuser');
+    Route::get('/ajax-shopsearch','search');
 });
 
 
 
-Route::get('/ajax-category',[CategorysController::class,'index'])->name('ajax-category');
+Route::get('/ajax-category',[CategorysController::class,'indexuser'])->name('ajax-category');
+
 Route::get('/carts',[CartsController::class,'index'])->name('carts');
 
 Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');

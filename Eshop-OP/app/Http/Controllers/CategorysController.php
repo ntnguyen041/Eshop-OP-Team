@@ -1,22 +1,29 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
+use App\Models\Categorys;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Categorys;
-use Illuminate\Http\Request;
 
 class CategorysController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function indexuser(){
         $Categorys=DB::table('categorys')->get();
         return $Categorys;
+    }
+
+    public function index()
+    {
+
+        $categorys = Categorys::orderBy('id', 'DESC')->get();
+        return View('category.index', compact('categorys'));
     }
 
     /**
@@ -27,6 +34,7 @@ class CategorysController extends Controller
     public function create()
     {
         //
+        return view('category.create');
     }
 
     /**
@@ -35,10 +43,26 @@ class CategorysController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function store(Request $req)
     {
         //
+        $validateData = $req->validate([
+            'Name' => 'required',
+            'Description' => 'required',
+        ],
+        [
+            'Name.required' => 'Please Input Category Name',
+            'Description.required' => 'Please Input Category Description',
+        ]);
+        $data = new Categorys; 
+        $data->Name = $req->Name; 
+        $data->description = $req->Description; 
+        $data->save(); 
+        $categorys = Categorys::orderBy('id','DESC')->get();
+        return view('category.index', compact('categorys')); 
     }
+
 
     /**
      * Display the specified resource.
@@ -46,22 +70,24 @@ class CategorysController extends Controller
      * @param  \App\Models\Categorys  $categorys
      * @return \Illuminate\Http\Response
      */
+
     public function show(Categorys $categorys)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
+   /**
+     * Display the specified resource.
      *
      * @param  \App\Models\Categorys  $categorys
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorys $categorys)
+    public function edit($id)
     {
         //
+        return view('category.edit', ['category' => Categorys::where('id', $id)->first()]);
     }
-
+    
     /**
      * Update the specified resource in storage.
      *
@@ -69,19 +95,35 @@ class CategorysController extends Controller
      * @param  \App\Models\Categorys  $categorys
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorys $categorys)
+ 
+    public function update(Request $req, $id)
     {
-        //
+        $validateData = $req->validate([
+            'Name' => 'required',
+            'Description' => 'required',
+        ],
+        [
+            'Name.required' => 'Please Input Product Name',
+            'Description.required' => 'Please Input Product Description',
+        ]);
+        Categorys::where('id',$id)->update([
+            'Name' => $req->Name,
+            'description' => $req->Description,
+        ]);
+        return redirect(route('category.index'));
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Categorys  $categorys
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorys $categorys)
+
+    public function destroy($id)
     {
         //
+        Categorys::destroy($id);
+        return redirect(route('category.index'))->with('message','Category has been deleted.');
     }
+    
 }

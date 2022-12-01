@@ -27,7 +27,7 @@ function loadroducthome2(data){
           '<h6 class="card-title">'+element.Name+'</h6>'+
           '<a href="#" class="btn btn-secondary btn-sm"> Source now </a>'+
         '</div>'+
-        '<img src="user/assets/images/imageProduct/'+element.Image+'" height="80" class="img-bg">'+
+        '<img src="images/product/'+element.Image+'" height="80" class="img-bg">'+
       '</div>'
     }
     return html;

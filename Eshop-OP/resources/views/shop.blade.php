@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+ 
+<!------ Include the above in your HEAD tag ---------->
+ 
 <body>
 <!-- ========================= SECTION CONTENT ========================= -->
 <section class="section-content padding-y">
@@ -31,28 +34,9 @@
 			<div class="inner" id="getbrand"> 
 			</div> <!-- inner.// -->
 		</div>
-	</article> <!-- filter-group .// -->
-	<article class="filter-group">
-		<h6 class="title">
-			<a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_3"> Price range </a>
-		</h6>
-		<div class="filter-content collapse show" id="collapse_3">
-			<div class="inner">
-				<input type="range" class="custom-range" min="0" max="100" name="">
-				<div class="form-row">
-				<div class="form-group col-md-6">
-				  <label>Min</label>
-				  <input class="form-control" placeholder="$0" type="number">
-				</div>
-				<div class="form-group text-right col-md-6">
-				  <label>Max</label>
-				  <input class="form-control" placeholder="$1,0000" type="number">
-				</div>
-				</div> <!-- form-row.// -->
-				<button class="btn btn-block btn-primary">Apply</button>
-			</div> <!-- inner.// -->
-		</div>
-	</article> <!-- filter-group .// -->
+	</article>
+	 <!-- filter-group .// -->
+	 <!-- filter-group .// -->
 	  <!-- filter-group .// -->
  
 
@@ -62,19 +46,17 @@
 
 <header class="mb-3">
 		<div class="form-inline">
-			<strong class="mr-md-auto">32 Items found </strong>
-			<select class="mr-2 form-control">
-				<option>Latest items</option>
-				<option>Trending</option>
-				<option>Most Popular</option>
-				<option>Cheapest</option>
-			</select>
-			<div class="btn-group">
-				<a href="page-listing-grid.html" class="btn btn-light" data-toggle="tooltip" title="List view"> 
-					<i class="fa fa-bars"></i></a>
-				<a href="page-listing-large.html" class="btn btn-light active" data-toggle="tooltip" title="Grid view"> 
-					<i class="fa fa-th"></i></a>
-			</div>
+			<strong class="mr-md-auto" >Sản phẩm được tim thấy<span id="countitem">0</span></strong>
+			<form class="search-header" onsubmit="return false">
+				<div class="input-group w-100">
+					<input type="text" id="searchSting" class="form-control" name="name" placeholder="Search">
+					<div class="input-group-append">
+					  <button id="searchbutton"class="btn btn-primary" type="submit">
+						<i class="fa fa-search"></i> Search
+					  </button>
+					</div>
+				</div>
+			</form>
 		</div>
 </header><!-- sect-heading -->
 
@@ -83,15 +65,8 @@
 
 
 <nav class="mb-4" aria-label="Page navigation sample">
-  <ul class="pagination">
-    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">4</a></li>
-    <li class="page-item"><a class="page-link" href="#">5</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
+	<button id="backproduct"class="btn btn-primary" type="button"> Back</button>
+	<button id="nextproduct"class="btn btn-primary" type="button"> Next</button>
 </nav>
 	</main> <!-- col.// -->
 </div>
@@ -112,5 +87,6 @@
 
 
 <script src="{{asset('user/assets/js/product/index.js')}}"></script>
+ 
 </body>
 @endsection
