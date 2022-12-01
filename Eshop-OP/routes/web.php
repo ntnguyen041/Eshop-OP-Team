@@ -8,10 +8,7 @@ use App\Http\Controllers\BrandsController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\CartsController;
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\InvoiceDetailsController;
->>>>>>> origin/main
 use App\Http\Controllers\InvoicesController;
 
 
@@ -146,17 +143,14 @@ Route::get('orderuser/details/{id}',[InvoiceDetailsController::class,'details'])
 
 
 Route::prefix('/admin/order')->group(function (){
-<<<<<<< HEAD
     route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index');
     route::get('/pending-approval', [InvoicesController::class, 'orderPendingApproval'])->name('admin.order.orderPendingApproval');
     route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('admin.order.orderApproval');
+    route::get('/order-delivery', [InvoicesController::class, 'orderDelivery'])->name('admin.order.orderDelivery');
     Route::get('/pending-approval-detail/{id}', [InvoicesController::class, 'orderPendingApprovalDetail'])->name('admin.order.orderPendingApprovalDetail');
-    Route::patch('/{id}', [InvoicesController::class, 'update'])->name('admin.order.update');
+    Route::get('/invoice-detail/{id}', [InvoicesController::class, 'invoiceDetail'])->name('admin.order.invoiceDetail');
 
+    Route::patch('/{id}', [InvoicesController::class, 'update'])->name('admin.order.update');
+    Route::patch('/approval/{id}', [InvoicesController::class, 'updateDelivery'])->name('admin.order.updateDelivery');
+    Route::patch('/order-delivery/{id}', [InvoicesController::class, 'updateSuccesfulDelivery'])->name('admin.order.updateSuccesfulDelivery');
 });
-=======
-route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index');
-route::get('/pending-approval', [InvoicesController::class, 'orderPendingApproval'])->name('admin.order.orderPendingApproval');
-route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('admin.order.orderApproval');
-});
->>>>>>> origin/main
