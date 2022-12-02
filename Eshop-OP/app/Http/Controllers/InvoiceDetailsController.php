@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\InvoiceDetails;
+use App\Models\Invoices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class InvoiceDetailsController extends Controller
 {
@@ -82,4 +85,5 @@ class InvoiceDetailsController extends Controller
     {
         //
     }
+   
 }

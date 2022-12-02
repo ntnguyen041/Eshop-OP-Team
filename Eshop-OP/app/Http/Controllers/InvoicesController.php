@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\InvoiceDetails;
 use Illuminate\Support\Facades\DB;
 use App\Models\Invoices;
 use Illuminate\Http\Request;
@@ -26,7 +27,36 @@ class InvoicesController extends Controller
         $invoices = Invoices::where('Status', '=', 2,)->orderBy('id', 'DESC')->get();
         return view('admin.order.approvel', compact('invoices'));
     }
+    public function orderPendingApprovalDetail($id){
+        $invoiceDetails = InvoiceDetails::all()->where('Invoice_id', '=', $id);
+        return view('admin.order.orderdetail', ['invoice' => Invoices::where('id', $id)->first()], compact('invoiceDetails'));
+    }
+    public function invoiceDetail($id){
+        $invoiceDetails = InvoiceDetails::all()->where('Invoice_id', '=', $id);
+        return view('admin.order.InvoiceDetail', ['invoice' => Invoices::where('id', $id)->first()], compact('invoiceDetails'));
+    }
+    public function updateDelivery($id){
+        Invoices::where('id',$id)->update([
+            
+            'Status' => 3,
+        ]);
+        $invoices = Invoices::where('Status', '=', 2,)->orderBy('id', 'DESC')->get();
+        return view('admin.order.approvel', compact('invoices'));
+    }
+    public function orderDelivery(){
+        $invoices = Invoices::where('Status', '=', 3,)->orderBy('id', 'DESC')->get();
+        return view('admin.order.orderdelivery', compact('invoices'));
+    }
 
+    public function updateSuccesfulDelivery($id){
+        Invoices::where('id',$id)->update([
+            'Status' => 1,
+        ]);
+        $invoices = Invoices::where('Status', '=', 3,)->orderBy('id', 'DESC')->get();
+        return view('admin.order.orderdelivery', compact('invoices'));
+    }
+    
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -77,9 +107,14 @@ class InvoicesController extends Controller
      * @param  \App\Models\Invoices  $invoices
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Invoices $invoices)
+    public function update(Request $request, $id)
     {
         //
+        Invoices::where('id',$id)->update([
+            
+            'Status' => 2,
+        ]);
+        return redirect(route('admin.order.orderPendingApproval'));
     }
 
     /**
@@ -92,5 +127,19 @@ class InvoicesController extends Controller
     {
         //
     }
-  
+
+
+    public function history()
+    {
+        $account = $_GET['id'];
+         $oder = DB::table('invoices')->where('Account_id',$account)->get();
+        return $oder;
+    }
+    
+    public function orderDetail($id){
+        $Details = InvoiceDetails::all()->where('Invoice_id', '=', $id);
+        
+        return view('/orderuser/details', ['invoice' => Invoices::where('id', $id)->first()], compact('Details'));
+    }
+    
 }
