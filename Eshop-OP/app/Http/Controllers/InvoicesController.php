@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\InvoiceDetails;
-use Illuminate\Support\Facades\DB;
-
 use App\Models\Invoices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class InvoicesController extends Controller
 {
@@ -65,10 +65,8 @@ class InvoicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
+
 
     /**
      * Store a newly created resource in storage.

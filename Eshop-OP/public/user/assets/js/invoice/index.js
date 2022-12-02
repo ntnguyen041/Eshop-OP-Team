@@ -38,7 +38,7 @@ $(document).ready(function(){
     
     let id = $.session.get('id');
     $.ajax({
-        url:'/orderuser',
+        url:'http://127.0.0.1:8000/orderuser/order',
         type:'GET',
         data:{id:id},
         success:function(data){

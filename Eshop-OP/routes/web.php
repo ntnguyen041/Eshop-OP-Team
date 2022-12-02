@@ -140,7 +140,7 @@ Route::prefix('/admin/brand')->group(function (){
 
 Route::get('/orderuser',[InvoicesController::class,'history'])->name('order.history');
 Route::get('/orderuser/details/{id}',[InvoicesController::class,'orderDetail'])->name('order.details');
-          
+
 
 Route::prefix('/admin/order')->group(function (){
     route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index');
@@ -154,3 +154,4 @@ Route::prefix('/admin/order')->group(function (){
     Route::patch('/approval/{id}', [InvoicesController::class, 'updateDelivery'])->name('admin.order.updateDelivery');
     Route::patch('/order-delivery/{id}', [InvoicesController::class, 'updateSuccesfulDelivery'])->name('admin.order.updateSuccesfulDelivery');
 });
+
