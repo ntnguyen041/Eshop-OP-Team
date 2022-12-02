@@ -65,21 +65,7 @@
 </dl>
 
 	<div class="form-row  mt-4">
-		<div class="form-group col-md flex-grow-0">
-			<div class="input-group mb-3 input-spinner">
-			  <div class="input-group-prepend">
-			    <button class="btn btn-light" type="button" id="button-plus"> + </button>
-			  </div>
-			  <input type="text" class="form-control" value="1">
-			  <div class="input-group-append">
-			    <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
-			  </div>
-			</div>
-		</div> <!-- col.// -->
-		<div class="form-group col-md">
-			<a href="#"  class="btn  btn-primary"> 
-				<i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span> 
-			</a>
+		<div class="form-group col-md" id="addCartDetails">
 			<a href="#" class="btn btn-light">
         <i class="fas fa-envelope"></i> <span class="text">Contact supplier</span> 
 			</a>
@@ -96,5 +82,7 @@
 </div> <!-- container .//  -->
 </section>
 
+<script src="{{asset('user/assets/js/cart/showcart.js')}}"></script>
 <script src="{{asset('user/assets/js/product/detail.js')}}"></script>
+<script src="{{asset('user/assets/js/header/log.js')}}"></script>
 @endsection
