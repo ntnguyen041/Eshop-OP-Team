@@ -142,4 +142,5 @@ route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('adm
 Route::prefix('/admin/account')->group(function (){
     Route::get('/', function () {return view('/admin/account/index');});
     Route::get('/create', function () {return view('/admin/account/create');});
+    Route::get('/edit', function () {return view('/admin/account/edit');});
 });

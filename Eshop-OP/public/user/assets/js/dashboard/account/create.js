@@ -18,7 +18,7 @@
     }
     else{
         $("#errcreate").css("color","blue");
-        $("#errcreate").html("Đang kiểm tra cập nhật vui lòng đợi trong giây lát nhé...");
+        $("#errcreate").html("Đang kiểm tra dữ liệu vui lòng đợi trong giây lát nhé...");
         $.ajax({
             type:'POST',
             url:'http://127.0.0.1:8000/api/admin/create',
@@ -32,7 +32,38 @@
                  Image:Image,
             },
             success:function(data){
-                console.log(data)
+                if(data==-1){
+                    setTimeout(() => {
+                        $("#errcreate").css("color","red");
+                        $("#errcreate").html("Người dùng đã tồn tại")
+                    }, 2000);
+                  
+                }
+                if(data==1){
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 1000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.addEventListener('mouseenter', Swal.stopTimer)
+                          toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                      })
+                      Toast.fire({
+                        icon: 'success',
+                        title: 'Signed in successfully'
+                      })
+                      setTimeout(() => {
+                        $("#errcreate").css("color","blue");
+                    $("#errcreate").html("Thêm người dùng thành công");
+                    }, 2000);
+                   setTimeout(() => {
+                    window.location.href = "/admin/account";
+                   }, 3000);
+                   
+                }
             }
         })
     }

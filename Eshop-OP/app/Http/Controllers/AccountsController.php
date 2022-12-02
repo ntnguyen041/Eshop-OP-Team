@@ -33,7 +33,7 @@ class AccountsController extends Controller
     public function detail()
     {
         $user=$_GET['id'];
-        $account = DB::table('accounts')->where('id', $user)->get();
+        $account = DB::table('accounts')->where('id', $user)->first();
         return $account;//response()->json($accounts, 200);
        
     }
@@ -94,9 +94,14 @@ class AccountsController extends Controller
          }
         return 2;
     }
-    public function adminDeleteAccount(){
-         $FullName =$_POST['id'];
-         
+    public function adminUpdateAccount(){
+         $FullName =$_POST['FullName'];
+         $Username =$_POST['Username'];
+        $Password =$_POST['Password'];
+         $Email =$_POST['Email'];
+         $Phone =$_POST['Phone'];
+         $Address =$_POST['Addess'];
+         $Image =$_POST['Image'];
 
         $accountErr=DB::table('accounts')->where('Username',$Username)->get();
          if($accountErr->count()){
@@ -108,7 +113,34 @@ class AccountsController extends Controller
              DB::table('accounts')->insertGetId(['username' => $Username, 'Password' => $Password,'FullName'=>$FullName,'Email'=>$Email,'Phone'=>$Phone,'Address'=>$Address,'Avatar'=>$Image,'IsAdmin'=>0,'Status'=>1]);
             return 1;
          }
-        return 2;
+        
+    }
+    public function adminDeleteAccount(){
+        $id =$_POST['id'];
+        DB::table('accounts')->delete($id);
+
+         $account=DB::table('accounts')->get();
+        return $account;
+    }
+    public function adminEditAccount(){
+        $FullName =$_POST['FullName'];
+         $Username =$_POST['Username'];
+         $Password =$_POST['Password'];
+         $Email =$_POST['Email'];
+         $Phone =$_POST['Phone'];
+         $Address =$_POST['Addess'];
+         $Image =$_POST['Image'];
+
+        $accountErr=DB::table('accounts')->where('Username',$Username)->get();
+         if($accountErr->count()){
+             return -1;
+         }
+         else{
+            // DB::table('accounts')->insertGetId(['username' => $user, 'Password' => $pass,'FullName'=>$fullname,'IsAdmin'=>0,'Status'=>1]);
+            // 
+             DB::table('accounts')->insertGetId(['username' => $Username, 'Password' => $Password,'FullName'=>$FullName,'Email'=>$Email,'Phone'=>$Phone,'Address'=>$Address,'Avatar'=>$Image,'IsAdmin'=>0,'Status'=>1]);
+            return 1;
+         }
     }
 
 
