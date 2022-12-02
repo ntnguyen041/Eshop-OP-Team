@@ -165,7 +165,7 @@ $("#searchbutton").click(function(){
             url:"api/ajax-shopsearch",
             data:{
                 categoryId:"",
-                stringsrearch:$("#searchSting").val(),
+                stringsrearch:search,
                 
         },
             success:function(data){

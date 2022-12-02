@@ -123,25 +123,28 @@ class AccountsController extends Controller
         return $account;
     }
     public function adminEditAccount(){
-        $FullName =$_POST['FullName'];
-         $Username =$_POST['Username'];
-         $Password =$_POST['Password'];
-         $Email =$_POST['Email'];
-         $Phone =$_POST['Phone'];
-         $Address =$_POST['Addess'];
-         $Image =$_POST['Image'];
-
-        $accountErr=DB::table('accounts')->where('Username',$Username)->get();
-         if($accountErr->count()){
-             return -1;
-         }
-         else{
-            // DB::table('accounts')->insertGetId(['username' => $user, 'Password' => $pass,'FullName'=>$fullname,'IsAdmin'=>0,'Status'=>1]);
-            // 
-             DB::table('accounts')->insertGetId(['username' => $Username, 'Password' => $Password,'FullName'=>$FullName,'Email'=>$Email,'Phone'=>$Phone,'Address'=>$Address,'Avatar'=>$Image,'IsAdmin'=>0,'Status'=>1]);
-            return 1;
-         }
+         $FullName=$_POST['FullName'];
+         return $Fullname;
+       //  $Password =$_POST['Password'];
+       //  $Email =$_POST['Email'];
+       //  $Phone =$_POST['Phone'];
+       //  $Address =$_POST['Address'];
+       //  $Username =$_POST['Username'];
+       // ,$Username,$Password,$Email,$phone,$Address
+        // db($Fullname);
+        
+       //  $up=DB::table('accounts')
+       //  ->where('Username', $Username)
+       // ->update(['Email'=> $email,'FullName' => $FullName,'Address'=>$Address,'Phone'=>$Phone,'Password'=>$Password]);
+       // return $up;
+   }
+    public function uploadfile()
+    {
+        $filename= $_FILES['file']['name'];
+        $location ="user/assets/images/avatars/".$filename;
+         move_uploaded_file($_FILES['file']['tmp_name'],$location);
     }
+    
 
 
     // public function detail()

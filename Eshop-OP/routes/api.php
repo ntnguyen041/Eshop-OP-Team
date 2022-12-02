@@ -29,11 +29,12 @@ Route::controller(AccountsController::class)->group(function () {
     Route::get('/user', 'detail');
     Route::post('/createAccount', 'createAccount');
     Route::post('/userupdate', 'update');
-    // ADMIN
+    // ADMINz
     Route::get('/loadaccount', 'loadaccount');
     Route::post('/admin/create', 'adminCreateAccount');
     Route::post('/admin/delete', 'adminDeleteAccount');
-    Route::post('/admin/edit', 'adminEditAccount');
+    Route::get('/admin/edit', 'adminEditAccount');
+    Route::post('/admin/uploadfile', 'uploadfile');
 
 });
 
