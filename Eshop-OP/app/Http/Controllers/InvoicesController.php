@@ -47,59 +47,39 @@ class InvoicesController extends Controller
         return view('admin.order.orderdelivery', compact('invoices'));
     }
 
-   
+
     public function search(){
-        // function convert_name($str) {
-        //     $str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
-        //     $str = preg_replace("/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/", 'e', $str);
-        //     $str = preg_replace("/(ì|í|ị|ỉ|ĩ)/", 'i', $str);
-        //     $str = preg_replace("/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/", 'o', $str);
-        //     $str = preg_replace("/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/", 'u', $str);
-        //     $str = preg_replace("/(ỳ|ý|ỵ|ỷ|ỹ)/", 'y', $str);
-        //     $str = preg_replace("/(đ)/", 'd', $str);
-        //     $str = preg_replace("/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/", 'A', $str);
-        //     $str = preg_replace("/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)/", 'E', $str);
-        //     $str = preg_replace("/(Ì|Í|Ị|Ỉ|Ĩ)/", 'I', $str);
-        //     $str = preg_replace("/(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)/", 'O', $str);
-        //     $str = preg_replace("/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/", 'U', $str);
-        //     $str = preg_replace("/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/", 'Y', $str);
-        //     $str = preg_replace("/(Đ)/", 'D', $str);
-        //     $str = preg_replace("/(\“|\”|\,|\!|\&|\;|\@|\#|\%|\~|\`|\=|\_|\'|\]|\[|\}|\{|\)|\(|\+|\^)/", '-', $str);
-        //     $str = preg_replace("/( )/", '-', $str);
-        //     return strtolower($str);
-        // }
-        $categoryId=$_GET['categoryId'];
+
+        $invoiceId=$_GET['invoiceId'];
         $search=$_GET['stringsrearch'];
-        if($categoryId==null){
+        if($invoiceId==null){
             if($search==null){
-                $fullrodutct=DB::table('Products as P')
-                ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
-                ->join('Categorys as C','P.Category_id','=','C.id')
-                ->join('Brands as B','P.Brand_id','=','B.id')->get();
-                return $fullrodutct;
+                $fullorder=DB::table('Invoices as I')
+                ->select('I.id', 'I.code', 'A.name', 'I.IsuedData', 'I.Total')
+                ->join('AccountID as A','I.id','=','A.id');
+                return $fullorder;
             }
              //$search="Điện";
-            $fullrodutct=DB::table('Products as P')
-            ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
-            ->join('Categorys as C','P.Category_id','=','C.id')
-            ->join('Brands as B','P.Brand_id','=','B.id')
-            ->where('P.Name','LIKE','%'.$search.'%')
-            ->orWhere('C.Name','LIKE','%'.$search.'%')
-            ->orWhere('B.Name','LIKE','%'.$search.'%')
+            $fullorder=DB::table('Invoices as I')
+            ->select('I.id', 'I.code', 'A.name', 'I.IsuedData', 'I.Total')
+            // ->join('Categorys as C','P.Category_id','=','C.id')
+            // ->join('Brands as B','P.Brand_id','=','B.id')
+            ->where('I.IussedData','LIKE','%'.$search.'%')
+            // ->orWhere('C.Name','LIKE','%'.$search.'%')
+            // ->orWhere('B.Name','LIKE','%'.$search.'%')
             ->get();
-            return $fullrodutct;
-       
+            return $fullorder;
         }
         else{
-            $fullrodutct=DB::table('Products as P')
-            ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
-            ->join('Categorys as C','P.Category_id','=','C.id')
-            ->join('Brands as B','P.Brand_id','=','B.id')
-            ->where('C.id',$categoryId)
+            $fullorder=DB::table('Products as P')
+            ->select('I.id', 'I.code', 'A.name', 'I.IsuedData', 'I.Total')
+            // ->join('Categorys as C','P.Category_id','=','C.id')
+            // ->join('Brands as B','P.Brand_id','=','B.id')
+            ->where('I.IssuedData',$invoiceId)
             ->get();
-            return $fullrodutct;
+            return $fullorder;
         }
-        }
+    }
     
     public function updateSuccesfulDelivery($id){
         Invoices::where('id',$id)->update([
@@ -108,8 +88,8 @@ class InvoicesController extends Controller
         $invoices = Invoices::where('Status', '=', 3,)->orderBy('id', 'DESC')->get();
         return view('admin.order.orderdelivery', compact('invoices'));
     }
-    
-   
+
+
     /**
      * Show the form for creating a new resource.
      *

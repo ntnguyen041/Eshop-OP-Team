@@ -8,6 +8,7 @@ use App\Http\Controllers\CategorysController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\CartsController;
+use App\Http\Controllers\InvoicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,8 +52,9 @@ Route::prefix('/admin')->group(function (){
 });
 
 Route::get('/ajax-category',[CategorysController::class,'indexuser'])->name('ajax-category');
-
+Route::get('/ajax-search_order',[InvoicesController::class,'search'])->name('ajax-search_order');
 
 Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
+
 
 

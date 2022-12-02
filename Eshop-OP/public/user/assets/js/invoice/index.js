@@ -47,3 +47,75 @@ $(document).ready(function(){
         }
     })
 })
+
+//search hoa don
+
+$("#searchbutton").click(function(){
+    var format = /^[^a-zA-Z0-9]+$/;
+    let search = $("#searchString").val();
+    if(!search.match(format)){
+        $.ajax({
+            type:'GET',
+            url:"api/ajax-search_order",
+            data:{
+                categoryId:"",
+                stringsrearch:$("#searchSting").val(),
+                
+        },
+            success:function(data){
+                if(data!=0){
+                    $("#countitem").html(data.length)
+                    $("#getproduct").html(loadproduct(data,0,data.length));
+                }
+                else{
+                    alert('chúng tôi không thể tìm sản phẩm này')
+                }
+            }
+        })
+    }
+    else{
+        alert('chúng tôi không thể tìm sản phẩm này')
+    }
+}) 
+
+function searchinvoice(e){
+    let invoiceId=e;
+    $.ajax({
+        url:'api/ajax-shopsearch',
+        type:'GET',
+        data:{
+            invoiceId:invoiceId,
+            stringsrearch:"",
+        },
+        success:function(data){
+            $("#countitem").html(data.length)
+            $("#getproduct").html(loadinvoice(data,0,5));
+            $("#nextproduct").click(function(){
+                // if(max+5<data.length){
+                //     min=i*1*5;
+                //     max=min+5;
+                //     i=i+1;
+                // }else if(max+5>data.length){
+                //    max=max-(max-items);
+                // }
+                $("#getinvoice").html(loadinvoice(data,min,max));
+            })
+           
+        }
+    })
+}
+
+$(document).ready(function(){
+    
+    let id = $.session.get('id');
+    $.ajax({
+        url:'/orderuser',
+        type:'GET',
+        data:{id:id},
+        success:function(data){
+            console.log(data)
+            $("#Invoicelist").html(loadinvoice(data));
+        }
+    })
+})
+//------------------------------------//

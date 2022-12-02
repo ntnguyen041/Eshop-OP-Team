@@ -79,8 +79,8 @@ class ProductsController extends Controller
             ->orWhere('C.Name','LIKE','%'.$search.'%')
             ->orWhere('B.Name','LIKE','%'.$search.'%')
             ->get();
-            return $fullrodutct;
-       
+            return $fullrodutct;       
+
         }
         else{
             $fullrodutct=DB::table('Products as P')
@@ -92,7 +92,7 @@ class ProductsController extends Controller
             return $fullrodutct;
         }
         }
-    
+
     /**
      * Show the form for creating a new resource.
      *

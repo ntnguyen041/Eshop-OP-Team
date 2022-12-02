@@ -271,7 +271,6 @@ function searchcategory(e){
                     $("#getproduct").html(loadproduct(data,0,5));
                 }
             })
-
         }
     })
 }
@@ -281,6 +280,7 @@ function addcart(id){
 
     console.log(idproduct,userid);
  }
+ 
  
 
 

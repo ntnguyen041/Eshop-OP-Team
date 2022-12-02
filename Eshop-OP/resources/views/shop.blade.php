@@ -46,7 +46,7 @@
 
 <header class="mb-3">
 		<div class="form-inline">
-			<strong class="mr-md-auto" >Sản phẩm được tim thấy<span id="countitem">0</span></strong>
+			<strong class="mr-md-auto" >Sản phẩm được tim thấy<span id="countitem"> 0</span></strong>
 			<form class="search-header" onsubmit="return false">
 				<div class="input-group w-100">
 					<input type="text" id="searchSting" class="form-control" name="name" placeholder="Search">
