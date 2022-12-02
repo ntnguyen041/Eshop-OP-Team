@@ -54,20 +54,18 @@ $(document).ready(function(){
 $("#searchbutton").click(function(){
     var format = /^[^a-zA-Z0-9]+$/;
     let search = $("#searchString").val();
-    alert('sdfasd')
+    //alert('sdfasd')
     if(!search.match(format)){
         $.ajax({
             type:'GET',
-            url:"api/ajax-search_order",
+            url:"http://127.0.0.1:8000/api/ajax-search_order",
             data:{
-                invoiceId:"",
-                stringsrearch:$("#searchString").val(),
-
+                stringsearch: search
         },
             success:function(data){
                 if(data!=0){
-                    $("#countitem").html(data.length)
-                    $("#getproduct").html(loadinvoice(data));
+                    // $("#countitem").html(data.length)
+                    $("#getorder").html(loadorder(data));
                 }
                 else{
                     alert('chúng tôi không thể tìm sản phẩm này')
@@ -92,17 +90,6 @@ function searchinvoice(e){
         success:function(data){
             // $("#countitem").html(data.length)
             $("#getinvoice").html(loadinvoice(data));
-            $("#nextproduct").click(function(){
-                // if(max+5<data.length){
-                //     min=i*1*5;
-                //     max=min+5;
-                //     i=i+1;
-                // }else if(max+5>data.length){
-                //    max=max-(max-items);
-                // }
-                $("#getinvoice").html(loadinvoice(data));
-            })
-
         }
     })
 }
@@ -120,4 +107,61 @@ $(document).ready(function(){
         }
     })
 })
-//------------------------------------//
+
+function loadorder(data){
+    let html="";
+    $.each(data,function(){
+        html+='<tr>'+
+        '<td'+
+        '    class="p-4 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
+        '    <div class="flex px-2 py-1">'+
+        '        <p style="white-space: normal;"'+
+        '            class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80 ">'+$(this)[0].Code+'</p>'+
+        '    </div>'+
+        '</td>'+
+        '<td'+
+        '    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
+        '    <p'+
+        '        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+$(this)[0].Full+' </p>'+
+        '</td>'+
+        '<td'+
+        '    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
+        '    <p'+
+        '        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+$(this)[0].IsuedData+'</p>'+
+        '</td>'+
+        '<td'+
+        '    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
+        '    <p'+
+        '        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+$(this)[0].ShoppingAddress+'</p>'+
+        '</td>'+
+        '<td'+
+        '    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
+        '    <p'+
+        '        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+$(this)[0].ShoppingPhone+'</p>'+
+        '</td>'+
+        '<td'+
+        '    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
+        '    <p'+
+        '        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+$(this)[0].Total+' </p>'+
+        '</td>'+
+        '<td'+
+        '    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
+        '    <p'+
+        '        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+$(this)[0].Status+' </p>'+
+        '</td>'+
+        
+        '<td'+
+        '    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
+        '    <a href=""'+
+        '        class="font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">'+
+        '        <button'+
+        '            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">'+
+        '            Detail'+
+        '        </button>'+
+        '    </a>'+
+        '</td>'+
+        '</tr>'
+    })
+    return html;
+}
+

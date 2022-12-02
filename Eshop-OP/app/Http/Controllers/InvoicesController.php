@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\DB;
 use App\Models\InvoiceDetails;
 use App\Models\Invoices;
 use Illuminate\Http\Request;
@@ -49,43 +51,19 @@ class InvoicesController extends Controller
 
 
     public function search(){
-        // $date=$_GET[''];
-        $invoiceId=$_GET['invoiceId'];
-        // dd($invoiceId);
-        $search=$_GET['stringsrearch'];
-        if($invoiceId==null){
-            if($search==null){
-                $fullorder=DB::table('Invoices as I')
-                ->select('I.id', 'I.code', 'A.name', 'I.IsuedData', 'I.Total')
-                ->join('AccountID as A','I.id','=','A.id');
+        $search=$_GET['stringsearch'];
+            if($search==null){ 
+                $fullorder=DB::table('Invoices as I');
                 return $fullorder;
-            }
-
+            }else
             //$search="Điện";
-
             $fullorder=DB::table('Invoices as I')
-            ->select('I.id', 'I.code', 'A.name', 'I.IsuedData', 'I.Total')
-            // ->join('Categorys as C','P.Category_id','=','C.id')
-            // ->join('Brands as B','P.Brand_id','=','B.id')
-            ->whereDay('I.IussedData','LIKE','%'.$search.'%')
-            ->whereMonth('I.IussedData','LIKE','%'.$search.'%')
-            ->whereYear('I.IussedData','LIKE','%'.$search.'%')
-            // ->where('I.IussedData','LIKE','%'.$search.'%')
-            // ->orWhere('C.Name','LIKE','%'.$search.'%')
-            // ->orWhere('B.Name','LIKE','%'.$search.'%')
+            ->whereDay('I.IsuedData', 'LIKE','%'.$search.'%')
+            ->orWhereMonth('I.IsuedData', 'LIKE','%'.$search.'%')
+            ->orWhereYear('I.IsuedData', 'LIKE','%'.$search.'%')
             ->get();
             return $fullorder;
-        }
-        else{
-            $fullorder=DB::table('Products as P')
-            ->select('I.id', 'I.code', 'A.name', 'I.IsuedData', 'I.Total')
-            // ->join('Categorys as C','P.Category_id','=','C.id')
-            // ->join('Brands as B','P.Brand_id','=','B.id')
-            ->where('I.IssuedData',$invoiceId)
-            ->get();
-            return $fullorder;
-        }
-    }
+}
     
     public function updateSuccesfulDelivery($id){
         Invoices::where('id',$id)->update([
