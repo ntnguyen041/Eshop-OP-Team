@@ -117,12 +117,12 @@ class CartsController extends Controller
             $total+=($carts->Quantity*$carts->Price);
         }
         
-        DB::table('invoices')->insertGetId(['Code'=>$code,'AccountID'=>$id,'IsuedData'=>$currennt,'ShoppingAddress'=>$address,'ShoppingPhone'=>$phone,'Total'=>$total,'Status'=>0]);
+        DB::table('invoices')->insertGetId(['Code'=>$code,'Account_id'=>$id,'IsuedData'=>$currennt,'ShoppingAddress'=>$address,'ShoppingPhone'=>$phone,'Total'=>$total,'Status'=>0]);
 
         $idInvoice=DB::table('invoices')->where('Code',$code)->value('id');
         
         foreach($Cart as $itemcart){
-            DB::table('invoice_details')->insertGetId(['InvoiceID'=>$idInvoice,'ProductID'=>$itemcart->ProductID,'Quantity'=>$itemcart->Quantity,'UnitPice'=>$itemcart->Quantity*$itemcart->Price]);
+            DB::table('invoice_details')->insertGetId(['Invoice_id'=>$idInvoice,'Product_id'=>$itemcart->ProductID,'Quantity'=>$itemcart->Quantity,'UnitPice'=>$itemcart->Quantity*$itemcart->Price]);
         
             $p=DB::table('products')->where('id',$itemcart->ProductID)->value('Stock');
             DB::table('products')->where('id',$itemcart->ProductID)->update(['Stock'=>$p-$itemcart->Quantity]);
