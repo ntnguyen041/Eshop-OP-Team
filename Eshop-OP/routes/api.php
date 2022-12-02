@@ -42,7 +42,9 @@ Route::controller(CartsController:: class)->group(function(){
 Route::get('/carts','index');
 Route::get('/ajax-addToCart','addTocart');
 Route::get('/removecart','remove');
+Route::get('/deleteAll','deleteAll');
 Route::get('/update_carts','update');
+Route::post('/ordernow','ordernow');
 });
 
 Route::prefix('/admin')->group(function (){

@@ -24,7 +24,7 @@
 						<a href="/cart" class="widget-view">
 							<div class="icon-area">
 								<i class="fa fa-shopping-cart"></i>
-								<span class="notify" id="cart">0</span>
+								<span id="notify" class="notify">0</span>
 							</div>
 							<a class="text">Cart</a>
 						</a>
@@ -90,5 +90,6 @@
 </nav>
 </header> <!-- section-header.// -->
 <script src="{{asset('user/assets/js/header/log.js')}}"></script>
+<script src="{{asset('user/assets/js/cart/showcart.js')}}"></script>
 
  
