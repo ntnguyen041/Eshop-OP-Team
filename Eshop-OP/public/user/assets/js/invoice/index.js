@@ -28,14 +28,14 @@ function loadinvoice(data){
         '<div class="col-md"> '+
             '<a href="/orderuser/details/'+$(this)[0].id+'"  class="btn btn-primary">Detail</a></div>'+
         '</div>'
-        
+
     })
     return html;
 }
 
 
 $(document).ready(function(){
-    
+
     let id = $.session.get('id');
     $.ajax({
         url:'/orderuser',
@@ -48,24 +48,26 @@ $(document).ready(function(){
     })
 })
 
-//search hoa don
+
+/////////search hoa don
 
 $("#searchbutton").click(function(){
     var format = /^[^a-zA-Z0-9]+$/;
     let search = $("#searchString").val();
+    alert('sdfasd')
     if(!search.match(format)){
         $.ajax({
             type:'GET',
             url:"api/ajax-search_order",
             data:{
-                categoryId:"",
-                stringsrearch:$("#searchSting").val(),
-                
+                invoiceId:"",
+                stringsrearch:$("#searchString").val(),
+
         },
             success:function(data){
                 if(data!=0){
                     $("#countitem").html(data.length)
-                    $("#getproduct").html(loadproduct(data,0,data.length));
+                    $("#getproduct").html(loadinvoice(data));
                 }
                 else{
                     alert('chúng tôi không thể tìm sản phẩm này')
@@ -76,20 +78,20 @@ $("#searchbutton").click(function(){
     else{
         alert('chúng tôi không thể tìm sản phẩm này')
     }
-}) 
+})
 
 function searchinvoice(e){
     let invoiceId=e;
     $.ajax({
-        url:'api/ajax-shopsearch',
+        url:'api/ajax-search_order',
         type:'GET',
         data:{
             invoiceId:invoiceId,
             stringsrearch:"",
         },
         success:function(data){
-            $("#countitem").html(data.length)
-            $("#getproduct").html(loadinvoice(data,0,5));
+            // $("#countitem").html(data.length)
+            $("#getinvoice").html(loadinvoice(data));
             $("#nextproduct").click(function(){
                 // if(max+5<data.length){
                 //     min=i*1*5;
@@ -98,15 +100,15 @@ function searchinvoice(e){
                 // }else if(max+5>data.length){
                 //    max=max-(max-items);
                 // }
-                $("#getinvoice").html(loadinvoice(data,min,max));
+                $("#getinvoice").html(loadinvoice(data));
             })
-           
+
         }
     })
 }
 
 $(document).ready(function(){
-    
+
     let id = $.session.get('id');
     $.ajax({
         url:'/orderuser',

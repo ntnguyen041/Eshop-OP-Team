@@ -49,8 +49,9 @@ class InvoicesController extends Controller
 
 
     public function search(){
-
+        // $date=$_GET[''];
         $invoiceId=$_GET['invoiceId'];
+        // dd($invoiceId);
         $search=$_GET['stringsrearch'];
         if($invoiceId==null){
             if($search==null){
@@ -59,12 +60,17 @@ class InvoicesController extends Controller
                 ->join('AccountID as A','I.id','=','A.id');
                 return $fullorder;
             }
-             //$search="Điện";
+
+            //$search="Điện";
+
             $fullorder=DB::table('Invoices as I')
             ->select('I.id', 'I.code', 'A.name', 'I.IsuedData', 'I.Total')
             // ->join('Categorys as C','P.Category_id','=','C.id')
             // ->join('Brands as B','P.Brand_id','=','B.id')
-            ->where('I.IussedData','LIKE','%'.$search.'%')
+            ->whereDay('I.IussedData','LIKE','%'.$search.'%')
+            ->whereMonth('I.IussedData','LIKE','%'.$search.'%')
+            ->whereYear('I.IussedData','LIKE','%'.$search.'%')
+            // ->where('I.IussedData','LIKE','%'.$search.'%')
             // ->orWhere('C.Name','LIKE','%'.$search.'%')
             // ->orWhere('B.Name','LIKE','%'.$search.'%')
             ->get();
