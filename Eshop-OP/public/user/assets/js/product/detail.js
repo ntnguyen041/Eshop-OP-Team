@@ -46,6 +46,8 @@ $(document).ready(function(){
                     $(".deription").html(''+data[0].Description+'');
                     $(".title_type").html(''+data[0].Name+'');
                     $(".price").html(''+data[0].Price+'VND');
+                    $("#addCartDetails").html('<button onclick="addcart('+data[0].id+')" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i> Add to cart</button>');
+
                     loadimage();
                 }
                

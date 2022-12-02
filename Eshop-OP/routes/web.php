@@ -137,3 +137,4 @@ route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index')
 route::get('/pending-approval', [InvoicesController::class, 'orderPendingApproval'])->name('admin.order.orderPendingApproval');
 route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('admin.order.orderApproval');
 });
+

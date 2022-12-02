@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Invoices;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class InvoicesController extends Controller
 {
@@ -27,16 +30,16 @@ class InvoicesController extends Controller
         $invoices = Invoices::where('Status', '=', 2,)->orderBy('id', 'DESC')->get();
         return view('admin.order.approvel', compact('invoices'));
     }
-
+    public function abc(){
+        return 1;
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
+
 
     /**
      * Store a newly created resource in storage.

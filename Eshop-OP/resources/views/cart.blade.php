@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<body>
+
 
 
 
@@ -28,8 +28,8 @@
 </table>
 
 <div class="card-body border-top">
-	<a href="#" class="btn btn-primary float-md-right"> Make Purchase <i class="fa fa-chevron-right"></i> </a>
-	<a href="#" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
+	<a id="deleteAll" class="btn btn-primary float-md-right"> Remove all </a>
+	<a href="/shop" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
 </div>	
 </div> <!-- card.// -->
 
@@ -41,42 +41,20 @@
 	<aside class="col-md-3">
 		<div class="card mb-3">
 			<div class="card-body">
-			<form>
+			<form onsubmit="return false">
+			@csrf
 				<div class="form-group">
-					<label>Have coupon?</label>
+					<label>Information Delivery</label>
 					<div class="input-group">
-						{{-- //AccountID 
-						//IsuedData
-						//Status --}}
-						<input type="text" class="form-control" name="Code" placeholder="Coupon code">
-						 
-						
+						<input id="address" type="text" class="form-control" name="ShoppingAddress" placeholder="ShoppingAddress">
 					</div>
 					<div class="input-group">
-						{{-- //AccountID 
-						//IsuedData
-						//Status --}}
-						 
-						<input type="text" class="form-control" name="ShoppingAddress" placeholder="ShoppingAddress">
-						 
-						
-						
-					</div>
-					<div class="input-group">
-						{{-- //AccountID 
-						//IsuedData
-						//Status --}}
-						 
-						<input type="text" class="form-control" name="" placeholder="ShoppingPhone">
-						
-						
-					</div>
-					
+						<input id="phone" type="text" class="form-control" name="ShoppingPhone" placeholder="ShoppingPhone">
+					</div>	
+					<span id="errcreate"></span>					
 						<span class="input-group-append"> 
-							<button class="btn btn-primary">Apply</button>
+							<button id="odernow" type="submit" class="btn btn-primary">Oder now</button>
 						</span>
-				
-					
 				</div>
 			</form>
 			</div> <!-- card-body.// -->
@@ -89,7 +67,7 @@
 					</dl>
 					<hr>
 					<p class="text-center mb-3">
-						<img src="images/misc/payments.png" height="26">
+						<img src="user/assets/images/misc/payments.png" height="26">
 					</p>
 					
 			</div> <!-- card-body.// -->
@@ -126,7 +104,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <!-- ========================= FOOTER ========================= -->
  
 <!-- ========================= FOOTER END // ========================= -->
-
+<script src="{{asset('user/assets/js/cart/order.js')}}"></script>
 <script src="{{asset('user/assets/js/cart/showcart.js')}}"></script>
-</body>
+<script src="{{asset('user/assets/js/userDT/index.js')}}"></script>
+
+
 @endsection
