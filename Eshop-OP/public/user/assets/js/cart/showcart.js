@@ -44,7 +44,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: "GET",
-        url: "api/carts",
+        url: "http://127.0.0.1:8000/api/carts",
         data: { id: userid },
         success: function (data) {
             console.log(data);

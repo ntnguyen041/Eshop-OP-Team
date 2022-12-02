@@ -10,10 +10,10 @@ $(document).ready(function(){
                 let b=Math.floor(Math.random() * data1.length);
                 let c=Math.floor(Math.random() * data1.length);
                 let d=Math.floor(Math.random() * data1.length);
-                html+='<a href="/product/id?'+data1[a].id+'" class="item-thumb"> <img src="http://127.0.0.1:8000/user/assets/images/imageProduct/'+data1[a].Image+'"></a>'+
-                '<a href="/product/id?'+data1[b].id+'" class="item-thumb"> <img src="http://127.0.0.1:8000/user/assets/images/imageProduct/'+data1[b].Image+'"></a>'+
-                '<a href="/product/id?'+data1[c].id+'" class="item-thumb"> <img src="http://127.0.0.1:8000/user/assets/images/imageProduct/'+data1[c].Image+'"></a>'+
-                '<a href="/product/id?'+data1[d].id+'" class="item-thumb"> <img src="http://127.0.0.1:8000/user/assets/images/imageProduct/'+data1[d].Image+'"></a>'
+                html+='<a href="/product/id?'+data1[a].id+'" class="item-thumb"> <img src="http://127.0.0.1:8000/images/product/'+data1[a].Image+'"></a>'+
+                '<a href="/product/id?'+data1[b].id+'" class="item-thumb"> <img src="http://127.0.0.1:8000/images/product/'+data1[b].Image+'"></a>'+
+                '<a href="/product/id?'+data1[c].id+'" class="item-thumb"> <img src="http://127.0.0.1:8000/images/product/'+data1[c].Image+'"></a>'+
+                '<a href="/product/id?'+data1[d].id+'" class="item-thumb"> <img src="http://127.0.0.1:8000/images/product/'+data1[d].Image+'"></a>'
                 $(".thumbs-wrap").html(html);
             }
         });
@@ -42,7 +42,7 @@ $(document).ready(function(){
                     window.location.href = "/shop";
                 }
                 else{
-                    $(".img-big-wrap").html('<div><img src="http://127.0.0.1:8000/user/assets/images/imageProduct/'+data[0].Image+'"></div>')
+                    $(".img-big-wrap").html('<div><img src="http://127.0.0.1:8000/images/product/'+data[0].Image+'"></div>')
                     $(".deription").html(''+data[0].Description+'');
                     $(".title_type").html(''+data[0].Name+'');
                     $(".price").html(''+data[0].Price+'VND');

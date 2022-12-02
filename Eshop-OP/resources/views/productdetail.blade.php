@@ -82,6 +82,7 @@
 </div> <!-- container .//  -->
 </section>
 
-<script src="{{asset('user/assets/js/product/detail.js')}}"></script>
 <script src="{{asset('user/assets/js/cart/showcart.js')}}"></script>
+<script src="{{asset('user/assets/js/product/detail.js')}}"></script>
+<script src="{{asset('user/assets/js/header/log.js')}}"></script>
 @endsection

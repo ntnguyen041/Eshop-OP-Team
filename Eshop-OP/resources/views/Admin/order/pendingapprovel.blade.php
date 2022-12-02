@@ -6,22 +6,27 @@
             <div
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h6 class="dark:text-white">Order</h6>
-                
-                <a href="{{route('admin.order.index')}}"
-                    class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        All Order
-                    </button> 
-                </a>
-                <a href="{{route('admin.order.orderApproval')}}"
-                    class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Approved Order
-                    </button> 
-                </a>
+                    <h6 class="dark:text-white">Invoices waiting for approval</h6>
 
-                    </div>
+                    <a href="{{route('admin.order.index')}}"
+                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            All Order
+                        </button>
+                    </a>
+                    <a href="{{route('admin.order.orderApproval')}}"
+                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Approved Order
+                        </button>
+                    </a>
+                    <a href="{{route('admin.order.orderDelivery')}}"
+                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Delivery
+                        </button>
+                    </a>
+                </div>
                 <div class="flex-auto px-0 pt-0 pb-2">
                     <div class="p-0 overflow-x-auto ps">
                         <table
@@ -46,6 +51,9 @@
                                     <th
                                         class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                         Total</th>
+                                    <th
+                                        class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-collapse shadow-none dark:border-white/40 dark:text-white text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                        Examine </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,6 +98,17 @@
                                         <p
                                             class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
                                             {{ $invoice->Total}} </p>
+                                    </td>
+
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
+                                        <a href="{{route('admin.order.orderPendingApprovalDetail', $invoice->id)}}"
+                                            class="font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
+                                            <button
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">
+                                                Examine
+                                            </button>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach

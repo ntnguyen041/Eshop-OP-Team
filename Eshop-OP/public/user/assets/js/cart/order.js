@@ -27,7 +27,7 @@ $("#odernow").click(function(){
             },
             success:function(data){
                 if(data==1){
-                    window.location.href = "/";
+                    window.location.href = "/orderuser/order";
                    }
                    else{
                     Swal.fire({
