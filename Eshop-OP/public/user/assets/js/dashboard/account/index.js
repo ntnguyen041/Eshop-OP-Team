@@ -95,7 +95,7 @@ function loadaccount(data){
          
        
         '<td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
-            '<img src="user/assets/images/imageProduct/'+$(this)[0].Avatar+' " style="height:100px; width:100px"></td>'+
+            '<img src="../user/assets/images/avatars/'+$(this)[0].Avatar+'" style="height:100px; width:100px"></td>'+
         '<td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
             '<a class="font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">'+
                 '<button onclick="editUser('+$(this)[0].id+')" value="'+$(this)[0].id+'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Edit</button>'+

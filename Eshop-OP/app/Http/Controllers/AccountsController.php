@@ -123,26 +123,32 @@ class AccountsController extends Controller
         return $account;
     }
     public function adminEditAccount(){
-         $FullName=$_POST['FullName'];
-         return $Fullname;
-       //  $Password =$_POST['Password'];
-       //  $Email =$_POST['Email'];
-       //  $Phone =$_POST['Phone'];
-       //  $Address =$_POST['Address'];
-       //  $Username =$_POST['Username'];
-       // ,$Username,$Password,$Email,$phone,$Address
-        // db($Fullname);
-        
-       //  $up=DB::table('accounts')
-       //  ->where('Username', $Username)
-       // ->update(['Email'=> $email,'FullName' => $FullName,'Address'=>$Address,'Phone'=>$Phone,'Password'=>$Password]);
-       // return $up;
+          $FullName=$_GET['FullName'];
+         
+        $Password =$_GET['Password'];
+        $Email =$_GET['Email'];
+        $Phone =$_GET['Phone'];
+        $Address =$_GET['Address'];
+        $Username =$_GET['Username'];
+        $Image=$_GET['Image'];
+        if($Image=="no"){
+            $up=DB::table('accounts')
+            ->where('Username', $Username)
+           ->update(['Email'=> $Email,'FullName' => $FullName,'Address'=>$Address,'Phone'=>$Phone,'Password'=>$Password]);
+        }
+        else{
+            $up=DB::table('accounts')
+            ->where('Username', $Username)
+           ->update(['Email'=> $Email,'FullName' => $FullName,'Address'=>$Address,'Phone'=>$Phone,'Password'=>$Password,'Avatar'=>$Image]);  
+        }
+         return $up;
    }
     public function uploadfile()
     {
         $filename= $_FILES['file']['name'];
         $location ="user/assets/images/avatars/".$filename;
          move_uploaded_file($_FILES['file']['tmp_name'],$location);
+         return 1;
     }
     
 

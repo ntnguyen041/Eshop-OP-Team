@@ -33,7 +33,7 @@ Route::controller(AccountsController::class)->group(function () {
     Route::get('/loadaccount', 'loadaccount');
     Route::post('/admin/create', 'adminCreateAccount');
     Route::post('/admin/delete', 'adminDeleteAccount');
-    Route::get('/admin/edit', 'adminEditAccount');
+    Route::get('/admin/acedict', 'adminEditAccount');
     Route::post('/admin/uploadfile', 'uploadfile');
 
 });
