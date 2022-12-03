@@ -21,6 +21,7 @@ class AccountsController extends Controller
         
         $accounts = DB::table('accounts')->where('username', $user)->where('password',$pass)->first();
         if(!empty($accounts)){
+            session(['user'=> $accounts->id]);
             if($accounts->IsAdmin){
                 session(['admin'=> $accounts->IsAdmin]);
             }
@@ -29,7 +30,11 @@ class AccountsController extends Controller
         else
             return -1;
     }
-   
+    public function removeAdmin()
+    {
+        session()->flush();
+        return true;
+    }
     public function detail()
     {
         $user=$_GET['id'];

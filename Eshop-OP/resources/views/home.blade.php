@@ -12,7 +12,7 @@
 	<aside class="col-lg col-md-3 flex-lg-grow-0">
 		<h5>Category</h5>
 		<nav class="nav-home-aside">
-			<ul class="menu-category" id="Categorylist">
+			<ul class="menu-category" id="Categorylisthome">
 			</ul>
 		</nav>
 	</aside> <!-- col.// -->

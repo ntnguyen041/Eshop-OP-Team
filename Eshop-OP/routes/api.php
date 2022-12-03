@@ -35,7 +35,7 @@ Route::controller(AccountsController::class)->group(function () {
     Route::post('/admin/delete', 'adminDeleteAccount');
     Route::get('/admin/acedict', 'adminEditAccount');
     Route::post('/admin/uploadfile', 'uploadfile');
-
+    Route::get('/admin/remove', 'removeAdmin');
 });
 
 Route::controller(ProductsController:: class)->group(function(){

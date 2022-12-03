@@ -5,11 +5,11 @@ $(document).ready(function(){
      type:'get',
      data:{id:id},
      success:function(data){
-         $("#user").html(data[0].Username);
-         $("#fullname").val(data[0].FullName);
-         $("#email").val(data[0].Email);
-         $("#phone").val(data[0].Phone);
-         $("#address").val(data[0].Address);
+         $("#user").html(data.Username);
+         $("#fullname").val(data.FullName);
+         $("#email").val(data.Email);
+         $("#phone").val(data.Phone);
+         $("#address").val(data.Address);
      }
     })
 })
