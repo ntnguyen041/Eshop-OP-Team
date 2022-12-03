@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<body>
+
 
 
 
@@ -22,99 +22,14 @@
   <th scope="col" class="text-right" width="200"> </th>
 </tr>
 </thead>
-<tbody>
-<tr>
-	<td>
-		<figure class="itemside">
-			<div class="aside"><img src="images/items/1.jpg" class="img-sm"></div>
-			<figcaption class="info">
-				<a href="#" class="title text-dark">Some name of item goes here nice</a>
-				<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
-			</figcaption>
-		</figure>
-	</td>
-	<td> 
-		<select class="form-control">
-			<option>1</option>
-			<option>2</option>	
-			<option>3</option>	
-			<option>4</option>	
-		</select> 
-	</td>
-	<td> 
-		<div class="price-wrap"> 
-			<var class="price">$1156.00</var> 
-			<small class="text-muted"> $315.20 each </small> 
-		</div> <!-- price-wrap .// -->
-	</td>
-	<td class="text-right"> 
-	<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
-	<a href="" class="btn btn-light"> Remove</a>
-	</td>
-</tr>
-<tr>
-	<td>
-		<figure class="itemside">
-			<div class="aside"><img src="images/items/2.jpg" class="img-sm"></div>
-			<figcaption class="info">
-				<a href="#" class="title text-dark">Product name  goes here nice</a>
-				<p class="text-muted small">Size: XL, Color: blue, <br> Brand: Gucci</p>
-			</figcaption>
-		</figure>
-	</td>
-	<td> 
-		<select class="form-control">
-			<option>1</option>
-			<option>2</option>	
-			<option>3</option>	
-			<option>4</option>	
-		</select> 
-	</td>
-	<td> 
-		<div class="price-wrap"> 
-			<var class="price">$149.97</var> 
-			<small  class="text-muted"> $75.00 each </small>  
-		</div> <!-- price-wrap .// -->
-	</td>
-	<td class="text-right"> 
-	<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
-	<a href="" class="btn btn-light btn-round"> Remove</a>
-	</td>
-</tr>
-<tr>
-	<td>
-		<figure class="itemside">
-			<div class="aside"><img src="images/items/3.jpg" class="img-sm"></div>
-			<figcaption class="info">
-				<a href="#" class="title text-dark">Another name of some product goes just here as a demo text </a>
-				<p class="small text-muted">Size: XL, Color: blue,  Brand: Tissot</p>
-			</figcaption>
-		</figure>
-	</td>
-	<td> 
-		<select class="form-control">
-			<option>1</option>
-			<option>2</option>	
-			<option>3</option>	
-		</select> 
-	</td>
-	<td> 
-		<div class="price-wrap"> 
-			<var class="price">$98.00</var> 
-			<small class="text-muted"> $578.00 each</small> 
-		</div> <!-- price-wrap .// -->
-	</td>
-	<td class="text-right"> 
-		<a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip"> <i class="fa fa-heart"></i></a> 
-		<a href="" class="btn btn-light btn-round"> Remove</a>
-	</td>
-</tr>
+<tbody id="cartItem">
+<!-- cartitem -->
 </tbody>
 </table>
 
 <div class="card-body border-top">
-	<a href="#" class="btn btn-primary float-md-right"> Make Purchase <i class="fa fa-chevron-right"></i> </a>
-	<a href="#" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
+	<a id="deleteAll" class="btn btn-primary float-md-right"> Remove all </a>
+	<a href="/shop" class="btn btn-light"> <i class="fa fa-chevron-left"></i> Continue shopping </a>
 </div>	
 </div> <!-- card.// -->
 
@@ -126,42 +41,20 @@
 	<aside class="col-md-3">
 		<div class="card mb-3">
 			<div class="card-body">
-			<form>
+			<form onsubmit="return false">
+			@csrf
 				<div class="form-group">
-					<label>Have coupon?</label>
+					<label>Information Delivery</label>
 					<div class="input-group">
-						{{-- //AccountID 
-						//IsuedData
-						//Status --}}
-						<input type="text" class="form-control" name="Code" placeholder="Coupon code">
-						 
-						
+						<input id="address" type="text" class="form-control" name="ShoppingAddress" placeholder="ShoppingAddress">
 					</div>
 					<div class="input-group">
-						{{-- //AccountID 
-						//IsuedData
-						//Status --}}
-						 
-						<input type="text" class="form-control" name="ShoppingAddress" placeholder="ShoppingAddress">
-						 
-						
-						
-					</div>
-					<div class="input-group">
-						{{-- //AccountID 
-						//IsuedData
-						//Status --}}
-						 
-						<input type="text" class="form-control" name="" placeholder="ShoppingPhone">
-						
-						
-					</div>
-					
+						<input id="phone" type="text" class="form-control" name="ShoppingPhone" placeholder="ShoppingPhone">
+					</div>	
+					<span id="errcreate"></span>					
 						<span class="input-group-append"> 
-							<button class="btn btn-primary">Apply</button>
+							<button id="odernow" type="submit" class="btn btn-primary">Oder now</button>
 						</span>
-				
-					
 				</div>
 			</form>
 			</div> <!-- card-body.// -->
@@ -170,11 +63,11 @@
 			<div class="card-body">
 					<dl class="dlist-align">
 					  <dt>Total price:</dt>
-					  <dd name="Total" class="text-right">USD 568</dd>
+					  <dd id="total" class="text-right">VND</dd>
 					</dl>
 					<hr>
 					<p class="text-center mb-3">
-						<img src="images/misc/payments.png" height="26">
+						<img src="user/assets/images/misc/payments.png" height="26">
 					</p>
 					
 			</div> <!-- card-body.// -->
@@ -211,7 +104,9 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 <!-- ========================= FOOTER ========================= -->
  
 <!-- ========================= FOOTER END // ========================= -->
+<script src="{{asset('user/assets/js/cart/order.js')}}"></script>
+<script src="{{asset('user/assets/js/cart/showcart.js')}}"></script>
+<script src="{{asset('user/assets/js/userDT/index.js')}}"></script>
 
 
-</body>
 @endsection

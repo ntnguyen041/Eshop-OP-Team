@@ -13,7 +13,7 @@
 			<div class="col-xl-4 col-lg-4 col-md-6">
 				<div class="widgets-wrap float-md-right">
 					<div class="widget-header mr-3">
-						<a href="#" class="widget-view">
+						<a href="/orderuser/order" class="widget-view">
 							<div class="icon-area">
 								<i class="fa fa-store"></i>
 							</div>
@@ -24,7 +24,7 @@
 						<a href="/cart" class="widget-view">
 							<div class="icon-area">
 								<i class="fa fa-shopping-cart"></i>
-								<span class="notify" id="cart">0</span>
+								<span id="notify" class="notify">0</span>
 							</div>
 							<a class="text">Cart</a>
 						</a>
@@ -90,5 +90,6 @@
 </nav>
 </header> <!-- section-header.// -->
 <script src="{{asset('user/assets/js/header/log.js')}}"></script>
+<script src="{{asset('user/assets/js/cart/showcart.js')}}"></script>
 
  
