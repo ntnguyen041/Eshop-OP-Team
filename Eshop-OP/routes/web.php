@@ -154,4 +154,9 @@ Route::prefix('/admin/order')->group(function (){
     Route::patch('/approval/{id}', [InvoicesController::class, 'updateDelivery'])->name('admin.order.updateDelivery');
     Route::patch('/order-delivery/{id}', [InvoicesController::class, 'updateSuccesfulDelivery'])->name('admin.order.updateSuccesfulDelivery');
 });
-
+// nguyen account
+Route::prefix('/admin/account')->group(function (){
+    Route::get('/', function () {return view('/admin/account/index');});
+    Route::get('/create', function () {return view('/admin/account/create');});
+    Route::get('/edit', function () {return view('/admin/account/edit');});
+});

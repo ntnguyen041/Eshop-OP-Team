@@ -38,7 +38,6 @@ $("#update").click(function(){
      else{
         $("#errcreate").css("color","blue");
         $("#errcreate").html("Đang kiểm tra cập nhật vui lòng đợi trong giây lát nhé...")
-       console.log(phone)
         $.ajax({
             url:'api/userupdate',
             type:'post',
@@ -50,7 +49,6 @@ $("#update").click(function(){
                 address:address
             },
             success:function(data){
-               
                 if(data==1){
                     const Toast = Swal.mixin({
                         toast: true,

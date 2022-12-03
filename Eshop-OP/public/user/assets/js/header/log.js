@@ -8,8 +8,8 @@ $(document).ready(function(){
         $("#nameUser").html($.session.get('name'))
         $('#showmenulog').html('<a class="dropdown-item" id="logout">Đăng xuất</a>'+
         '<a class="dropdown-item" id="deltai" href="/TaiKhoan" >Thông tin</a>'+
-        '<a class="dropdown-item" href="/admin/product">Admin</a>')
-    }
+        '<a class="dropdown-item" href="/admin/account">Admin</a>')
+
     if($.session.get('IsAdmin')==0){
         $("#nameUser").html($.session.get('name'))
         $('#showmenulog').html('<a class="dropdown-item" id="logout">Đăng xuất</a>'+
@@ -27,9 +27,9 @@ $(document).ready(function(){
         )
         window.location.href = "/";
     }
-    })
+    });
 
    
-})
+}});
  
  

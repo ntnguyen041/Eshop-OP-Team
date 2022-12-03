@@ -27,9 +27,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(AccountsController::class)->group(function () {
     Route::get('/accout', 'index');
     Route::get('/user', 'detail');
-    Route::get('/loadaccount', 'loadaccount');
     Route::post('/createAccount', 'createAccount');
     Route::post('/userupdate', 'update');
+    // ADMINz
+    Route::get('/loadaccount', 'loadaccount');
+    Route::post('/admin/create', 'adminCreateAccount');
+    Route::post('/admin/delete', 'adminDeleteAccount');
+    Route::get('/admin/acedict', 'adminEditAccount');
+    Route::post('/admin/uploadfile', 'uploadfile');
+
 });
 
 Route::controller(ProductsController:: class)->group(function(){

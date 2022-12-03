@@ -1,5 +1,5 @@
+
 $(document).ready(function(){
-   
     $.ajax({
         url:'/api/loadaccount',
         type:'GET',
@@ -10,6 +10,39 @@ $(document).ready(function(){
    
    
 })
+ function deleteUser(e){
+    $.ajax({
+        url:'http://127.0.0.1:8000/api/admin/delete',
+        type:'post',
+        data:{id:e},
+        success:function(data){
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 1000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener('mouseenter', Swal.stopTimer)
+                  toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+              })
+              Toast.fire({
+                icon: 'success',
+                title: 'Signed in successfully'
+              })
+              
+            $("#loadAccount").html(loadaccount(data))
+       }
+    })
+ }
+ // edit user
+ function editUser(e){
+    $.session.set('editid',e);
+    window.location.href = "/admin/account/edit";
+ }
+
+ //
 function checkadmin(e){
     console.log(e);
 }
@@ -62,12 +95,12 @@ function loadaccount(data){
          
        
         '<td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
-            '<img src="user/assets/images/imageProduct/'+$(this)[0].Avatar+' " style="height:100px; width:100px"></td>'+
+            '<img src="../user/assets/images/avatars/'+$(this)[0].Avatar+'" style="height:100px; width:100px"></td>'+
         '<td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
             '<a class="font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">'+
-                '<button value="1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Edit</button>'+
+                '<button onclick="editUser('+$(this)[0].id+')" value="'+$(this)[0].id+'" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">Edit</button>'+
             '</a>'+
-            '<div><button value="1" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Delete</button></div>'+
+            '<div><button onclick="deleteUser('+$(this)[0].id+')"id="deleteUser" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Delete</button></div>'+
         '</td>'+
     '</tr>'
 
