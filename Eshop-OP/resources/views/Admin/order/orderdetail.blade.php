@@ -3,19 +3,17 @@
 <div class="flex-none w-full max-w-full px-8">
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
-            
+
             <div
                 class="px-8 relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div class="p-3 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                     <h4 class="dark:text-white">Invoice Detail: {{$invoice->Code}}</h4>
                     <h6>KH: {{$invoice->account->FullName}}</h6>
-                    
                 </div>
-                
-                <form action="{{route('admin.order.update', $invoice->id)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.order.update', $invoice->id)}}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
-
                     <table
                         class="items-center w-full mb-0 align-top border-collapse dark:border-white/40 text-slate-500">
                         <thead class="align-bottom">

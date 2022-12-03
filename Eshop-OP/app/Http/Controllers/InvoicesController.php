@@ -19,7 +19,6 @@ class InvoicesController extends Controller
     {
         //
         $invoices = Invoices::orderBy('id', 'DESC')->get();
-
         return view('admin.order.index', compact('invoices'));
     }
     public function orderPendingApproval(){
@@ -40,7 +39,6 @@ class InvoicesController extends Controller
     }
     public function updateDelivery($id){
         Invoices::where('id',$id)->update([
-            
             'Status' => 3,
         ]);
         $invoices = Invoices::where('Status', '=', 2,)->orderBy('id', 'DESC')->get();
