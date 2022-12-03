@@ -51,7 +51,7 @@ $(document).ready(function(){
 
 /////////search hoa don
 
-$("#searchbutton").click(function(){
+$("#searchString").keypress(function(){
     var format = /^[^a-zA-Z0-9]+$/;
     let search = $("#searchString").val();
     //alert('sdfasd')
@@ -85,29 +85,30 @@ function searchinvoice(e){
         type:'GET',
         data:{
             invoiceId:invoiceId,
-            stringsrearch:"",
+            stringsearch:"",
         },
         success:function(data){
             // $("#countitem").html(data.length)
-            $("#getinvoice").html(loadorder(data));
+            $("#getorder").html(loadorder(data));
+            consol.log(data)
         }
     })
-    return view
+    return view("searchorder");
 }
 
-$(document).ready(function(){
+// $(document).ready(function(){
 
-    let id = $.session.get('id');
-    $.ajax({
-        url:'/orderuser',
-        type:'GET',
-        data:{id:id},
-        success:function(data){
-            console.log(data)
-            $("#Invoicelist").html(loadorder(data));
-        }
-    })
-})
+//     let id = $.session.get('id');
+//     $.ajax({
+//         url:'/api/ajax-search_order',
+//         type:'GET',
+//         data:{id:id},
+//         success:function(data){
+//             console.log(data)
+//             $("#getorder").html(loadorder(data));
+//         }
+//     })
+// })
 
 function loadorder(data){
     let html="";
@@ -138,7 +139,7 @@ function loadorder(data){
         '<td'+
         '    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
         '    <p'+
-        '        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+$(this)[0].Full+' </p>'+
+        '        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+ $(this)[0].FullName +' </p>'+
         '</td>'+
         '<td'+
         '    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
@@ -180,32 +181,4 @@ function loadorder(data){
     })
     return html;
 }
-
 ////////////// lọc hóa đơn
-
-$("#searchbutton").click(function(){
-    var format = /^[^a-zA-Z0-9]+$/;
-    let search = $("#searchString").val();
-    //alert('sdfasd')
-    if(!search.match(format)){
-        $.ajax({
-            type:'GET',
-            url:"http://127.0.0.1:8000/api/ajax-search_order",
-            data:{
-                stringsearch: search
-        },
-            success:function(data){
-                if(data!=0){
-                    // $("#countitem").html(data.length)
-                    $("#getorder").html(loadorder(data));
-                }
-                else{
-                    alert('chúng tôi không thể tìm hóa đơn này')
-                }
-            }
-        })
-    }
-    else{
-        alert('chúng tôi không thể tìm hóa đơn này')
-    }
-})

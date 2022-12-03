@@ -1,6 +1,5 @@
 @extends('layouts.dashboard')
 @section('contentt')
-
 <div class="flex-none w-full max-w-full px-8">
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
@@ -35,7 +34,6 @@
                 <div class="flex-auto px-0 pt-0 pb-2">
                     <div class="p-0 overflow-x-auto ps">
                         <table
-                       
                             class="items-center w-full mb-0 align-top border-collapse dark:border-white/40 text-slate-500">
                             <thead class="align-bottom">
                                 <tr>
@@ -65,7 +63,7 @@
                                         Action</th>
                                 </tr>
                             </thead>
-                            <tbody id = "getorder">
+                            <tbody id="getorder">
                                 <tr>
                                     @foreach ($invoices as $invoice)
                                     <td
@@ -168,5 +166,5 @@
         </div>
     </div>
 </div>
-<script src="{{asset('user/assets/js/invoice/index.js')}}"></script>
+
 @endsection

@@ -56,12 +56,12 @@ Route::post('/ordernow','ordernow');
 
 Route::prefix('/admin')->group(function (){
     Route::get('/accounts', [ProductsController::class, 'accounts']);
-    
+
 });
 
 Route::get('/ajax-category',[CategorysController::class,'indexuser'])->name('ajax-category');
 Route::get('/ajax-search_order',[InvoicesController::class,'search'])->name('ajax-search_order');
-Route::get('/ajax-fill_oder',[InvoicesController::class,'search'])->name('ajax-fill_oder');
+Route::get('/ajax-fill_order',[InvoicesController::class,'search'])->name('ajax-fill_order');
 Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
 
 

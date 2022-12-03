@@ -93,7 +93,9 @@ Route::get('/product/create', function () {
     return view('product/create');
 });
 
-
+// Route::get('/admin/order/searchorder', function () {
+//     return view('Admin.order.searchorder');
+// });
 
 Route::get('/login', [AccountController::class, 'index'])->name('index');
 Route::get('/register', [AccountController::class, 'Register'])->name('Register');
