@@ -30,7 +30,7 @@ Route::controller(AccountsController::class)->group(function () {
     Route::get('/user', 'detail');
     Route::post('/createAccount', 'createAccount');
     Route::post('/userupdate', 'update');
-    // ADMINz
+    // ADMINz 
     Route::get('/loadaccount', 'loadaccount');
     Route::post('/admin/create', 'adminCreateAccount');
     Route::post('/admin/delete', 'adminDeleteAccount');
@@ -65,4 +65,5 @@ Route::get('/ajax-fill_order',[InvoicesController::class,'search'])->name('ajax-
 Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
 
 
+Route::get('/ajax-search_account',[AccountsController::class,'searchAccount'])->name('ajax-search_account');
 

@@ -72,52 +72,11 @@ class InvoicesController extends Controller
 }
 
 
-public function searchAccount(){
 
-    $search=$_GET['stringsearch'];
-         if($search==null){ 
-             $fullorder=DB::table('Invoices as I');
-             return $fullorder;
-         }else
-         //$search="Điện";
-         $fullorder=DB::table('Invoices as I')
-         ->select('Code','FullName','IsuedData','ShoppingAddress','ShoppingPhone','Total',)
-         ->join('Accounts as a','I.Account_id','=','a.id')
-         // ->join('Categorys as C','P.Category_id','=','C.id')
-         // ->join('Categorys as C','P.Category_id','=','C.id')
-         ->whereDay('I.IsuedData', 'LIKE','%'.$search.'%')
-         ->orWhereMonth('I.IsuedData', 'LIKE','%'.$search.'%')
-         ->orWhereYear('I.IsuedData', 'LIKE','%'.$search.'%')
-         ->orWhere("a.FullName",'LIKE','%'.$search.'%')
-         ->orWhere("I.ShoppingPhone",'LIKE','%'.$search.'%')
-         ->get();
-         return $fullorder; 
- }
  
  
 
-  public function searchBrand(){
- 
-     $search=$_GET['stringsearch'];
-          if($search==null){ 
-              $fullorder=DB::table('Invoices as I');
-              return $fullorder;
-          }else
-          //$search="Điện";
-          $fullorder=DB::table('Invoices as I')
-          ->select('Code','FullName','IsuedData','ShoppingAddress','ShoppingPhone','Total',)
-          ->join('Accounts as a','I.Account_id','=','a.id')
-          // ->join('Categorys as C','P.Category_id','=','C.id')
-          // ->join('Categorys as C','P.Category_id','=','C.id')
-          ->whereDay('I.IsuedData', 'LIKE','%'.$search.'%')
-          ->orWhereMonth('I.IsuedData', 'LIKE','%'.$search.'%')
-          ->orWhereYear('I.IsuedData', 'LIKE','%'.$search.'%')
-          ->orWhere("a.FullName",'LIKE','%'.$search.'%')
-          ->orWhere("I.ShoppingPhone",'LIKE','%'.$search.'%')
-          ->get();
-          return $fullorder; 
-  }
-  
+
  
   public function searchCat(){
  
