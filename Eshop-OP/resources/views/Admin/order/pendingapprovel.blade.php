@@ -99,7 +99,6 @@
                                             class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
                                             {{ $invoice->Total}} </p>
                                     </td>
-
                                     <td
                                         class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <a href="{{route('admin.order.orderPendingApprovalDetail', $invoice->id)}}"

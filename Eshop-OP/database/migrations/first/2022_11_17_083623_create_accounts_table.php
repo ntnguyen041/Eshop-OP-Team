@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');//khoa chinh tang tu dong
             $table->string('Username')->unique();
-            $table->string('Password');
-            $table->string('Email');
-            $table->string('Phone');
-            $table->string('Address');
-            $table->string('FullName');
-            $table->integer('IsAdmin');
-            $table->string('Avatar');
-            $table->integer('Status');// tài khoản còn sử dụng hay không
+            $table->string('Password')->nullable();
+            $table->string('Email')->nullable();
+            $table->string('Phone')->nullable();
+            $table->string('Address')->nullable();
+            $table->string('FullName')->nullable();
+            $table->integer('IsAdmin')->nullable();
+            $table->string('Avatar')->nullable();
+            $table->integer('Status')->nullable();// tài khoản còn sử dụng hay không
             $table->timestamps();
             $table->softDeletes();// xoa mem
         });
