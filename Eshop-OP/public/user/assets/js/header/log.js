@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     if($.session.get('id')==null){
         $("#nameUser").html("My profile")
         $('#showmenulog').html('<a class="dropdown-item" href="/login">Đăng nhập</a>'+
@@ -9,7 +10,7 @@ $(document).ready(function(){
         $('#showmenulog').html('<a class="dropdown-item" id="logout">Đăng xuất</a>'+
         '<a class="dropdown-item" id="deltai" href="/TaiKhoan" >Thông tin</a>'+
         '<a class="dropdown-item" href="/admin/account">Admin</a>')
-
+    }
     if($.session.get('IsAdmin')==0){
         $("#nameUser").html($.session.get('name'))
         $('#showmenulog').html('<a class="dropdown-item" id="logout">Đăng xuất</a>'+
@@ -17,6 +18,12 @@ $(document).ready(function(){
         )
     }
     $("#logout").click(function(){
+        $.ajax({
+            url:'api/admin/remove',
+            type:'get',
+            success:function(data){}
+            
+        });
         $.session.remove('id');
         $.session.remove('IsAdmin');
         $.session.remove('name');
@@ -24,12 +31,13 @@ $(document).ready(function(){
             $("#nameUser").html("My profile")
             $('#showmenulog').html('<a class="dropdown-item" href="/login">Đăng nhập</a>'+
         '<a class="dropdown-item" href="/register">Đăng Ký</a>'
-        )
+        );
         window.location.href = "/";
+        
+        
     }
     });
+});
 
-   
-}});
  
  

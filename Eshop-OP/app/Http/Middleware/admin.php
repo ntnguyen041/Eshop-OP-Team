@@ -17,8 +17,25 @@ class admin
     public function handle(Request $request, Closure $next)
     {
         // return $next($request);
-        if($request->session()->exists("IsAdmin"))
-        return $next($request);
+        // if($request->session()->exists("admin"))
+        // return redirect()->route('home');
+        // if(!$this->isAdmin()){
+        //     return redirect(round('home'));
+        // }
+        // return $next($request);
+    //    return session()->get("admin");
+        // echo session()->get("admin");
+        // session()->flush();
+        if(session()->get("admin")==1)
+            return $next($request);
         return redirect()->route('home');
     }
+    public function isAdmin(){
+        if($request->session()->exists("admin")){
+            return true;
+        }
+        return false;
+        
+    }
+
 }
