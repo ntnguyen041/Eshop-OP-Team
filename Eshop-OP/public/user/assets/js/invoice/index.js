@@ -68,13 +68,13 @@ $("#searchbutton").click(function(){
                     $("#getorder").html(loadorder(data));
                 }
                 else{
-                    alert('chúng tôi không thể tìm sản phẩm này')
+                    alert('chúng tôi không thể tìm hóa đơn này')
                 }
             }
         })
     }
     else{
-        alert('chúng tôi không thể tìm sản phẩm này')
+        alert('chúng tôi không thể tìm hóa đơn này')
     }
 })
 
@@ -89,9 +89,10 @@ function searchinvoice(e){
         },
         success:function(data){
             // $("#countitem").html(data.length)
-            $("#getinvoice").html(loadinvoice(data));
+            $("#getinvoice").html(loadorder(data));
         }
     })
+    return view
 }
 
 $(document).ready(function(){
@@ -103,7 +104,7 @@ $(document).ready(function(){
         data:{id:id},
         success:function(data){
             console.log(data)
-            $("#Invoicelist").html(loadinvoice(data));
+            $("#Invoicelist").html(loadorder(data));
         }
     })
 })
@@ -111,6 +112,21 @@ $(document).ready(function(){
 function loadorder(data){
     let html="";
     $.each(data,function(){
+        if($(this)[0].Status == 0)
+        {
+            trangthai = 'Chưa xác nhận';
+        }
+        else if($(this)[0].Status == 3)
+        {
+            trangthai = 'Đang giao';
+        }
+        else if($(this)[0].Status == 2)
+        {
+            trangthai = 'Đã xác nhận';
+        }
+        else{
+            trangthai = 'Giao thành công';
+        }
         html+='<tr>'+
         '<td'+
         '    class="p-4 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
@@ -147,7 +163,7 @@ function loadorder(data){
         '<td'+
         '    class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
         '    <p'+
-        '        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+$(this)[0].Status+' </p>'+
+        '        class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+$(this)[0].trangthai+' </p>'+
         '</td>'+
         
         '<td'+
@@ -165,3 +181,31 @@ function loadorder(data){
     return html;
 }
 
+////////////// lọc hóa đơn
+
+$("#searchbutton").click(function(){
+    var format = /^[^a-zA-Z0-9]+$/;
+    let search = $("#searchString").val();
+    //alert('sdfasd')
+    if(!search.match(format)){
+        $.ajax({
+            type:'GET',
+            url:"http://127.0.0.1:8000/api/ajax-search_order",
+            data:{
+                stringsearch: search
+        },
+            success:function(data){
+                if(data!=0){
+                    // $("#countitem").html(data.length)
+                    $("#getorder").html(loadorder(data));
+                }
+                else{
+                    alert('chúng tôi không thể tìm hóa đơn này')
+                }
+            }
+        })
+    }
+    else{
+        alert('chúng tôi không thể tìm hóa đơn này')
+    }
+})

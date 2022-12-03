@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('contentt')
+@section('contentt') 
 <div class="flex-none w-full max-w-full px-8">
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">

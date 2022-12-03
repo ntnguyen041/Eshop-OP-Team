@@ -25,13 +25,22 @@
                     <input type="text" id="searchString" name="name"
                         class="pl-9 text-sm focus:shadow-primary-outline ease w-1/100 leading-5.6 relative -ml-px block min-w-0 flex-auto rounded-lg border border-solid border-gray-300 dark:bg-slate-850 dark:text-white bg-white bg-clip-padding py-2 pr-3 text-gray-700 transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none focus:transition-shadow"
                         placeholder="Search" />
-                        <button id="searchbutton" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mb-2`" type = "submit">
+                        <button href ="searchorder.blade.php" id="searchbutton" class="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mb-2`" type = "submit">
                             <i></i> Search
                         </button>
                 </div>
             </div>
+            {{-- <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category 
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 38px, 0px); top: 0px; left: 0px; will-change: transform;">
+                   <a class="dropdown-item" href="#">Action</a>
+                   <a class="dropdown-item" href="#">Another action</a>
+                   <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+             </div>
 
-            
+             --}}
            
 
             <ul class="flex flex-row justify-end pl-0 mb-0 list-none md-max:w-full">
