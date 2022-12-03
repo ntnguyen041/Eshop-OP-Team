@@ -19,7 +19,7 @@
       <tbody>
         <tr>
         <ul class="list-menu" id="Invoicelist">
-					
+				
           </ul>
           
         </tr>
@@ -30,6 +30,7 @@
   </div>
 </div>
 <script src="{{asset('user/assets/js/invoice/index.js')}}"></script>
+<script src="{{asset('user/assets/js/cart/order.js')}}"></script>
 @endsection
 
 

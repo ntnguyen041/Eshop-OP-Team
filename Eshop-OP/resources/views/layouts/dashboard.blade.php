@@ -12,9 +12,12 @@
     <!-- Font Awesome Icons -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    {{-- <script src="{{asset('user/assets/js/jquery-2.0.0.min.js')}}" type="text/javascript"></script> --}}
-
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+{{-- <script src="{{asset('user/assets/js/jquery-2.0.0.min.js')}}"  type="text/javascript"></script> --}}
+    {{-- //thu vien alert --}}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{asset('user/assets/js/jquery-sessition.js')}}" type="text/javascript"></script>
+    
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Nucleo Icons -->
     <link href="{{asset('/user/assets/css/nucleo-icons.css')}}" rel="stylesheet" />
     <link href="{{asset('/user/assets/css/nucleo-svg.css')}}" rel="stylesheet" />

@@ -1,32 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
-  <div class="windown">
-    <div class="order-info-content">
-    
-      <hr>
-      <div class="row">
-          <div class="col-md">Mã đơn hàng</div>
-          <div class="col-md">Ngày tháng đặt hàng</div>
-          <div class="col-md">Địa chỉ</div>
-          <div class="col-md">Số điện thoại</div>
-          <div class="col-md">Tiền</div>
-          <div class="col-md">Trạng thái</div>
-          <div class="col-md">Action</div>
-      </div> 
+    <h2>Order Item</h2>
+    <h6><th>Mã HD: {{$invoice->Code}}</th></h6>
+    <div class="windown">
+        <div class="order-info-content">
+            <hr>
+            <table class='table'>
+                <thead>
+                    <tr>
+                     
+                        <th scope="col">Sản phẩm</th>
+                        <th scope="col">Tiền</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Tổng tiền</th>
+                    </tr>
+                </thead>
 
-      <tbody>
-        <tr>
-      
-          
-        </tr>
-        </tbody>
-    
+                <form action="{{route('order.details', $invoice->id)}}">
+                    <tbody>
+                        @foreach($Details as $detail)
+                        <tr>
+                            
+                            <td>{{$detail->product->Name}}</td>
+                            <td>{{$detail->product->Price}}</td>
+                            <td>{{$detail->Quantity}}</td>
+                            <td>{{$detail->UnitPice}}</td>
+                        </tr>
+                     
+                            @endforeach
+                    </tbody>
+
+                </form>
+            </table>
+        </div>
     </div>
-    
-  </div>
 </div>
-<script src="{{asset('user/assets/js/invoice/index.js')}}"></script>
 @endsection

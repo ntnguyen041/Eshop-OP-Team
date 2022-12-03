@@ -27,13 +27,18 @@ use App\Http\Controllers\ReportsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Route::get('/shop', function () {
+//Route::get('/shop', function () {
 //     //session()->flush();
 //     return session()->get('admin');
 // })->name('shop');
 Route::get('/', function () {
     return view('home');
+    // session()->flush();
 })->name('home');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
 Route::get('/shop', function () {
     return view('shop');
@@ -52,7 +57,7 @@ Route::get('/shop', function () {
 
 Route::get('/TaiKhoan',function(){
     return view('userdetail');
-});
+})->middleware('checkuser');
 Route::get('/product/{id}',function(){
     return view('productdetail');
 });
@@ -61,19 +66,17 @@ Route::get('/register',function(){
     return view('register');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
+
 
 Route::get('/cart', function () {
     return view('cart');
-});
+})->middleware('checkuser');
 Route::get('/category', function () {
     return view('category');
 });
 Route::get('orderuser/order', function () {
     return view('orderuser/order');
-});
+})->middleware('checkuser');
 
 
 // Route::get('/register', function () {
@@ -89,7 +92,7 @@ Route::get('/content', function () {
 Route::get('/product/create', function () {
     return view('product/create');
 });
- 
+
 
 
 Route::get('/login', [AccountController::class, 'index'])->name('index');
@@ -99,9 +102,7 @@ Route::get('/register', [AccountController::class, 'Register'])->name('Register'
 //     Route::get('/login', [AccountController::class, 'index'])->name('index');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+
 
 Route::get('/orderuser',[InvoicesController::class,'history'])->name('order.history');
 Route::get('orderuser/details/{id}',[InvoiceDetailsController::class,'details'])->name('order.details');
@@ -112,7 +113,8 @@ Route::get('orderuser/details/{id}',[InvoiceDetailsController::class,'details'])
 
 
 // Route JIDUY
-Route::prefix('/admin/product')->group(function (){
+Route::middleware('checkadmin')->prefix('/admin/product')->group(function (){
+    
     Route::get('/create', [ProductsController::class, 'create'])->name('admin.product.create');
     Route::get('/', [ProductsController::class, 'index'])->name('admin.product.index');
     Route::get('/{id}', [ProductsController::class, 'show'])->name('admin.product.show');
@@ -122,7 +124,7 @@ Route::prefix('/admin/product')->group(function (){
     Route::delete('/{id}', [ProductsController::class, 'destroy'])->name('admin.product.destroy');
 });
 
-Route::prefix('/admin/category')->group(function (){
+Route::middleware('checkadmin')->prefix('/admin/category')->group(function (){
     Route::get('/create', [CategorysController::class, 'create'])->name('admin.category.create');
     Route::get('/', [CategorysController::class, 'index'])->name('admin.category.index');
     Route::get('/{id}', [CategorysController::class, 'show'])->name('admin.category.show');
@@ -132,7 +134,7 @@ Route::prefix('/admin/category')->group(function (){
     Route::delete('/{id}', [CategorysController::class, 'destroy'])->name('admin.category.destroy');
 });
 
-Route::prefix('/admin/brand')->group(function (){
+Route::middleware('checkadmin')->prefix('/admin/brand')->group(function (){
     Route::get('/create', [BrandsController::class, 'create'])->name('admin.brand.create');
     Route::get('/', [BrandsController::class, 'index'])->name('admin.brand.index');
     Route::get('/{id}', [BrandsController::class, 'show'])->name('admin.brand.show');
@@ -142,11 +144,15 @@ Route::prefix('/admin/brand')->group(function (){
     Route::delete('/{id}', [BrandsController::class, 'destroy'])->name('admin.brand.destroy');
 });
 
-Route::prefix('/admin/order')->group(function (){
-    route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index');
-    route::get('/pending-approval', [InvoicesController::class, 'orderPendingApproval'])->name('admin.order.orderPendingApproval');
-    route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('admin.order.orderApproval');
-    route::get('/order-delivery', [InvoicesController::class, 'orderDelivery'])->name('admin.order.orderDelivery');
+Route::get('/orderuser',[InvoicesController::class,'history'])->name('order.history')->middleware('checkuser');
+Route::get('/orderuser/details/{id}',[InvoicesController::class,'orderDetail'])->name('order.details')->middleware('checkuser');
+
+
+Route::middleware('checkadmin')->prefix('/admin/order')->group(function (){
+    Route::get('/', [InvoicesController::class, 'index'])->name('admin.order.index');
+    Route::get('/pending-approval', [InvoicesController::class, 'orderPendingApproval'])->name('admin.order.orderPendingApproval');
+    Route::get('/approval', [InvoicesController::class, 'orderApproval'])->name('admin.order.orderApproval');
+    Route::get('/order-delivery', [InvoicesController::class, 'orderDelivery'])->name('admin.order.orderDelivery');
     Route::get('/pending-approval-detail/{id}', [InvoicesController::class, 'orderPendingApprovalDetail'])->name('admin.order.orderPendingApprovalDetail');
     Route::get('/invoice-detail/{id}', [InvoicesController::class, 'invoiceDetail'])->name('admin.order.invoiceDetail');
     Route::patch('/{id}', [InvoicesController::class, 'update'])->name('admin.order.update');
@@ -154,10 +160,19 @@ Route::prefix('/admin/order')->group(function (){
     Route::patch('/order-delivery/{id}', [InvoicesController::class, 'updateSuccesfulDelivery'])->name('admin.order.updateSuccesfulDelivery');
 });
 
-route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.darhboard.index');
 
-Route::prefix('/admin/report/product')->group(function (){
+route::middleware('checkadmin')->get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.darhboard.index');
+
+Route::middleware('checkadmin')->prefix('/admin/report/product')->group(function (){
     route::get('/', [ReportsController::class, 'index'])->name('admin.report.product.index');
     route::get('/report-from-to-date', [ReportsController::class, 'reportFromToDate'])->name('admin.report.product.reportFromToDate');
+});
    
+
+// nguyen account
+Route::middleware('checkadmin')->prefix('/admin/account')->group(function (){
+    Route::get('/', function () {return view('/admin/account/index');});
+    Route::get('/create', function () {return view('/admin/account/create');});
+    Route::get('/edit', function () {return view('/admin/account/edit');});
+
 });

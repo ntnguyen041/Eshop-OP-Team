@@ -13,7 +13,7 @@ class AccountsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   
+
     public function index()
     {
         $user=$_GET['user'];
@@ -21,6 +21,7 @@ class AccountsController extends Controller
         
         $accounts = DB::table('accounts')->where('username', $user)->where('password',$pass)->first();
         if(!empty($accounts)){
+            session(['user'=> $accounts->id]);
             if($accounts->IsAdmin){
                 session(['admin'=> $accounts->IsAdmin]);
             }
@@ -29,15 +30,15 @@ class AccountsController extends Controller
         else
             return -1;
     }
-    public function loadaccount()
+    public function removeAdmin()
     {
-        $accounts = DB::table('accounts')->get();
-            return $accounts;//response()->json($accounts, 200);
+        session()->flush();
+        return true;
     }
     public function detail()
     {
         $user=$_GET['id'];
-        $account = DB::table('accounts')->where('id', $user)->get();
+        $account = DB::table('accounts')->where('id', $user)->first();
         return $account;//response()->json($accounts, 200);
        
     }
@@ -71,6 +72,90 @@ class AccountsController extends Controller
        
         
     }
+    // admin 
+    public function loadaccount()
+    {
+        $accounts = DB::table('accounts')->get();
+            return $accounts;//response()->json($accounts, 200);
+    }
+    public function adminCreateAccount(){
+         $FullName =$_POST['FullName'];
+         $Username =$_POST['Username'];
+        $Password =$_POST['Password'];
+         $Email =$_POST['Email'];
+         $Phone =$_POST['Phone'];
+         $Address =$_POST['Addess'];
+         $Image =$_POST['Image'];
+
+        $accountErr=DB::table('accounts')->where('Username',$Username)->get();
+         if($accountErr->count()){
+             return -1;
+         }
+         else{
+            // DB::table('accounts')->insertGetId(['username' => $user, 'Password' => $pass,'FullName'=>$fullname,'IsAdmin'=>0,'Status'=>1]);
+            // 
+             DB::table('accounts')->insertGetId(['username' => $Username, 'Password' => $Password,'FullName'=>$FullName,'Email'=>$Email,'Phone'=>$Phone,'Address'=>$Address,'Avatar'=>$Image,'IsAdmin'=>0,'Status'=>1]);
+            return 1;
+         }
+        return 2;
+    }
+    public function adminUpdateAccount(){
+         $FullName =$_POST['FullName'];
+         $Username =$_POST['Username'];
+        $Password =$_POST['Password'];
+         $Email =$_POST['Email'];
+         $Phone =$_POST['Phone'];
+         $Address =$_POST['Addess'];
+         $Image =$_POST['Image'];
+
+        $accountErr=DB::table('accounts')->where('Username',$Username)->get();
+         if($accountErr->count()){
+             return -1;
+         }
+         else{
+            // DB::table('accounts')->insertGetId(['username' => $user, 'Password' => $pass,'FullName'=>$fullname,'IsAdmin'=>0,'Status'=>1]);
+            // 
+             DB::table('accounts')->insertGetId(['username' => $Username, 'Password' => $Password,'FullName'=>$FullName,'Email'=>$Email,'Phone'=>$Phone,'Address'=>$Address,'Avatar'=>$Image,'IsAdmin'=>0,'Status'=>1]);
+            return 1;
+         }
+        
+    }
+    public function adminDeleteAccount(){
+        $id =$_POST['id'];
+        DB::table('accounts')->delete($id);
+
+         $account=DB::table('accounts')->get();
+        return $account;
+    }
+    public function adminEditAccount(){
+          $FullName=$_GET['FullName'];
+         
+        $Password =$_GET['Password'];
+        $Email =$_GET['Email'];
+        $Phone =$_GET['Phone'];
+        $Address =$_GET['Address'];
+        $Username =$_GET['Username'];
+        $Image=$_GET['Image'];
+        if($Image=="no"){
+            $up=DB::table('accounts')
+            ->where('Username', $Username)
+           ->update(['Email'=> $Email,'FullName' => $FullName,'Address'=>$Address,'Phone'=>$Phone,'Password'=>$Password]);
+        }
+        else{
+            $up=DB::table('accounts')
+            ->where('Username', $Username)
+           ->update(['Email'=> $Email,'FullName' => $FullName,'Address'=>$Address,'Phone'=>$Phone,'Password'=>$Password,'Avatar'=>$Image]);  
+        }
+         return $up;
+   }
+    public function uploadfile()
+    {
+        $filename= $_FILES['file']['name'];
+        $location ="user/assets/images/avatars/".$filename;
+         move_uploaded_file($_FILES['file']['tmp_name'],$location);
+         return 1;
+    }
+    
 
 
     // public function detail()

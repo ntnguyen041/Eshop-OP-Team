@@ -5,11 +5,11 @@ $(document).ready(function(){
      type:'get',
      data:{id:id},
      success:function(data){
-         $("#user").html(data[0].Username);
-         $("#fullname").val(data[0].FullName);
-         $("#email").val(data[0].Email);
-         $("#phone").val(data[0].Phone);
-         $("#address").val(data[0].Address);
+         $("#user").html(data.Username);
+         $("#fullname").val(data.FullName);
+         $("#email").val(data.Email);
+         $("#phone").val(data.Phone);
+         $("#address").val(data.Address);
      }
     })
 })
@@ -38,7 +38,6 @@ $("#update").click(function(){
      else{
         $("#errcreate").css("color","blue");
         $("#errcreate").html("Đang kiểm tra cập nhật vui lòng đợi trong giây lát nhé...")
-       console.log(phone)
         $.ajax({
             url:'api/userupdate',
             type:'post',
@@ -50,7 +49,6 @@ $("#update").click(function(){
                 address:address
             },
             success:function(data){
-               
                 if(data==1){
                     const Toast = Swal.mixin({
                         toast: true,

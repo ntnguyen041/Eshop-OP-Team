@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\InvoiceDetails;
-use Illuminate\Support\Facades\DB;
-
 use App\Models\Invoices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class InvoicesController extends Controller
 {
@@ -63,10 +63,8 @@ class InvoicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+   
+
 
     /**
      * Store a newly created resource in storage.
@@ -134,6 +132,11 @@ class InvoicesController extends Controller
          $oder = DB::table('invoices')->where('Account_id',$account)->get();
         return $oder;
     }
-   
+    
+    public function orderDetail($id){
+        $Details = InvoiceDetails::all()->where('Invoice_id', '=', $id);
+        
+        return view('/orderuser/details', ['invoice' => Invoices::where('id', $id)->first()], compact('Details'));
+    }
     
 }
