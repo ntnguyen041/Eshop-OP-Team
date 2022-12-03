@@ -5,11 +5,11 @@
         <div class="flex-none w-full max-w-full px-3">
             <div
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
-                <div class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h6 class="dark:text-white">Product</h6>
+                <div class="flex flex-row justify-between p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
+                    <h4 class="dark:text-white">Product</h4>
                     <a href="{{route('admin.product.create')}}"
-                        class="text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        class=" text-xs font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
+                        <button class=" bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-6 rounded ">
                             Create
                         </button> </a>
                 </div>
@@ -70,7 +70,7 @@
                                     <td
                                         class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">
                                         <p style="white-space: normal;"
-                                            class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80 ">
+                                            class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">
                                             {{$product->Description}}</p>
                                     </td>
                                     <td
@@ -106,7 +106,7 @@
                                         <a href="{{route('admin.product.edit', $product->id)}}"
                                             class="font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">
                                             <button
-                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">
+                                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2 ">
                                                 Edit
                                             </button>
                                         </a>

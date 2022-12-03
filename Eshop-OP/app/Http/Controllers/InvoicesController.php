@@ -38,7 +38,6 @@ class InvoicesController extends Controller
     }
     public function updateDelivery($id){
         Invoices::where('id',$id)->update([
-            
             'Status' => 3,
         ]);
         $invoices = Invoices::where('Status', '=', 2,)->orderBy('id', 'DESC')->get();
