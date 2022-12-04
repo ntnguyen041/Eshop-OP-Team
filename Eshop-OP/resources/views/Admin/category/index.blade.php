@@ -40,7 +40,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="loadCat">
                                 <tr>
                                     @foreach ($categorys as $category)
                                     <td
@@ -95,4 +95,5 @@
         </div>
     </div>
 </div>
+<script src="{{asset('user/assets/js/cart/showcart.js')}}"></script>
 @endsection

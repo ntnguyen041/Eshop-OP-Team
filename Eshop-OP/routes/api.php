@@ -64,6 +64,9 @@ Route::get('/ajax-search_order',[InvoicesController::class,'search'])->name('aja
 Route::get('/ajax-fill_order',[InvoicesController::class,'search'])->name('ajax-fill_order');
 Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
 
+Route::get('/ajax-search_category',[CategorysController::class,'searchCat'])->name('ajax-search_category');
+
+Route::get('/ajax-search_brands',[BrandController::class,'searchBrand'])->name('ajax-search_brands');
 
 Route::get('/ajax-search_account',[AccountsController::class,'searchAccount'])->name('ajax-search_account');
 
