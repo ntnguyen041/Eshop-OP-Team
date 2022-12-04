@@ -33,6 +33,7 @@
 		<div class="filter-content collapse show" id="collapse_2">
 			<div class="inner" id="getbrand"> 
 			</div> <!-- inner.// -->
+			<button class="btn btn-primary" id="getidbrand" type="button">Áp dụng</button>
 		</div>
 	</article>
 	 <!-- filter-group .// -->
