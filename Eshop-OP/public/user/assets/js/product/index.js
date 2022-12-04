@@ -1,73 +1,34 @@
-function loadproduct(data,min,max){
 
+function loadproductall(){
+    
+}
+
+function loadproduct(data,min,max){
     let html="";
     if(max>data.length){
         max=data.length;
     }
-    $("#backproduct").click(function(){
-       if(max==5){
-        max=5;
-        min=0
-       }
-    })
-    $("#nextproduct").click(function(){
+    for (let item = min; item < data.length; item++) {
+        let str=data[item].NNa.slice(0,30);
+         if(data[item].NNa.length>30){
+            str+='...'
+         }
+        html+='<div class="col-md-4"><figure class="card card-product-grid">'+
+        '<div class="img-wrap"> '+
+        '<img src="images/product/'+data[item].Image+'">'+
+        '</div> <!-- img-wrap.// -->'+
+        '<figcaption class="info-wrap">'+
+        '<a href="product/id?'+data[item].id+'"class="title mb-2">'+str+'</a>'+
+        '<div class="price-wrap mb-3">'+
+        '<span class="price">'+data[item].Price+'</span> '+
+        '<small class="text-muted">/per item</small>'+
+        '</div> <!-- price-wrap.// -->'+
+        '<a href="product/id?'+data[item].id+'" class="btn btn-primary"> <i class="fa fa-eye"></i> View </a> '+
+        '<button onclick="addcart('+data[item].id+')" class="btn btn-success"> <i class="fa fa-shopping-cart"></i> Add to cart </button>'+
+       
         
-    })
-    for (let item = min; item < max; item++) {
-            
-        html += '<div class="row no-gutters">'+
-        '<aside class="col-md-3">'+
-            '<a href="#" class="img-wrap">'+
-                '<span class="badge badge-danger"> NEW </span>'+
-                '<img src="images/product/'+data[item].Image+'">'+
-            '</a>'+
-        '</aside> <!-- col.// -->'+
-        '<div class="col-md-6">'+
-           ' <div class="info-main">'+
-                '<a  href="product/id?'+data[item].id+'" class="h5 title">'+data[item].NNa+'</a>'+
-                '<div class="rating-wrap mb-2">'+
-                    '<ul class="rating-stars">'+
-                        '<li style="width:100%" class="stars-active"> '+
-                            '<i class="fa fa-star"></i> <i class="fa fa-star"></i> '+
-                            '<i class="fa fa-star"></i> <i class="fa fa-star"></i> '+
-                            '<i class="fa fa-star"></i> '+
-                        '</li>'+
-                        '<li>'+
-                            '<i class="fa fa-star"></i> <i class="fa fa-star"></i> '+
-                            '<i class="fa fa-star"></i> <i class="fa fa-star"></i> '+
-                            '<i class="fa fa-star"></i> '+
-                        '</li>'+
-                    '</ul>'+
-                    '<div class="label-rating">9/10</div>'+
-                '</div> <!-- rating-wrap.// -->'+
-            
-                '<p class="mb-3">'+
-                    '<span class="tag"> <i class="fa fa-check"></i> Verified</span> '+
-                    '<span class="tag"> 5 Years </span> '+
-                    '<span class="tag"> 80 reviews </span>'+
-                    '<span class="tag"> Russia </span>'+
-                '</p>'+
-
-                '<p>'+data[item].Description+'</p>'+
-
-            '</div> <!-- info-main.// -->'+
-        '</div> <!-- col.// -->'+   
-        '<aside class="col-sm-3">'+
-            '<div class="info-aside">'+
-                '<div class="price-wrap">'+
-                    '<span class="h5 price">'+data[item].Price+'VND</span> '+
-                    '<small class="text-muted">/per item</small>'+
-                '</div> <!-- price-wrap.// -->'+
-                '<small class="text-warning">Paid shipping</small>'+
-                
-                '<p class="text-muted mt-3">Grand textile Co</p>'+
-                '<p class="mt-3">'+
-                    '<button onclick="addcart('+data[item].id+')" class="btn btn-outline-primary"><i class="fa fa-shopping-cart"></i> Add to cart</button>'+
-                '</p>'+
-            '</div> <!-- info-aside.// -->'+
-        '</aside> <!-- col.// -->'+
-    '</div> <!-- row.// -->'
-        
+        '</figcaption>'+
+    '</figure> </div>'    
     }
     return html;
 }
