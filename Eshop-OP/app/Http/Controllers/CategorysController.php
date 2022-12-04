@@ -128,13 +128,13 @@ class CategorysController extends Controller
     
  ///// Category
   public function searchCat(){
- 
-    $search=$_GET['stringsearch'];
+//  $search="Màn hình";
+     $search=$_GET['stringsearch'];
          if($search==null){ 
              $fullorder=DB::table('Categorys');
              return $fullorder;
          }else
-         //$search="Điện";
+
          $fullorder=DB::table('Categorys')
          ->where('Name', 'LIKE','%'.$search.'%')
          ->get();

@@ -95,5 +95,5 @@
         </div>
     </div>
 </div>
-<script src="{{asset('user/assets/js/cart/showcart.js')}}"></script>
+<script src="{{asset('user/assets/js/product/index.js')}}"></script>
 @endsection

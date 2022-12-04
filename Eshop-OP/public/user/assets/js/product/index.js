@@ -236,42 +236,45 @@ $(document).ready(function(){
         }
     })
 })
-function searchcategory(e){
-    let categoryId=e;
-    $.ajax({
-        url:'api/ajax-shopsearch',
-        type:'GET',
-        data:{
-            categoryId:categoryId,
-            stringsrearch:"",
-        },
-        success:function(data){
-            $("#countitem").html(data.length)
-            $("#getproduct").html(loadproduct(data,0,5));
-            $("#nextproduct").click(function(){
-                if(max+5<data.length){
-                    min=i*1*5;
-                    max=min+5;
-                    i=i+1;
-                }else if(max+5>data.length){
-                   max=max-(max-items);
-                }
-                $("#getproduct").html(loadproduct(data,min,max));
-            })
-            $("#backproduct").click(function(){
-                if(i-1>=0){
-                    min=i*1*5;
-                    max=min+5;
-                    i=i-1;
-                    $("#getproduct").html(loadproduct(data,min,max));
-                }
-                else{
-                    $("#getproduct").html(loadproduct(data,0,5));
-                }
-            })
-        }
-    })
-}
+
+
+
+// function searchcategory(e){
+//     let categoryId=e;
+//     $.ajax({
+//         url:'api/ajax-shopsearch',
+//         type:'GET',
+//         data:{
+//             categoryId:categoryId,
+//             stringsrearch:"",
+//         },
+//         success:function(data){
+//             $("#countitem").html(data.length)
+//             $("#getproduct").html(loadproduct(data,0,5));
+//             $("#nextproduct").click(function(){
+//                 if(max+5<data.length){
+//                     min=i*1*5;
+//                     max=min+5;
+//                     i=i+1;
+//                 }else if(max+5>data.length){
+//                    max=max-(max-items);
+//                 }
+//                 $("#getproduct").html(loadproduct(data,min,max));
+//             })
+//             $("#backproduct").click(function(){
+//                 if(i-1>=0){
+//                     min=i*1*5;
+//                     max=min+5;
+//                     i=i-1;
+//                     $("#getproduct").html(loadproduct(data,min,max));
+//                 }
+//                 else{
+//                     $("#getproduct").html(loadproduct(data,0,5));
+//                 }
+//             })
+//         }
+//     })
+// }
 function addcart(id){
     let idproduct=id;
     let userid= $.session.get('id');
@@ -280,5 +283,74 @@ function addcart(id){
  }
  
  
-////=======Hòa Dồng===================/////
+////=======Hòa Dồng========category===========/////
 
+
+$("#searchString").keypress(function(){
+    var format = /^[^a-zA-Z0-9]+$/;
+    let search = $("#searchString").val();
+    // alert('chúng tôi không thể tìm thấy thương hiệu này')
+    if(!search.match(format)){
+        $.ajax({
+            type:'GET',
+            url:"http://127.0.0.1:8000/api/ajax-search_category",
+            data:{
+                stringsearch: search
+        },
+            success:function(data){
+                if(data!=null){
+
+                    $("#loadCat").html(loadcat(data));
+                }
+                else{
+                    alert('Không thể tìm thấy')
+                }
+            }
+            
+        }
+        )
+    }
+    else{
+        alert('Không thể tìm thấy');
+}})
+
+
+function loadcat(data) {
+            let html = ""
+            $.each(data, function () {
+                html += '<tr>'+
+                '<td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">' +
+                '<div class="flex px-2 py-1">'+
+                '<div class="flex flex-col justify-center">'+
+                '<h6 class="mb-0 text-sm leading-normal dark:text-white">'+$(this)[0].Name+
+                '</h6>'+
+                ' </div>'+
+                '</div>'+
+                '</td>'+
+                '<td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
+                   '<p class="mb-0 text-xs font-semibold leading-tight dark:text-white dark:opacity-80">'+
+                   +$(this)[0].Description+        
+                '</p>'+
+                '</td>'+
+                '<td class="p-2 align-middle bg-transparent border-b dark:border-white/40 whitespace-nowrap shadow-transparent">'+
+                ' <a href="{{route('+admin.brand.edit, +'$brand->id)}}"'+
+                ' class="font-semibold leading-tight dark:text-white dark:opacity-80 text-slate-400">'+
+                ' <button'+
+                '    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-2">'+
+                '     Edit'+
+                ' </button>'+
+                ' </a>'+
+                '  <form action="{{route('+admin.brand.destroy+','+ '$brand->id)}}" method="POST">'+
+                '       @csrf'+
+                '       @method('+DELETE+')'+
+                '  <button'+
+                '      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"'+
+                '             type="submit">'+
+                '                     Delete'+
+                '   </button>'+
+                '   </form>'+
+                ' </td>'+
+                '</tr >'
+            })
+            return html; 
+        }
