@@ -77,6 +77,7 @@ $(document).ready(function(){
         }
     })
 })
+
 $("#getidbrand").click(function(){
     var names =[];
     $("#getbrand input:checked").map(function(){
