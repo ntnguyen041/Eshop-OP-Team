@@ -33,7 +33,7 @@ function loadproduct(data,min,max){
 function loadCategory(data){
     let asdasd="";
     $.each(data,function(){
-        asdasd+='<li><button onclick="searchcategory('+$(this)[0].id+')" value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
+        asdasd+='<li><button style="width: 100%;" onclick="searchcategory('+$(this)[0].id+')" value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
     })
     return asdasd;
 }
