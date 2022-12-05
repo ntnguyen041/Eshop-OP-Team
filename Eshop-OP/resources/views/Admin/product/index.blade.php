@@ -54,8 +54,8 @@
                                         class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-collapse border-solid shadow-none dark:border-white/40 dark:text-white tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                     </th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                            </thead >
+                            <tbody id="getproduct">
                                 <tr>
                                     @foreach ($products as $product)
                                     <td
@@ -136,4 +136,5 @@
         </div>
     </div>
 </div>
+<script src="{{asset('user/assets/js/product/index.js')}}"></script>
 @endsection
