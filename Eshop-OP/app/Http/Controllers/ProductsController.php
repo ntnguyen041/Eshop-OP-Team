@@ -251,24 +251,19 @@ class ProductsController extends Controller
     // search products admin
     public function searchPA(){
       
-        // $search=$_GET['stringsrearch'];
-      $search="Bàn phím";
-            if($search==null){
-                $fullrodutct=DB::table('Products as P')
-                ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
-                ->join('Categorys as C','P.Category_id','=','C.id')
-                ->join('Brands as B','P.Brand_id','=','B.id')->get();
-                return $fullrodutct;
-            }
-             //$search="Điện";
-            $fullrodutct=DB::table('Products as P')
-            ->select('P.id','P.name as NNa','P.Description','P.Price','P.Stock','B.Name','C.Name','P.Image')
-            ->join('Categorys as C','P.Category_id','=','C.id')
-            ->join('Brands as B','P.Brand_id','=','B.id')
-            ->where('P.Name','LIKE','%'.$search.'%')
-            ->orWhere('C.Name','LIKE','%'.$search.'%')
-            ->orWhere('B.Name','LIKE','%'.$search.'%')
-            ->get();
+        $search="Bàn phím";
+    //   $search=$_GET['stringsrearch'];
+              $fullrodutct=DB::table('Products as P')
+            //   ->select('id','Name','Category_id','Brand_id','Description','Price','Stock','B.Name','C.Name','Image')
+            //   ->join('Categorys as C','P.Category_id','=','C.id')
+            //   ->join('Brands as B','P.Brand_id','=','B.id')
+              ->where('P.Name','LIKE','%'.$search.'%')
+            //   ->orWhere("",'LIKE','%'.$search.'%')
+            //   ->orWhere("a.FullName",'LIKE','%'.$search.'%')
+            //   ->orWhere('C.Name','LIKE','%'.$search.'%')
+            //   ->orWhere('B.Name','LIKE','%'.$search.'%')
+              ->get(); 
+     
             return $fullrodutct;       
 
 }

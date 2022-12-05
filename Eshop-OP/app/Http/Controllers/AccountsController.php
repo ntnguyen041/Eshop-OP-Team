@@ -238,10 +238,7 @@ class AccountsController extends Controller
 
 
         $search=$_GET['stringsearch'];
-             if($search==null){ 
-                 $fullorder=DB::table('Invoices as I');
-                 return $fullorder;
-             }else
+            
              //$search="Điện";
              $fullorder=DB::table('Accounts as a')
              ->where('a.UserName', 'LIKE','%'.$search.'%')

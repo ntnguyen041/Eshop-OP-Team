@@ -140,6 +140,4 @@ class CategorysController extends Controller
          ->get();
          return $fullorder; 
  }
- 
-    
 }
