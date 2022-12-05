@@ -107,3 +107,36 @@ function loadaccount(data){
      })
     return html;
 }
+
+
+
+////---------------------Hòa Đồng--------------------////
+
+
+
+$("#searchString").keypress(function(){
+    var format = /^[^a-zA-Z0-9]+$/;
+    let search = $("#searchString").val();
+    //alert('sdfasd')
+    if(!search.match(format)){
+        $.ajax({
+            type:'GET',
+            url:"http://127.0.0.1:8000/api/ajax-search_account",
+            data:{
+                stringsearch: search
+        },
+            success:function(data){
+                if(data!=null){
+                    // $("#countitem").html(data.length)
+                    $("#loadAccount").html(loadaccount(data));
+                }
+                else{
+                    alert('chúng tôi không thể tìm thấy tài khoản này')
+                }
+            }
+        })
+    }
+    else{
+        alert('chúng tôi không thể tìm thấy tài khoản này')
+    }
+})

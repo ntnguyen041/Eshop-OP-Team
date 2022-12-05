@@ -42,7 +42,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="loadBranch">
                                 <tr>
                                     @foreach ($brands as $brand)
                                     <td
@@ -97,4 +97,5 @@
         </div>
     </div>
 </div>
+<script src="{{asset('user/assets/js/branch/index.js')}}"></script>
 @endsection

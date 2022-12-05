@@ -248,4 +248,23 @@ class ProductsController extends Controller
         Products::destroy($id);
         return redirect(route('admin.product.index'))->with('message','Product has been deleted.');
     }
+    // search products admin
+    public function searchPA(){
+      
+        $search="Bàn phím";
+    //   $search=$_GET['stringsrearch'];
+              $fullrodutct=DB::table('Products as P')
+            //   ->select('id','Name','Category_id','Brand_id','Description','Price','Stock','B.Name','C.Name','Image')
+            //   ->join('Categorys as C','P.Category_id','=','C.id')
+            //   ->join('Brands as B','P.Brand_id','=','B.id')
+              ->where('P.Name','LIKE','%'.$search.'%')
+            //   ->orWhere("",'LIKE','%'.$search.'%')
+            //   ->orWhere("a.FullName",'LIKE','%'.$search.'%')
+            //   ->orWhere('C.Name','LIKE','%'.$search.'%')
+            //   ->orWhere('B.Name','LIKE','%'.$search.'%')
+              ->get(); 
+     
+            return $fullrodutct;       
+
+}
 }

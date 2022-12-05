@@ -126,4 +126,18 @@ class CategorysController extends Controller
         return redirect(route('admin.category.index'))->with('message','Category has been deleted.');
     }
     
+ ///// Category
+  public function searchCat(){
+//  $search="Màn hình";
+     $search=$_GET['stringsearch'];
+         if($search==null){ 
+             $fullorder=DB::table('Categorys');
+             return $fullorder;
+         }else
+
+         $fullorder=DB::table('Categorys')
+         ->where('Name', 'LIKE','%'.$search.'%')
+         ->get();
+         return $fullorder; 
+ }
 }
