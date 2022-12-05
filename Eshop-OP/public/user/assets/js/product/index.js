@@ -25,8 +25,6 @@ function loadproduct(data,min,max){
         '</div> <!-- price-wrap.// -->'+
         '<a href="product/id?'+data[item].id+'" class="btn btn-primary"> <i class="fa fa-eye"></i> View </a> '+
         '<button onclick="addcart('+data[item].id+')" class="btn btn-success"> <i class="fa fa-shopping-cart"></i> Add to cart </button>'+
-       
-        
         '</figcaption>'+
     '</figure> </div>'    
     }
@@ -79,22 +77,6 @@ $(document).ready(function(){
         }
     })
 })
-// tim phan tu chung 
-function timphantucung( array1, array2){
-    let result = [];
-    for (let i = 0; i < array1.length - 1; ++i) {
-        for (let j = array2; j < array2.length-1; ++j) {
-            if (array[i] == array[j]) {
-                console.log(array1[i])
-                /*Tìm thấy phần tử trùng thì thêm vào mảng kết quả*/
-                result[count]=array[i];
-                ++ count;
-            }
-        }
-    }
-    return result
-}
-
 $("#getidbrand").click(function(){
     var names =[];
     $("#getbrand input:checked").map(function(){
@@ -122,9 +104,7 @@ $("#getidbrand").click(function(){
                         let result =[];
                         for (let i = 0; i < names.length; ++i) {
                             for (let j = 0; j <datafull.length; ++j) {
-                                // console.log(names[i],datafull[j].Brand_id);
                                 if (names[i]==datafull[j].Brand_id) {
-                                    /*Tìm thấy phần tử trùng thì thêm vào mảng kết quả*/
                                     result=result.concat(datafull[j]);
                                 }
                             }
@@ -137,9 +117,7 @@ $("#getidbrand").click(function(){
                     let datafull =[];
                         for (let i = 0; i < names.length; ++i) {
                             for (let j = 0; j <data.length; ++j) {
-                                // console.log(names[i],datafull[j].Brand_id);
                                 if (names[i]==data[j].Brand_id) {
-                                    /*Tìm thấy phần tử trùng thì thêm vào mảng kết quả*/
                                     datafull=datafull.concat(data[j]);
                                 }
                             }
