@@ -25,8 +25,6 @@ function loadproduct(data,min,max){
         '</div> <!-- price-wrap.// -->'+
         '<a href="product/id?'+data[item].id+'" class="btn btn-primary"> <i class="fa fa-eye"></i> View </a> '+
         '<button onclick="addcart('+data[item].id+')" class="btn btn-success"> <i class="fa fa-shopping-cart"></i> Add to cart </button>'+
-       
-        
         '</figcaption>'+
     '</figure> </div>'    
     }
@@ -35,7 +33,7 @@ function loadproduct(data,min,max){
 function loadCategory(data){
     let asdasd="";
     $.each(data,function(){
-        asdasd+='<li><button onclick="searchcategory('+$(this)[0].id+')" value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
+        asdasd+='<li><button style="width: 100%;" onclick="searchcategory('+$(this)[0].id+')" value="'+$(this)[0].id+'" class="btn btn-primary" type="button">'+$(this)[0].Name+'</button>'
     })
     return asdasd;
 }
@@ -79,7 +77,6 @@ $(document).ready(function(){
         }
     })
 })
-// tim phan tu chung 
 
 $("#getidbrand").click(function(){
     var names =[];
@@ -108,9 +105,7 @@ $("#getidbrand").click(function(){
                         let result =[];
                         for (let i = 0; i < names.length; ++i) {
                             for (let j = 0; j <datafull.length; ++j) {
-                                // console.log(names[i],datafull[j].Brand_id);
                                 if (names[i]==datafull[j].Brand_id) {
-                                    /*Tìm thấy phần tử trùng thì thêm vào mảng kết quả*/
                                     result=result.concat(datafull[j]);
                                 }
                             }
@@ -123,9 +118,7 @@ $("#getidbrand").click(function(){
                     let datafull =[];
                         for (let i = 0; i < names.length; ++i) {
                             for (let j = 0; j <data.length; ++j) {
-                                // console.log(names[i],datafull[j].Brand_id);
                                 if (names[i]==data[j].Brand_id) {
-                                    /*Tìm thấy phần tử trùng thì thêm vào mảng kết quả*/
                                     datafull=datafull.concat(data[j]);
                                 }
                             }

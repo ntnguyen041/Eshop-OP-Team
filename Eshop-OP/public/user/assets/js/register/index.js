@@ -44,6 +44,9 @@ $("#Register").click(function(){
                     icon: 'success',
                     title: 'Signed in successfully'
                   })
+                 setTimeout(() => {
+                    window.location.href = "/";
+                 }, 3100);
                }
                else{
                 setTimeout(() => {

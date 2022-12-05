@@ -12,7 +12,7 @@
 		<form >
 			<div class="form-group">
 				<label>Fullname</label>
-				<input id="fullname" type="name" class="form-control" placeholder="" value="nguyen">
+				<input id="fullname" type="name" class="form-control" placeholder="" >
 			</div>
 				<div class="form-group">
 					<label>Username</label>
@@ -20,11 +20,11 @@
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
 					<label>Password</label>
-					<input id="Pass" type="password" class="form-control" placeholder="" value="1234567">
+					<input id="Pass" type="password" class="form-control" placeholder="" >
 				</div> <!-- form-group end.// -->
 				<div class="form-group">
 					<label>Repeat password</label>
-					<input id="Repeatpass" type="password" class="form-control" placeholder="" value="1234567">
+					<input id="Repeatpass" type="password" class="form-control" placeholder="" >
 				</div> <!-- form-group end.// -->
 			    <div class="form-group">
 					<span id="errcreate"></span>

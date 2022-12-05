@@ -26,7 +26,7 @@ class admin
     //    return session()->get("admin");
         // echo session()->get("admin");
         // session()->flush();
-        if(session()->get("admin")==1)
+        if(session()->get("admin")!=null)
             return $next($request);
         return redirect()->route('home');
     }
