@@ -8,7 +8,6 @@ use App\Http\Controllers\CategorysController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\AccountsController;
 use App\Http\Controllers\CartsController;
-use App\Http\Controllers\InvoicesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +29,7 @@ Route::controller(AccountsController::class)->group(function () {
     Route::get('/user', 'detail');
     Route::post('/createAccount', 'createAccount');
     Route::post('/userupdate', 'update');
-    // ADMINz 
+    // ADMINz
     Route::get('/loadaccount', 'loadaccount');
     Route::post('/admin/create', 'adminCreateAccount');
     Route::post('/admin/delete', 'adminDeleteAccount');
@@ -56,20 +55,12 @@ Route::post('/ordernow','ordernow');
 
 Route::prefix('/admin')->group(function (){
     Route::get('/accounts', [ProductsController::class, 'accounts']);
-
+    
 });
 
 Route::get('/ajax-category',[CategorysController::class,'indexuser'])->name('ajax-category');
 
-// Route::get('/ajax-fill_order',[InvoicesController::class,'search'])->name('ajax-fill_order');
+
 Route::get('/ajax-brands',[BrandController::class,'index'])->name('ajax-brands');
 
-Route::get('/ajax-search_category',[CategorysController::class,'searchCat'])->name('ajax-search_category');
-//search thương hiệu admin
-Route::get('/ajax-search_brands',[BrandController::class,'searchBrand'])->name('ajax-search_brands');
-//search account admin
-Route::get('/ajax-search_account',[AccountsController::class,'searchAccount'])->name('ajax-search_account');
-//search hóa đơn
-Route::get('/ajax-search_order',[InvoicesController::class,'search'])->name('ajax-search_order');
-//search products admin
-Route::get('/ajax-search_product_admin',[ProductsController::class,'searchPA'])->name('ajax-search_product_admin');
+

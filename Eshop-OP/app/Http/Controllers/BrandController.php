@@ -84,21 +84,4 @@ class BrandController extends Controller
     {
         //
     }
-    
-  public function searchBrand(){
-       
-    $search=$_GET['stringsearch'];
-         if($search==null){ 
-             $fullorder=DB::table('Brands');
-             return $fullorder;
-         }else
-        {
-            $fullorder=DB::table('Brands')
-            ->where('Name', 'LIKE','%'.$search.'%')
-            ->get();
-            return $fullorder; 
-        }
-        
- }
- 
 }

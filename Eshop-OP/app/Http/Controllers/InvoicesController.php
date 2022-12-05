@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\InvoiceDetails;
 use App\Models\Invoices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class InvoicesController extends Controller
 {
@@ -48,41 +49,6 @@ class InvoicesController extends Controller
         return view('admin.order.orderdelivery', compact('invoices'));
     }
 
-
-    public function search(){
-        // $search = "Trần Minh Công";
-       $search=$_GET['stringsearch'];
-            if($search==null){ 
-                $fullorder=DB::table('Invoices as I');
-                return $fullorder;
-            }else
-            //$search="Điện";
-            $fullorder=DB::table('Invoices as I')
-            ->select('Code','FullName','IsuedData','ShoppingAddress','ShoppingPhone','Total',)
-            ->join('Accounts as a','I.Account_id','=','a.id')
-            // ->join('Categorys as C','P.Category_id','=','C.id')
-            // ->join('Categorys as C','P.Category_id','=','C.id')
-            ->whereDay('I.IsuedData', 'LIKE','%'.$search.'%')
-            ->orWhereMonth('I.IsuedData', 'LIKE','%'.$search.'%')
-            ->orWhereYear('I.IsuedData', 'LIKE','%'.$search.'%')
-            ->orWhere("a.FullName",'LIKE','%'.$search.'%')
-            ->orWhere("I.ShoppingPhone",'LIKE','%'.$search.'%')
-            ->get();
-            return $fullorder; 
-}
-
-
-
- 
- 
-
-
- 
- 
- 
- 
-
-    
     public function updateSuccesfulDelivery($id){
         Invoices::where('id',$id)->update([
             'Status' => 1,
@@ -90,8 +56,8 @@ class InvoicesController extends Controller
         $invoices = Invoices::where('Status', '=', 3,)->orderBy('id', 'DESC')->get();
         return view('admin.order.orderdelivery', compact('invoices'));
     }
-
-
+    
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -104,7 +70,7 @@ class InvoicesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response0
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -160,8 +126,6 @@ class InvoicesController extends Controller
     {
         //
     }
-
-
     public function history()
     {
         $account = $_GET['id'];
