@@ -232,21 +232,4 @@ class AccountsController extends Controller
     {
         //
     }
-
-
-    public function searchAccount(){
-
-
-        $search=$_GET['stringsearch'];
-            
-             //$search="Điện";
-             $fullorder=DB::table('Accounts as a')
-             ->where('a.UserName', 'LIKE','%'.$search.'%')
-             ->orWhere('a.Email', 'LIKE','%'.$search.'%')
-             ->orWhere('a.Phone', 'LIKE','%'.$search.'%')
-             ->orWhere("a.FullName",'LIKE','%'.$search.'%')
-             ->orWhere("a.Address",'LIKE','%'.$search.'%')
-             ->get();
-             return $fullorder;
-    }
 }
