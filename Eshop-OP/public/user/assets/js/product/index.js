@@ -81,20 +81,6 @@ $(document).ready(function(){
     })
 })
 // tim phan tu chung 
-function timphantucung( array1, array2){
-    let result = [];
-    for (let i = 0; i < array1.length - 1; ++i) {
-        for (let j = array2; j < array2.length-1; ++j) {
-            if (array[i] == array[j]) {
-                console.log(array1[i])
-                /*Tìm thấy phần tử trùng thì thêm vào mảng kết quả*/
-                result[count]=array[i];
-                ++ count;
-            }
-        }
-    }
-    return result
-}
 
 $("#getidbrand").click(function(){
     var names =[];
