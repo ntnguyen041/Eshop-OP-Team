@@ -178,3 +178,13 @@ Route::middleware('checkadmin')->prefix('/admin/account')->group(function (){
     Route::get('/edit', function () {return view('/admin/account/edit');});
 
 });
+Route::middleware('checkadmin')->prefix('/admin/report/user')->group(function (){
+    route::get('/', [ReportsController::class, 'list'])->name('admin.report.user.list');
+});
+Route::middleware('checkadmin')->prefix('/admin/report/sell')->group(function (){
+    route::get('/', [ReportsController::class, 'sell'])->name('admin.report.sell.index');
+    route::get('/top5', [ReportsController::class, 'top5'])->name('admin.report.sell.top5');
+    route::get('/top10', [ReportsController::class, 'top10'])->name('admin.report.sell.top10');
+    route::get('/top15', [ReportsController::class, 'top15'])->name('admin.report.sell.top15');
+    route::get('/top20', [ReportsController::class, 'top20'])->name('admin.report.sell.top20');
+});
